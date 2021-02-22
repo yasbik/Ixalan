@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Ixalan</string>
+
+    <string-array name = "movie_display_filters">
+        <item>Currently running movies</item>
+        <item>Upcoming movies</item>
+    </string-array>
 </resources>
