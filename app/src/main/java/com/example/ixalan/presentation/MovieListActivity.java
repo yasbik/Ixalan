@@ -1,18 +1,17 @@
-package com.example.ixalan;
+package com.example.ixalan.presentation;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+import com.example.ixalan.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MovieListActivity extends AppCompatActivity
 
+{
     //file names of image posters, can be replaced later with database objects
     String[] movie_names = new String[]{"poster_1", "poster_2", "poster_3.jpg", "poster_4.jpg"};
 
@@ -20,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.movie_list);
 
         LinearLayout layout = (LinearLayout)findViewById(R.id.movies_display_layout);
         for (int i = 0; i < movie_names.length; i++)
@@ -29,6 +28,5 @@ public class MainActivity extends AppCompatActivity {
             btn.setText(movie_names[i]);
             layout.addView(btn);
         }
-
     }
 }
