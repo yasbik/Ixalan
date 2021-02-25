@@ -1,3 +1,5 @@
+package com.example.ixalan;
+
 public  interface IUserDB{
 
     // Get a User from the database by there userID
