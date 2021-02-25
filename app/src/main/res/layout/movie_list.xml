@@ -5,6 +5,7 @@
     android:id="@+id/movie_list_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".presentation.MovieListActivity">
 
     <SearchView
@@ -16,6 +17,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:background="#777171"
+        android:foreground="#4C5052"
         android:imeOptions="actionDone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,13 +35,39 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:layout_weight="1"
+        android:background="#9C27B0"
+        android:dropDownSelector="@color/black"
         android:entries="@array/movie_display_filters"
         android:spinnerMode="dialog"
+        app:layout_constraintBottom_toTopOf="@+id/filter_genres_spinner"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_movies_searchview"
-        >
+        app:layout_constraintVertical_bias="0.0">
+
+    </Spinner>
+
+    <Spinner
+        android:id="@+id/filter_genres_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_weight="1"
+        android:background="#F64381"
+        android:dropDownSelector="@color/black"
+        android:entries="@array/movie_genres_filters"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_movies_searchview">
 
     </Spinner>
 
@@ -51,15 +80,19 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.406"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filter_movies_spinner">
+        app:layout_constraintTop_toBottomOf="@+id/filter_genres_spinner"
+        app:layout_constraintVertical_bias="0.324">
 
         <LinearLayout
             android:id="@+id/movies_list_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#95FB99"
             android:orientation="vertical" />
     </ScrollView>
 

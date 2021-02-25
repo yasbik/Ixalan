@@ -47,6 +47,7 @@ public class MovieListActivity extends AppCompatActivity
         }};
 
         populateMovies();
+
     }
 
     public static String get_MOVIE_NAME()
