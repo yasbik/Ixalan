@@ -33,6 +33,8 @@ public class MovieListActivity extends AppCompatActivity
 
         //Initialize action event for the movie filter
         initializeMoviesFilterActionEvents();
+        //Initialize action event for the movie search function
+        initializeMoviesSearchActionEvents();
 
         //TODO: Initialize list of currently running and upcoming movies from db through logic layer and store in list_of_movies.
         //Currently just use strings as objects haven't been implemented yet
@@ -71,6 +73,34 @@ public class MovieListActivity extends AppCompatActivity
                     public void onNothingSelected(AdapterView<?> parent) {
                     }
                 });
+    }
+
+    private void initializeMoviesSearchActionEvents()
+    {
+        SearchView search_box = (SearchView)findViewById(R.id.movies_search_box);
+
+        search_box.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query)
+            {   //When user searches and hits go, this code is executed
+
+                String search_criteria = search_box.getQuery().toString().trim();
+
+                //TODO: Get list of movies based on search criteria from db through logic layer and store in list_of_movies. SEARCH_CRITERIA MUST BE SUBSTRING OF MOVIE_NAME
+
+                populateMovies();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText)
+            {
+                //when text changes in search field
+                //TODO: Not really implemented right now, if we choose to make suggestions to user as text is typed, that functionality will go here
+
+                return false;
+            }
+        });
     }
 
     /*
