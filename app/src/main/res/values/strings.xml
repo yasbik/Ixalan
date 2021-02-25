@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Ixalan</string>
+    <string name = "BOOK_NOW">BOOK NOW</string>
+    <string name = "MOVIE_POSTER">Movie Poster</string>
 
-    <string-array name = "movie_display_filters">
+    <string-array name="movie_display_filters">
         <item>Currently running movies</item>
         <item>Upcoming movies</item>
     </string-array>

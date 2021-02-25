@@ -1,8 +1,7 @@
 package com.example.ixalan.presentation;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -24,6 +23,8 @@ public class MovieListActivity extends AppCompatActivity
     //List to store currently running and upcoming movies
     //TODO: Once objects implemented, change string to object
     private List<String> list_of_movies;
+
+    private static final String MOVIE_NAME= "com.example.ixalan.presentation.MOVIE_NAME";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -48,12 +49,17 @@ public class MovieListActivity extends AppCompatActivity
         populateMovies();
     }
 
+    public static String get_MOVIE_NAME()
+    {
+        return MOVIE_NAME;
+    }
+
     /*
     Action event when a filter is applied
     */
     private void initializeMoviesFilterActionEvents()
     {
-        Spinner spinner = (Spinner)findViewById(R.id.movies_filter);
+        Spinner spinner = (Spinner)findViewById(R.id.filter_movies_spinner);
         spinner.setOnItemSelectedListener(
                 new AdapterView.OnItemSelectedListener() {
                     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
@@ -77,7 +83,7 @@ public class MovieListActivity extends AppCompatActivity
 
     private void initializeMoviesSearchActionEvents()
     {
-        SearchView search_box = (SearchView)findViewById(R.id.movies_search_box);
+        SearchView search_box = (SearchView)findViewById(R.id.search_movies_searchview);
 
         search_box.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -112,7 +118,7 @@ public class MovieListActivity extends AppCompatActivity
     private void populateMovies()
     {
         //Clear layout of all entries
-        LinearLayout layout = (LinearLayout)findViewById(R.id.movies_display_layout);
+        LinearLayout layout = (LinearLayout)findViewById(R.id.movies_list_linear_layout);
         layout.removeAllViews();
 
         //Add entries one by one
@@ -121,6 +127,12 @@ public class MovieListActivity extends AppCompatActivity
             for (String movie_name : list_of_movies) {
                 Button btn = new Button(this);
                 btn.setText(movie_name);
+                //if clicked, display movie details
+                btn.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        displayMovieDetails(movie_name);
+                    }
+                });
                 layout.addView(btn);
             }
         }
@@ -128,5 +140,13 @@ public class MovieListActivity extends AppCompatActivity
         {
             //print error message saying list is null (not empty, but null)
         }
+
+    }
+
+    private void displayMovieDetails(String movie_name)
+    {
+        Intent intent = new Intent(this, MovieDetailActivity.class);
+        intent.putExtra(MOVIE_NAME, movie_name);
+        startActivity(intent);
     }
 }
