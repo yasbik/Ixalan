@@ -1,4 +1,5 @@
-package com.example.ixalan;
+package com.example.ixalan.data;
+import com.example.ixalan.object.Movie;
 
 public  interface movieDBInterface{
 
@@ -8,5 +9,7 @@ public  interface movieDBInterface{
     //removes a movie completely from the dataBase
     // updating should not use this function
     public int removeMovie(int movieID);
+
+    public void addMovie(Movie newMovie);
 
 }
