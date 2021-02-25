@@ -7,6 +7,6 @@ public  interface movieDBInterface{
 
     //removes a movie completely from the dataBase
     // updating should not use this function
-    public void removeMovie(int movieID);
+    public int removeMovie(int movieID);
 
 }
