@@ -1,8 +1,7 @@
 package com.example.ixalan.data;
-import com.example.ixalan.object.Movie;
 
-public  interface movieDBInterface{
-
+public interface IMovieDB
+{
     // Get a User from the database by there movieID
     public Movie getMovie(int movieID);
 
@@ -11,5 +10,4 @@ public  interface movieDBInterface{
     public int removeMovie(int movieID);
 
     public void addMovie(Movie newMovie);
-
 }

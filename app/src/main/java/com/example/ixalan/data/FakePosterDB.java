@@ -2,7 +2,7 @@ package com.example.ixalan.data;
 import java.util.ArrayList;
 import java.lang.Integer;
 
-public class FakePosterDB implements PosterDBImplementation{
+public class FakePosterDB implements IPosterDB{
     ArrayList<String> posters;
     ArrayList<Integer> movieIDs;
 
@@ -12,7 +12,7 @@ public class FakePosterDB implements PosterDBImplementation{
     }
 
     // inserts a new poster into the posters database and return -1 if failed
-    @override
+    @Override
     public int insertPoster(String posterURL, int movieID){
         Integer id;
         int status = -1;
@@ -28,7 +28,7 @@ public class FakePosterDB implements PosterDBImplementation{
     }
 
     //gets the poster URL as a string returns an empty string if not found
-    @override
+    @Override
     public String getPoster(int movieID){
         int index=0;
         String posterURL= " ";
@@ -37,7 +37,7 @@ public class FakePosterDB implements PosterDBImplementation{
 
 
         while(index < posters.size() && !found){
-            tempID = movieIDs.get(index).intvalue();
+            tempID = movieIDs.get(index).intValue();
 
             if(tempID == movieID){
                 found = true;

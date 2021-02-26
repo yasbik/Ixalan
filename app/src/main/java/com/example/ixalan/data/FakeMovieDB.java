@@ -2,7 +2,7 @@ package com.example.ixalan.data;
 import java.util.ArrayList;
 import com.example.ixalan.object.Movie;
 
-public class FakeMovieDB implements movieDBInterface{
+public class FakeMovieDB implements IMovieDB{
 
     ArrayList<Movie> Movies;
 
@@ -11,7 +11,7 @@ public class FakeMovieDB implements movieDBInterface{
     }
 
     // searches the Movies database for the given MovieID returns NULL if not Found.
-    @override
+    @Override
     public Movie getMovie(int movieID){
         int index=0;
         Movie checkMovie;
@@ -35,7 +35,7 @@ public class FakeMovieDB implements movieDBInterface{
     }
 
     // removes a Movie from the database based on it movieID and returns -1 if failed
-    @override
+    @Override
     public int removeMovie(int movieID){
         int index=0;
         Movie checkMovie;
@@ -60,8 +60,8 @@ public class FakeMovieDB implements movieDBInterface{
     }
 
     //adds a Movie Object to the Database.
-    @override
+    @Override
     public void addMovie(Movie newMovie){
-        Movies.add(newMOvie);
+        Movies.add(newMovie);
     }
 }
