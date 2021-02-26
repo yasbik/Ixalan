@@ -1,5 +1,7 @@
 package com.example.ixalan.data;
 
+import com.example.ixalan.objects.Movie;
+
 public interface IMovieDB
 {
     // Get a User from the database by there movieID

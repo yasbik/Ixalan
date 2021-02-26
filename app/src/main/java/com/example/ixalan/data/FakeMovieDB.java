@@ -1,6 +1,6 @@
 package com.example.ixalan.data;
 import java.util.ArrayList;
-import com.example.ixalan.object.Movie;
+import com.example.ixalan.objects.Movie;
 
 public class FakeMovieDB implements IMovieDB{
 
@@ -21,7 +21,7 @@ public class FakeMovieDB implements IMovieDB{
 
         while(index < Movies.size() && !found){
             checkMovie = Movies.get(index);
-            tempMovieID = checkMovie.getID();
+            tempMovieID = checkMovie.getMovieID();
 
             if(tempMovieID == movieID){
                 found = true;
@@ -45,7 +45,7 @@ public class FakeMovieDB implements IMovieDB{
 
         while(index < Movies.size() && !found){
             checkMovie = Movies.get(index);
-            tempMovieID = checkMovie.getID();
+            tempMovieID = checkMovie.getMovieID();
 
             if(tempMovieID == movieID){
                 found = true;

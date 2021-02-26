@@ -1,4 +1,6 @@
-package com.example.ixalan;
+package com.example.ixalan.data;
+
+import com.example.ixalan.objects.User;
 
 public  interface IUserDB{
 
