@@ -43,4 +43,12 @@ being as far out as a month or as few as 1 hours before the movie start time. Th
 ticket sales to line wait times as compared to before and after the launch of the application. With a target
 reduction of waiting line times of at least 10%.
 
+# Branching strategy
+---
+
 The branching strategy we will be using is GitHub Flow.
+
+# Worksheet
+---
+
+Find our filled-out worksheet [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/blob/master/i1_worksheet.md).
