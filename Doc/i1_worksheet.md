@@ -53,4 +53,8 @@ Agile Planning
 
 Write a paragraph about any plans that were changed. Did you 'push' any features to iteration 2? Did you change the description of any Features or User Stories? Have links to any changed or pushed Features or User Stories.
 
-During iteration 1, the plan for what had to be completed for iteration 1 did not change. The single feature we had aimed to get done for iteration 1 was completed. What we did change during iteration 1 was, we dropped the implementation of apple and android pay that we had initially talked about.
+During iteration 1, the plan for what had to be completed for iteration 1 did not change. 
+Some user stories under the feature we aimed to get done couldn’t be finished entirely due to lack of time and dependence on completion of other tasks. For example, filtering movies based on currently running and upcoming can’t be done as the movie object/database don’t have such an attribute. 
+We target completion of this feature for Iteration 2.
+What we did change during iteration 1 was, we dropped the implementation of apple and android pay that we had initially talked about.
+
