@@ -1,4 +1,4 @@
-Iteration 1 Worksheet
+﻿Iteration 1 Worksheet
 =====================
 
 Adding a feature
@@ -45,7 +45,7 @@ Find a SOLID violation in the project of group `(n%12)+1` (group 12 does group 1
 your links in the issues are to **specific commits** (not to `main`, or `develop` as those will be changed).
 Provide a link to the issue you created here.
 
-We looked for SOLID violations in Group 4.
+We looked for SOLID violations in Group 4 and couldn't find any.
 
 
 Agile Planning
