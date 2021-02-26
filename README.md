@@ -42,3 +42,5 @@ to be able to allow a user to book tickets and specific seats at any Ixalan thea
 being as far out as a month or as few as 1 hours before the movie start time. This can be measured by comparing
 ticket sales to line wait times as compared to before and after the launch of the application. With a target
 reduction of waiting line times of at least 10%.
+
+The branching strategy we will be using is GitHub Flow.
