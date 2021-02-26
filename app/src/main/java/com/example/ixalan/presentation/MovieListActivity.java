@@ -12,6 +12,8 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ixalan.R;
+import com.example.ixalan.business.AccessMovies;
+import com.example.ixalan.objects.Movie;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,10 +23,12 @@ public class MovieListActivity extends AppCompatActivity
 
 {
     //List to store currently running and upcoming movies
-    //TODO: Once objects implemented, change string to object
-    private List<String> list_of_movies;
+    private List<Movie> list_of_movies;
+
+    private AccessMovies accessMovies;
 
     private static final String MOVIE_NAME= "com.example.ixalan.presentation.MOVIE_NAME";
+    private static final String MOVIE_POSTER = "com.example.ixalan.presentation.MOVIE_POSTER";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -32,19 +36,15 @@ public class MovieListActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.movie_list);
 
+        accessMovies = new AccessMovies();
+
         //Initialize action event for the movie filter
         initializeMoviesFilterActionEvents();
         //Initialize action event for the movie search function
         initializeMoviesSearchActionEvents();
 
-        //TODO: Initialize list of currently running and upcoming movies from db through logic layer and store in list_of_movies.
         //Currently just use strings as objects haven't been implemented yet
-        list_of_movies = new ArrayList<String>(){{
-            add("Movie 1");
-            add("Movie 2");
-            add("Movie 3");
-            add("Movie 4");
-        }};
+        list_of_movies = accessMovies.getMovies();
 
         populateMovies();
     }
@@ -52,6 +52,11 @@ public class MovieListActivity extends AppCompatActivity
     public static String get_MOVIE_NAME()
     {
         return MOVIE_NAME;
+    }
+
+    public static String get_MOVIE_POSTER()
+    {
+        return MOVIE_POSTER;
     }
 
     /*
@@ -70,7 +75,13 @@ public class MovieListActivity extends AppCompatActivity
                         if (Arrays.asList(array).contains(filter_criteria))
                         { //ensure valid filter criteria is selected
 
-                            //TODO: Get list of movies based on filter from db through logic layer and store in list_of_movies.
+                            if (array[0].equals(filter_criteria))
+                            { //Currently running movie
+                                list_of_movies = accessMovies.getCurrentlyRunningMovies();
+                            } else
+                            { //upcoming movie
+                                list_of_movies = accessMovies.getUpcomingMovies();
+                            }
 
                             //Once we know what movies meet filter criteria, populate them in-app
                             populateMovies();
@@ -92,7 +103,7 @@ public class MovieListActivity extends AppCompatActivity
 
                 String search_criteria = search_box.getQuery().toString().trim();
 
-                //TODO: Get list of movies based on search criteria from db through logic layer and store in list_of_movies. SEARCH_CRITERIA MUST BE SUBSTRING OF MOVIE_NAME
+                list_of_movies = accessMovies.getFilteredMovies(search_criteria);
 
                 populateMovies();
                 return false;
@@ -113,7 +124,6 @@ public class MovieListActivity extends AppCompatActivity
        To display list of movies in app
        Parameters: None
        Return: None
-       TODO: Once objects are implemented, change code to consider objects instead of generic strings
     */
     private void populateMovies()
     {
@@ -124,13 +134,13 @@ public class MovieListActivity extends AppCompatActivity
         //Add entries one by one
         if (list_of_movies != null)
         {
-            for (String movie_name : list_of_movies) {
+            for (Movie movie : list_of_movies) {
                 Button btn = new Button(this);
-                btn.setText(movie_name);
+                btn.setText(movie.getMovieName());
                 //if clicked, display movie details
                 btn.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
-                        displayMovieDetails(movie_name);
+                        displayMovieDetails(movie);
                     }
                 });
                 layout.addView(btn);
@@ -143,10 +153,12 @@ public class MovieListActivity extends AppCompatActivity
 
     }
 
-    private void displayMovieDetails(String movie_name)
+    private void displayMovieDetails(Movie movie)
     {
         Intent intent = new Intent(this, MovieDetailActivity.class);
-        intent.putExtra(MOVIE_NAME, movie_name);
+        intent.putExtra(MOVIE_NAME, movie.getMovieName());
+        intent.putExtra(MOVIE_POSTER, movie.getMoviePoster());
+
         startActivity(intent);
     }
 }
