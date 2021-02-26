@@ -46,7 +46,7 @@ reduction of waiting line times of at least 10%.
 # Branching strategy
 ---
 
-The branching strategy we will be using is GitHub Flow.
+Find our branching strategy [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/blob/master/Branching_Strategy.md)
 
 # Worksheet
 ---
