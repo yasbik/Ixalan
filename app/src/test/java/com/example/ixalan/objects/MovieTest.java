@@ -20,4 +20,39 @@ public class MovieTest {
         System.out.println("Finished testMovie1");
     }
 
+    @Test
+    public void testMovie2()
+    {
+        Movie movie1, movie2;
+
+        System.out.println("\nStarting testMovie2");
+
+        movie1 = new Movie("new_movie1", "new_movie1_url");
+        assertNotNull(movie1);
+        movie2 = new Movie("new_movie2", "new_movie2_url");
+        assertNotNull(movie2);
+
+        try {
+            validate(movie1.getMovieID(), movie2.getMovieID());
+        } catch(Exception m) {
+            System.out.println("Exception occured: " + m);
+        }
+
+        System.out.println("Finished testMovie2");
+    }
+
+    static void validate(int id1, int id2) throws InvalidMovieIDException {
+        if (id1 == id2) {
+            throw new InvalidMovieIDException("Movie IDs not valid");
+        } else {
+            System.out.println("valid Movie IDs");
+        }
+    }
+
+}
+
+class InvalidMovieIDException extends Exception {
+    InvalidMovieIDException(String s) {
+        super(s);
+    }
 }
