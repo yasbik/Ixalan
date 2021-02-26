@@ -25,6 +25,13 @@ Provide a link to a test of exceptional code. In a few sentences,
 provide an explanation of why the exception is handled or thrown
 in the code you are testing.
 
+*[Link to a test of exceptional code]
+(https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/blob/master/app/src/test/java/com/example/ixalan/objects/MovieTest.java)
+The exception is added to the test 'testMovie2'.
+The java class 'Movie' has an instance variable named 'movieID' which is not set yet for any added movies to the database. Therefore,
+the movieID of every movie is same(it is 0). When two movies have same movieID, an exception 'InvalidMovieIDException' is thrown since
+two IDs cannot be same.
+
 Branching
 ----------
 
