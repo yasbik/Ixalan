@@ -46,9 +46,9 @@ reduction of waiting line times of at least 10%.
 # Branching strategy
 ---
 
-Find our branching strategy [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/blob/master/Branching_Strategy.md)
+Find our branching strategy [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/blob/master/Doc/Branching_Strategy.md)
 
 # Worksheet
 ---
 
-Find our filled-out worksheet [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/blob/master/i1_worksheet.md).
+Find our filled-out worksheet [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/blob/master/Doc/i1_worksheet.md).

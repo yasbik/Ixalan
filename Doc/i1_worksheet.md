@@ -34,7 +34,7 @@ Provide screen shot of a feature being added using your branching strategy
 successfully. The [GitLab Graph tool can do this](https://code.cs.umanitoba.ca/comp3350-summer2019/cook-eBook/-/network/develop),
 as well as using `git log --graph`.
 
-Our branching strategy is described [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/blob/master/Branching_Strategy.md).
+Our branching strategy is described [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/blob/master/Doc/Branching_Strategy.md).
 
 A screenshot of the targeted iteration 1 feature can be found [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/network/master)
 
