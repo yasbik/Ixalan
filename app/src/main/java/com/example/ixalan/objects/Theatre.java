@@ -1,7 +1,17 @@
 package com.example.ixalan.objects;
 
 public class Theatre {
-    String name;
-    String location;
+    private String name;
+    private String location;
+
+    public String getName()
+    {
+        return this.name;
+    }
+
+    public String getLocation()
+    {
+        return this.location;
+    }
     
 }

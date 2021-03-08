@@ -2,7 +2,17 @@ package com.example.ixalan.objects;
 
 public class Admin extends User
 {
-    String adminID;
-    String locationInCharge;
+    private String adminID; //possibly alphanumeric
+    private String locationInCharge;
+
+    public String getAdminID()
+    {
+        return this.adminID;
+    }
+
+    public String getLocationInCharge()
+    {
+        return this.locationInCharge;
+    }
     
 }

@@ -2,6 +2,11 @@ package com.example.ixalan.objects;
 
 public class Guest extends User
 {
-    String ip;
+    private String guestID; //possibly alphanumeric
+
+    public String getGuestID()
+    {
+        return this.guestID;
+    }
     
 }
