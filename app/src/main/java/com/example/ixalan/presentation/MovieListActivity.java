@@ -27,9 +27,6 @@ public class MovieListActivity extends AppCompatActivity
 
     private AccessMovies accessMovies;
 
-    private static final String MOVIE_NAME= "com.example.ixalan.presentation.MOVIE_NAME";
-    private static final String MOVIE_POSTER = "com.example.ixalan.presentation.MOVIE_POSTER";
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -47,16 +44,6 @@ public class MovieListActivity extends AppCompatActivity
         list_of_movies = accessMovies.getMovies();
 
         populateMovies();
-    }
-
-    public static String get_MOVIE_NAME()
-    {
-        return MOVIE_NAME;
-    }
-
-    public static String get_MOVIE_POSTER()
-    {
-        return MOVIE_POSTER;
     }
 
     /*
@@ -156,9 +143,7 @@ public class MovieListActivity extends AppCompatActivity
     private void displayMovieDetails(Movie movie)
     {
         Intent intent = new Intent(this, MovieDetailActivity.class);
-        intent.putExtra(MOVIE_NAME, movie.getMovieName());
-        intent.putExtra(MOVIE_POSTER, movie.getMoviePoster());
-
+        intent.putExtra("MOVIE", movie);
         startActivity(intent);
     }
 }

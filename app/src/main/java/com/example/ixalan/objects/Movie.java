@@ -1,9 +1,10 @@
 package com.example.ixalan.objects;
 
 //A movie class for our Theatre booking app.
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-public class Movie
+public class Movie implements Serializable
 {
     private int movieID; // primary key for movies (Possibly alphanumeric)
     private String Name;// The name of the movie is stored in string
