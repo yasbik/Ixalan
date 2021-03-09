@@ -37,7 +37,8 @@ public class Movie implements Serializable
 
     public boolean isCurrentlyRunning()
     {
-        return theatres != null && theatres.size() > 0;
+        return theatres != null && theatres.size() > 0 &&
+                (releaseDate.isBefore(LocalDate.now()) || releaseDate.isEqual(LocalDate.now()));
     }
 
     public ArrayList<Theatre> getTheatres() {
