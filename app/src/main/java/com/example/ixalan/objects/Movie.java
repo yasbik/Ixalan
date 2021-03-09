@@ -1,6 +1,10 @@
 package com.example.ixalan.objects;
 
 //A movie class for our Theatre booking app.
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -22,6 +26,18 @@ public class Movie implements Serializable
     {
         this.Name = name;
         this.posterUrl = posterUrl;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public boolean isUpcoming()
+    {
+        return releaseDate.isAfter(LocalDate.now());
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public boolean isCurrentlyRunning()
+    {
+        return theatres != null && theatres.size() > 0;
     }
 
     public ArrayList<Theatre> getTheatres() {
