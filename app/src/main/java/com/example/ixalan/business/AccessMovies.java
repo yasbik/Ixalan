@@ -1,6 +1,7 @@
 package com.example.ixalan.business;
 
 import com.example.ixalan.data.FakeMovieDB;
+import com.example.ixalan.data.IMovieDB;
 import com.example.ixalan.objects.Movie;
 
 import java.util.ArrayList;
@@ -8,8 +9,8 @@ import java.util.List;
 
 public class AccessMovies
 {
-    private FakeMovieDB movieDB;
-    private List<Movie> list_of_movies;
+    private FakeMovieDB movieDB = new FakeMovieDB();
+    private List<Movie> list_of_movies = new ArrayList<Movie>();
 
     /*
         Function to get a list of currently running and upcoming movies.
@@ -17,14 +18,22 @@ public class AccessMovies
     */
     public List<Movie> getMovies()
     {
-        //TODO: Fetch a list of currently running and upcoming movies. As database isn't fully implemented, we'll just hardcode them for now
+        list_of_movies.clear();
+        for(Movie movie : movieDB.getAllMovies())
+        {
+            if (movie.isCurrentlyRunning() || movie.isUpcoming())
+            {
+                list_of_movies.add(movie);
+            }
+        }
 
-         list_of_movies = new ArrayList<Movie>(){{
+
+        /*list_of_movies = new ArrayList<Movie>(){{
             add(new Movie("Avengers Endgame","poster_1"));
             add(new Movie("Black Panther","poster_2"));
             add(new Movie("The Nightingale","poster_3"));
             add(new Movie("Replicas","poster_4"));
-        }};
+        }};*/
 
          return list_of_movies;
     }
@@ -34,8 +43,17 @@ public class AccessMovies
     */
     public List<Movie> getCurrentlyRunningMovies()
     {
-         //TODO: As there's no way of saying if a movie is currently running, just return the list of hardcoded movies
-        return getMovies();
+        list_of_movies.clear();
+        for(Movie movie : movieDB.getAllMovies())
+        {
+            if (movie.isCurrentlyRunning())
+            {
+                list_of_movies.add(movie);
+            }
+        }
+
+        return list_of_movies;
+
     }
 
     /*
@@ -43,8 +61,17 @@ public class AccessMovies
    */
     public List<Movie> getUpcomingMovies()
     {
-        //TODO: As there's no way of saying if a movie is upcoming, just return the list of hardcoded movies
-        return getMovies();
+        list_of_movies.clear();
+        for(Movie movie : movieDB.getAllMovies())
+        {
+            if (movie.isUpcoming())
+            {
+                list_of_movies.add(movie);
+            }
+        }
+
+        return list_of_movies;
+
     }
 
     /*
@@ -52,7 +79,15 @@ public class AccessMovies
     */
     public List<Movie> getFilteredMovies(String search_criteria)
     {
-        //TODO: As the db hasn't been fully implemented, just return the list of hardcoded movies
-        return getMovies();
+        ArrayList<Movie> filtered_movies = new ArrayList<Movie>();
+        for(Movie movie : getMovies())
+        {
+            if (movie.getMovieName().contains(search_criteria))
+            {
+                filtered_movies.add(movie);
+            }
+        }
+        return filtered_movies;
+
     }
 }

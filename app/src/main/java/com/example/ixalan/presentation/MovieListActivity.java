@@ -155,9 +155,8 @@ public class MovieListActivity extends AppCompatActivity
 
     private void displayMovieDetails(Movie movie)
     {
-        Intent intent = new Intent(this, MovieDetailActivity.class);
-        intent.putExtra(MOVIE_NAME, movie.getMovieName());
-        intent.putExtra(MOVIE_POSTER, movie.getMoviePoster());
+        Intent intent = new Intent(this.getApplicationContext(), MovieDetailActivity.class);
+        intent.putExtra("MOVIE", movie);
 
         startActivity(intent);
     }

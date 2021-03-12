@@ -34,6 +34,12 @@ public class FakeMovieDB implements IMovieDB{
         return  returnedMovie;
     }
 
+    public ArrayList<Movie> getAllMovies()
+    {
+        return Movies;
+    }
+
+
     // removes a Movie from the database based on it movieID and returns -1 if failed
     @Override
     public int removeMovie(int movieID){
