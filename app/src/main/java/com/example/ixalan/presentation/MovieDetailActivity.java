@@ -7,16 +7,15 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.example.ixalan.R;
 import com.example.ixalan.objects.Movie;
 import com.example.ixalan.objects.RegiUser;
+
+import com.example.ixalan.R;
 
 public class MovieDetailActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.movie_details);
@@ -38,11 +37,12 @@ public class MovieDetailActivity extends AppCompatActivity {
             //Display movie name
             TextView movie_name_textview = (TextView) findViewById(R.id.movie_name_textview);
             movie_name_textview.setText(movie_display_name);
-            
+
             //Display movie details
             TextView movie_details_textview = (TextView) findViewById(R.id.movie_details_textView);
             movie_details_textview.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
             movie_details_textview.setText(movie_synopsis);
         }
+
     }
 }

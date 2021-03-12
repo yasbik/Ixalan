@@ -1,6 +1,7 @@
 package com.example.ixalan.business;
 
 import com.example.ixalan.data.FakeMovieDB;
+import com.example.ixalan.data.IMovieDB;
 import com.example.ixalan.objects.Movie;
 
 import java.util.ArrayList;
@@ -8,8 +9,8 @@ import java.util.List;
 
 public class AccessMovies
 {
-    private FakeMovieDB movieDB;
-    private List<Movie> list_of_movies;
+    private FakeMovieDB movieDB = new FakeMovieDB();
+    private List<Movie> list_of_movies = new ArrayList<Movie>();
 
     /*
         Function to get a list of currently running and upcoming movies.
