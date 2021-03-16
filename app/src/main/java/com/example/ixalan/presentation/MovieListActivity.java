@@ -44,6 +44,8 @@ public class MovieListActivity extends AppCompatActivity
         list_of_movies = accessMovies.getMovies();
 
         populateMovies();
+
+        view_cart();
     }
 
     /*
@@ -145,5 +147,15 @@ public class MovieListActivity extends AppCompatActivity
         Intent intent = new Intent(this, MovieDetailActivity.class);
         intent.putExtra("MOVIE", movie);
         startActivity(intent);
+    }
+
+    private void view_cart() {
+        Button mmButton = (Button) findViewById(R.id.cart_button);
+        mmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MovieListActivity.this, ViewCartActivity.class));
+            }
+        });
     }
 }
