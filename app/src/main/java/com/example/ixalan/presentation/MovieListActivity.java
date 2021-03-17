@@ -22,10 +22,9 @@ import java.util.List;
 public class MovieListActivity extends AppCompatActivity
 
 {
-    //List to store currently running and upcoming movies
-    private List<Movie> list_of_movies;
-
     private AccessMovies accessMovies;
+    private boolean filter_isUpcoming;
+    private String search_criteria;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -34,16 +33,13 @@ public class MovieListActivity extends AppCompatActivity
         setContentView(R.layout.movie_list);
 
         accessMovies = new AccessMovies();
+        filter_isUpcoming = false;
+        search_criteria = "";
 
         //Initialize action event for the movie filter
         initializeMoviesFilterActionEvents();
         //Initialize action event for the movie search function
         initializeMoviesSearchActionEvents();
-
-        //Currently just use strings as objects haven't been implemented yet
-        list_of_movies = accessMovies.getMovies();
-
-        populateMovies();
     }
 
     /*
@@ -64,14 +60,15 @@ public class MovieListActivity extends AppCompatActivity
 
                             if (array[0].equals(filter_criteria))
                             { //Currently running movie
-                                list_of_movies = accessMovies.getCurrentlyRunningMovies();
+                                filter_isUpcoming = false;
                             } else
                             { //upcoming movie
-                                list_of_movies = accessMovies.getUpcomingMovies();
+                                filter_isUpcoming = true;
                             }
 
                             //Once we know what movies meet filter criteria, populate them in-app
-                            populateMovies();
+                            List<Movie> updatedList = accessMovies.filterMovies(search_criteria, filter_isUpcoming);
+                            populateMovies(updatedList);
                         }
                     }
                     public void onNothingSelected(AdapterView<?> parent) {
@@ -87,12 +84,7 @@ public class MovieListActivity extends AppCompatActivity
             @Override
             public boolean onQueryTextSubmit(String query)
             {   //When user searches and hits go, this code is executed
-
-                String search_criteria = search_box.getQuery().toString().trim();
-
-                list_of_movies = accessMovies.getFilteredMovies(search_criteria);
-
-                populateMovies();
+                updateSearchCriteriaAndRepopulate(query);
                 return false;
             }
 
@@ -101,10 +93,18 @@ public class MovieListActivity extends AppCompatActivity
             {
                 //when text changes in search field
                 //TODO: Not really implemented right now, if we choose to make suggestions to user as text is typed, that functionality will go here
-
+                updateSearchCriteriaAndRepopulate(newText);
                 return false;
             }
         });
+    }
+
+    private void updateSearchCriteriaAndRepopulate(String search_query)
+    {
+        search_criteria = search_query.trim();
+
+        List<Movie> updatedList = accessMovies.filterMovies(search_criteria, filter_isUpcoming);
+        populateMovies(updatedList);
     }
 
     /*
@@ -112,7 +112,7 @@ public class MovieListActivity extends AppCompatActivity
        Parameters: None
        Return: None
     */
-    private void populateMovies()
+    private void populateMovies(List<Movie> list_of_movies)
     {
         //Clear layout of all entries
         LinearLayout layout = (LinearLayout)findViewById(R.id.movies_list_linear_layout);

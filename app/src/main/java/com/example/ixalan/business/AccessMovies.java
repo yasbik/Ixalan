@@ -26,53 +26,30 @@ public class AccessMovies
         return movieDB.getAllMovies();
     }
 
-    /*
-        Returns a list of currently running movies
-    */
-    public List<Movie> getCurrentlyRunningMovies()
+
+    public List<Movie> filterMovies(String search_criteria, boolean isUpcoming)
     {
-        List<Movie> currentlyRunningMovies = new ArrayList<Movie>();
-        for(Movie movie :  getMovies())
-        {
-            if (movie.isCurrentlyRunning())
-            {
-                currentlyRunningMovies.add(movie);
-            }
-        }
+        List<Movie> toReturn = new ArrayList<Movie>();
 
-        return currentlyRunningMovies;
-    }
-
-    /*
-       Returns a list of currently running movies
-   */
-    public List<Movie> getUpcomingMovies()
-    {
-        List<Movie> upcomingMovies = new ArrayList<Movie>();
-        for(Movie movie : getMovies())
-        {
-            if (movie.isUpcoming())
-            {
-                upcomingMovies.add(movie);
-            }
-        }
-
-        return upcomingMovies;
-    }
-
-    /*
-        Function that returns a list of movies whose names contain the search_criteria
-    */
-    public List<Movie> getFilteredMovies(String search_criteria)
-    {
-        List<Movie> filtered_movies = new ArrayList<Movie>();
         for(Movie movie : getMovies())
         {
             if (movie.getMovieName().toLowerCase().contains(search_criteria.toLowerCase()))
-            {
-                filtered_movies.add(movie);
+            { //match search criteria
+                if (isUpcoming)
+                {
+                    if (movie.isUpcoming())
+                    {
+                        toReturn.add(movie);
+                    }
+                } else
+                {
+                    if (movie.isCurrentlyRunning())
+                    {
+                        toReturn.add(movie);
+                    }
+                }
             }
         }
-        return filtered_movies;
+        return toReturn;
     }
 }
