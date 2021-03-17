@@ -7,7 +7,13 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class AccessMoviesTest {
+public class AccessMoviesTest
+{
+    @Before
+    public void setUp() {
+
+    }
+    
     @Test
     public void testAccessMovies1() {
         // match the list of all movies with list of current movies. They should be equal as there's no way of saying
