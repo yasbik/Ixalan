@@ -32,7 +32,7 @@ public class AccessMovies
     public List<Movie> getCurrentlyRunningMovies()
     {
         List<Movie> currentlyRunningMovies = new ArrayList<Movie>();
-        for(Movie movie : getMovies())
+        for(Movie movie :  getMovies())
         {
             if (movie.isCurrentlyRunning())
             {
@@ -68,7 +68,7 @@ public class AccessMovies
         List<Movie> filtered_movies = new ArrayList<Movie>();
         for(Movie movie : getMovies())
         {
-            if (movie.getMovieName().contains(search_criteria))
+            if (movie.getMovieName().toLowerCase().contains(search_criteria.toLowerCase()))
             {
                 filtered_movies.add(movie);
             }
