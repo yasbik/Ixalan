@@ -18,10 +18,11 @@ public class Movie implements Serializable
     //We can also have a 2d array of the theater and the time the movie is playing
     private ArrayList<Theatre> theatres = new ArrayList<>();// List of theatre the movie is being payed in
 
-    public Movie(String name, String posterUrl)
+    public Movie(String name, String posterUrl, Date releaseDate)
     {
         this.Name = name;
         this.posterUrl = posterUrl;
+        this.releaseDate = releaseDate;
     }
 
     public ArrayList<Theatre> getTheatres() {
