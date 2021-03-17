@@ -18,11 +18,12 @@ public class Movie implements Serializable
     //We can also have a 2d array of the theater and the time the movie is playing
     private ArrayList<Theatre> theatres = new ArrayList<>();// List of theatre the movie is being payed in
 
-    public Movie(String name, String posterUrl, Date releaseDate)
+    public Movie(String name, String posterUrl, Date releaseDate, ArrayList<Theatre> theatres)
     {
         this.Name = name;
         this.posterUrl = posterUrl;
         this.releaseDate = releaseDate;
+        this.theatres = theatres;
     }
 
     public ArrayList<Theatre> getTheatres() {
@@ -39,7 +40,7 @@ public class Movie implements Serializable
     public boolean isCurrentlyRunning()
     {
         Date today = new Date(System.currentTimeMillis());
-        return theatres != null && theatres.size() > 0 &&
+        return !isUpcoming() && theatres != null && theatres.size() > 0 &&
                 (releaseDate.before(today) || releaseDate.compareTo(today) == 0);
 
     }
