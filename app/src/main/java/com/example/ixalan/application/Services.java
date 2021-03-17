@@ -7,6 +7,7 @@ import com.example.ixalan.data.IMovieDB;
 import com.example.ixalan.data.IPosterDB;
 import com.example.ixalan.data.IUserDB;
 import com.example.ixalan.objects.Movie;
+import com.example.ixalan.objects.Theatre;
 
 import java.util.Calendar;
 import java.util.ArrayList;
@@ -40,16 +41,22 @@ public class Services
 
         //One movie where release date is same as today
         List<Movie> list_of_movies = new ArrayList<Movie>(){{
-            add(new Movie("Avengers Endgame","poster_1", cal.getTime()));
+            add(new Movie("Avengers Endgame","poster_1", cal.getTime(), new ArrayList<Theatre>()
+            {{
+                add(new Theatre());
+            }}));
         }};
 
         //One movie where release date is before today
         cal.set(2021, Calendar.FEBRUARY, 13);
-        list_of_movies.add(new Movie("Replicas","poster_4", cal.getTime()));
+        list_of_movies.add(new Movie("Replicas","poster_4", cal.getTime(), new ArrayList<Theatre>()
+        {{
+            add(new Theatre());
+        }}));
 
         //One movie where release date is after today
         cal.set(2021, Calendar.MAY, 13);
-        list_of_movies.add(new Movie("The Nightingale","poster_3", cal.getTime()));
+        list_of_movies.add(new Movie("The Nightingale","poster_3", cal.getTime(), null));
 
         for (Movie movie : list_of_movies)
         {
