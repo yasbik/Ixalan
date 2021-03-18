@@ -8,7 +8,14 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class AccessMoviesTest {
-    @Test
+
+        @Before
+        public void setUp()
+        {
+
+        }
+
+        @Test
     public void testAccessMovies1() {
         // match the list of all movies with list of current movies. They should be equal as there's no way of saying
         // if a movie is currently running, just return the list of hardcoded movies. This is stated in AccessMovies.java
