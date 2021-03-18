@@ -25,6 +25,9 @@ public class Services
         if(iMovieDB == null)
         {
             iMovieDB = new FakeMovieDB();
+
+            //TODO: Initialize database entries, to be changed later to load from an sql script
+            initMovieDB();
         }
 
         return iMovieDB;
@@ -46,5 +49,24 @@ public class Services
         }
 
         return iUserDB;
+    }
+
+    private static void initMovieDB()
+    {
+        Calendar cal = Calendar.getInstance();
+
+        ArrayList<Theatre> list_of_theatres = new ArrayList<Theatre>();
+        list_of_theatres.add(new Theatre());
+
+        //One movie where release date is same as today
+        iMovieDB.addMovie(new Movie("Avengers Endgame","poster_1", cal.getTime(), list_of_theatres, "Cast\n\nDirector\n\nBlaBl"));
+
+        //One movie where release date is before today
+        cal.set(2021, Calendar.FEBRUARY, 13);
+        iMovieDB.addMovie(new Movie("Replicas","poster_4", cal.getTime(), list_of_theatres, ""));
+
+        //One movie where release date is after today
+        cal.set(2021, Calendar.MAY, 13);
+        iMovieDB.addMovie(new Movie("The Nightingale","poster_3", cal.getTime(), null, "Cast\n\nDirector\n\nBlaBl\n\nBl\n\nBl\n\nBl"));
     }
 }
