@@ -55,7 +55,6 @@ public class MovieDetailActivity extends AppCompatActivity {
             movie_details_textview.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
             movie_details_textview.setText(movie_synopsis);
         }
-
     }
 
     public void watchYoutubeVideo(String id)

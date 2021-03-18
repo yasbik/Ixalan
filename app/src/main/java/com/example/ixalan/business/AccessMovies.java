@@ -15,14 +15,15 @@ public class AccessMovies
     private boolean isUpcoming;
     private String search_criteria;
 
-    public void setUpcoming(boolean upcoming) {
+    public void setUpcoming(boolean upcoming)
+    {
         isUpcoming = upcoming;
     }
 
     public void setSearch_criteria(String search_criteria) {
         this.search_criteria = search_criteria;
     }
-    
+
     public boolean isUpcoming()
     {
         return isUpcoming;
