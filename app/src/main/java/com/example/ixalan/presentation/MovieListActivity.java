@@ -22,9 +22,6 @@ import java.util.List;
 public class MovieListActivity extends AppCompatActivity
 
 {
-    private boolean filter_isUpcoming;
-    private String search_criteria;
-
     private AccessMovies accessMovies;
 
     @Override
@@ -33,10 +30,7 @@ public class MovieListActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.movie_list);
 
-        accessMovies = new AccessMovies();
-
-        filter_isUpcoming = false;
-        search_criteria = "";
+        accessMovies = new AccessMovies(false, "");
 
         //Initialize action event for the movie filter
         initializeMoviesFilterActionEvents();
@@ -58,22 +52,17 @@ public class MovieListActivity extends AppCompatActivity
                         String filter_criteria = parent.getItemAtPosition(pos).toString(); //filter that was selected
                         String[] array = getResources().getStringArray(R.array.movie_display_filters); //list of acceptable filters
 
-                        if (Arrays.asList(array).contains(filter_criteria))
-                        { //ensure valid filter criteria is selected
-
-                            if (array[0].equals(filter_criteria))
-                            { //Currently running movie
-                                filter_isUpcoming = false;
-                            } else
-                            { //upcoming movie
-                                filter_isUpcoming = true;
-                            }
-
-                            //Once we know what movies meet filter criteria, populate them in-app
-                            List<Movie> updatedList = accessMovies.filterMovies(search_criteria, filter_isUpcoming);
-                            populateMovies(updatedList);
-
+                        if (array[0].equals(filter_criteria))
+                        { //Currently running movie
+                            accessMovies.setUpcoming(false);
+                        } else
+                        { //upcoming movie
+                            accessMovies.setUpcoming(true);
                         }
+
+                        //Once we know what movies meet filter criteria, populate them in-app
+                        populateMovies(accessMovies.filterMovies());
+
                     }
                     public void onNothingSelected(AdapterView<?> parent) {
                     }
@@ -88,8 +77,8 @@ public class MovieListActivity extends AppCompatActivity
             @Override
             public boolean onQueryTextSubmit(String query)
             {   //When user searches and hits go, this code is executed
-
-                updateSearchCriteriaAndRepopulate(query);
+                accessMovies.setSearch_criteria(query.trim());
+                populateMovies(accessMovies.filterMovies());
                 return false;
             }
 
@@ -97,21 +86,13 @@ public class MovieListActivity extends AppCompatActivity
             public boolean onQueryTextChange(String newText)
             {
                 //when text changes in search field
-                updateSearchCriteriaAndRepopulate(newText);
+                accessMovies.setSearch_criteria(newText.trim());
+                populateMovies(accessMovies.filterMovies());
 
                 return false;
             }
         });
     }
-
-    private void updateSearchCriteriaAndRepopulate(String search_query)
-    {
-        search_criteria = search_query.trim();
-
-        List<Movie> updatedList = accessMovies.filterMovies(search_criteria, filter_isUpcoming);
-        populateMovies(updatedList);
-    }
-
 
     /*
        To display list of movies in app

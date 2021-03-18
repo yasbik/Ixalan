@@ -12,8 +12,34 @@ public class AccessMovies
 {
     private IMovieDB movieDB;
 
-    public AccessMovies()
+    private boolean isUpcoming;
+    private String search_criteria;
+
+    public void setUpcoming(boolean upcoming) {
+        isUpcoming = upcoming;
+    }
+
+    public void setSearch_criteria(String search_criteria) {
+        this.search_criteria = search_criteria;
+    }
+    
+    public boolean isUpcoming()
     {
+        return isUpcoming;
+    }
+
+    public String getSearch_criteria()
+    {
+        return search_criteria;
+    }
+
+    /*
+    Constructor
+     */
+    public AccessMovies(boolean isUpcoming, String search_criteria)
+    {
+        this.isUpcoming = isUpcoming;
+        this.search_criteria = search_criteria;
         movieDB = Services.getiMovieDB();
     }
 
@@ -26,7 +52,12 @@ public class AccessMovies
         return movieDB.getAllMovies();
     }
 
-    public List<Movie> filterMovies(String search_criteria, boolean isUpcoming) {
+    /*
+    Get a list of filtered movies
+    Parameters: search_criteria (if movie name contains this text), isUpcoming: If movie is upcoming (if not, it is currently running)
+     */
+    public List<Movie> filterMovies()
+    {
         List<Movie> toReturn = new ArrayList<Movie>();
 
         for (Movie movie : getMovies()) {
