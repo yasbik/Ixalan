@@ -3,6 +3,8 @@ package com.example.ixalan.objects;
 public abstract class User {
     private String name;
     private String email;
+    private int balance;
+    private int userID;
 
     public String getName()
     {
@@ -13,4 +15,10 @@ public abstract class User {
     {
         return this.email;
     }
+
+    public int getBalance(){ return this.balance;}
+
+    public int getUserID(){ return  this.userID;}
+
+    public void setUserID(int userID){this.userID= userID;}
 }

@@ -87,4 +87,6 @@ public class Movie implements Serializable
         return this.movieID;
     }
 
+    public void setMovieID(int movieID){ this.movieID = movieID;}
+
 }

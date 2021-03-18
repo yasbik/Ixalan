@@ -11,15 +11,9 @@ public  interface IUserDB{
     // updating should not use this function
     public void removeUser(int userID);
 
-    //Update a user's full name in the dataBase by userID
-    public void updateUserName(int userID, String firstName, String lastName);
-
     //update a user's first name only in the database by userID
     public void updateUserFirstName(int userID, String firstName);
 
-    //update a user's last name only in the database by userID
-    public void updateUserLastName(int userID, String lastName);
-
-    public void updateAccountBalance(int changeBalance);
+    public void updateAccountBalance(int userID, int changeBalance);
 
 }
