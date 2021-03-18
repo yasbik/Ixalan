@@ -1,15 +1,9 @@
 package com.example.ixalan.business;
-import com.example.ixalan.business.AccessMovies;
+import com.example.ixalan.data.FakeMovieDB;
 import com.example.ixalan.data.IMovieDB;
-import com.example.ixalan.objects.Movie;
 import org.junit.Test;
 import org.junit.Before;
 import static org.mockito.Mockito.mock;
-
-import org.junit.Test;
-
-
-import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -21,7 +15,9 @@ public class AccessMoviesTest {
     @Before
     public void setUp()
     {
-        movieDB = mock(IMovieDB.class);
+        //use fake db for unit test
+        movieDB = new FakeMovieDB();
+
         accessMovie = new AccessMovies(movieDB);
 
         accessMovie.setSearch_criteria("tHe");
@@ -53,14 +49,14 @@ public class AccessMoviesTest {
         System.out.println("\nStarting test AccessMovies: Getters");
     }
 
-   /* @Test
+    @Test
     public void testFilterMovies()
     {
         System.out.println("\nStarting test AccessMovies: Filter movies");
 
-        //TODO: Complete test case after db entries have been w
+        assertEquals(accessMovie.filterMovies().size(), 0);
 
         System.out.println("\nEnding test AccessMovies: Filter movies");
-    }*/
+    }
 
 }
