@@ -37,22 +37,18 @@ public class Services
     {
         Date date = new Date();
 
+        ArrayList<Theatre> list_of_theatres = new ArrayList<Theatre>();
+        list_of_theatres.add(new Theatre());
         Calendar cal = Calendar.getInstance();
 
         //One movie where release date is same as today
         List<Movie> list_of_movies = new ArrayList<Movie>(){{
-            add(new Movie("Avengers Endgame","poster_1", cal.getTime(), new ArrayList<Theatre>()
-            {{
-                add(new Theatre());
-            }}, "Cast\n\nDirector\n\nBlaBl"));
+            add(new Movie("Avengers Endgame","poster_1", cal.getTime(), list_of_theatres, "Cast\n\nDirector\n\nBlaBl"));
         }};
 
         //One movie where release date is before today
         cal.set(2021, Calendar.FEBRUARY, 13);
-        list_of_movies.add(new Movie("Replicas","poster_4", cal.getTime(), new ArrayList<Theatre>()
-        {{
-            add(new Theatre());
-        }}, ""));
+        list_of_movies.add(new Movie("Replicas","poster_4", cal.getTime(), list_of_theatres, ""));
 
         //One movie where release date is after today
         cal.set(2021, Calendar.MAY, 13);
