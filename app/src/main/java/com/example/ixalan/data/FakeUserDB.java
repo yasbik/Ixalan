@@ -26,25 +26,13 @@ public class FakeUserDB implements IUserDB
     }
 
     @Override
-    public void updateUserName(int userID, String firstName, String lastName)
-    {
-
-    }
-
-    @Override
     public void updateUserFirstName(int userID, String firstName)
     {
 
     }
 
     @Override
-    public void updateUserLastName(int userID, String lastName)
-    {
-
-    }
-
-    @Override
-    public void updateAccountBalance(int changeBalance)
+    public void updateAccountBalance(int userID, int changeBalance)
     {
 
     }
