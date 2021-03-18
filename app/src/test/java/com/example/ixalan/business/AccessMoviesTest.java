@@ -1,7 +1,13 @@
 package com.example.ixalan.business;
 import com.example.ixalan.business.AccessMovies;
+import com.example.ixalan.data.IMovieDB;
 import com.example.ixalan.objects.Movie;
 import org.junit.Test;
+import org.junit.Before;
+import static org.mockito.Mockito.mock;
+
+import org.junit.Test;
+
 
 import java.util.List;
 
@@ -9,14 +15,14 @@ import static org.junit.Assert.*;
 
 public class AccessMoviesTest {
 
-    private AccessMovie accessMovie;
-    private iMovieDB movieDB;
+    private AccessMovies accessMovie;
+    private IMovieDB movieDB;
 
     @Before
     public void setUp()
     {
         movieDB = mock(IMovieDB.class);
-        accessMovie = new AccessMovie(movieDB);
+        accessMovie = new AccessMovies(movieDB);
 
         accessMovie.setSearch_criteria("tHe");
 
