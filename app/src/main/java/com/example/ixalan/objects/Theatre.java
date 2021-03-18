@@ -1,6 +1,8 @@
 package com.example.ixalan.objects;
 
-public class Theatre {
+import java.io.Serializable;
+
+public class Theatre implements Serializable {
     private String name;
     private String location;
 
