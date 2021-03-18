@@ -31,7 +31,7 @@ public class AccessMoviesTest {
 
         assertNotNull(accessMovie);
         assertNotNull(accessMovie.getSearch_criteria());
-        assertNotNull(accessMovie.getMovies());
+        assertNotNull("List of movies shouldn't be null", accessMovie.getMovies());
 
         System.out.println("\nFinished test AccessMovies: Null object(s)");
     }
@@ -54,6 +54,7 @@ public class AccessMoviesTest {
     {
         System.out.println("\nStarting test AccessMovies: Filter movies");
 
+        //empty fake database, will contain no movie objects
         assertEquals(accessMovie.filterMovies().size(), 0);
 
         System.out.println("\nEnding test AccessMovies: Filter movies");
