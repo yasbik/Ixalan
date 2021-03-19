@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ixalan">
+    package="ixalan">
 
     <application
         android:allowBackup="true"
@@ -9,11 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".presentation.CardPaymentActivity"></activity>
+        <activity android:name=".presentation.PaymentSuccessfulActivity"></activity>
+        <activity android:name=".presentation.PaymentOptionsActivity"></activity>
+        <activity android:name=".presentation.ViewCartActivity"></activity>
         <activity android:name=".presentation.MovieDetailActivity"></activity>
+        <activity android:name=".presentation.MovieLocationActivity"></activity>
+        <activity android:name=".presentation.MovieSeatingActivity"></activity>
         <activity android:name=".presentation.MovieListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
