@@ -15,7 +15,6 @@ import ixalan.movieapp.objects.MovieTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        AccessMoviesIT.class,
         AccessMoviesTest.class,
         FakeMovieDBTest.class,
         FakePosterDBTest.class,
@@ -23,5 +22,5 @@ import ixalan.movieapp.objects.MovieTest;
         MovieTest.class,
 })
 
-public class AllTests {
+public class UnitTests {
 }

@@ -1,4 +1,4 @@
-package ixalan;
+package ixalan.movieapp;
 
 import ixalan.movieapp.business.AccessMoviesIT;
 
