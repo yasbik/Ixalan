@@ -1,6 +1,6 @@
-package ixalan.objects;
+package ixalan.movieapp.objects;
 import org.junit.Test;
-import ixalan.objects.Movie;
+import ixalan.movieapp.objects.Movie;
 import static org.junit.Assert.*;
 
 public class MovieTest {

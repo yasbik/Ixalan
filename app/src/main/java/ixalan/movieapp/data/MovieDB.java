@@ -20,13 +20,7 @@ public class MovieDB implements IMovieDB{
     }
     private Connection connection() throws SQLException
     {
-        try {
-            return DriverManager.getConnection("jbdc:hsqldb:file:" + dbPath + ";shutdown =true", "SA", "");
-        } catch(Exception e)
-        {
-            int k = 5;
-        }
-        return null;
+        return DriverManager.getConnection("jbdc:hsqldb:file:" +dbPath+ ";shutdown =true", "SA", "");
     }
 
     private Movie fromResultSet(final ResultSet rs) throws SQLException{

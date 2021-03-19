@@ -23,13 +23,14 @@ public class Movie implements Serializable
         this.posterUrl = posterUrl;
     }
 
-    public Movie(String name, String posterUrl, Date releaseDate, ArrayList<Theatre> theatres, String synopsis)
+    public Movie(String name, String posterUrl, Date releaseDate, ArrayList<Theatre> theatres, String synopsis, String trailerUrl)
     {
         this.Name = name;
         this.posterUrl = posterUrl;
         this.releaseDate = releaseDate;
         this.theatres = theatres;
         this.synopsis = synopsis;
+        this.trailerUrl = trailerUrl;
     }
 
     public Movie(String name, String posterUrl, Date releaseDate, String synopsis, String trailerUrl)
@@ -49,18 +50,15 @@ public class Movie implements Serializable
     public boolean isUpcoming()
     {
         //Upcoming if it has a future release date
-        /*Date today = new Date(System.currentTimeMillis());
-        return releaseDate.after(today);*/
-        return true;
+        Date today = new Date(System.currentTimeMillis());
+        return releaseDate.after(today);
     }
 
     public boolean isCurrentlyRunning()
     {
-        /*Date today = new Date(System.currentTimeMillis());
+        Date today = new Date(System.currentTimeMillis());
         return !isUpcoming() && theatres != null && theatres.size() > 0 &&
-                (releaseDate.before(today) || releaseDate.compareTo(today) == 0);*/
-
-        return true;
+                (releaseDate.before(today) || releaseDate.compareTo(today) == 0);
 
     }
 

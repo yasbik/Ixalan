@@ -30,10 +30,10 @@ public class Services
     {
         if(iMovieDB == null)
         {
+            //TODO: HSQLDB is still giving issues (driver not found error). Must be fixed for It 3
             //iMovieDB = new MovieDB(Main.getDBPathName());
-            iMovieDB = new FakeMovieDB();
 
-            //TODO: Initialize database entries, to be changed later to load from an sql script
+            iMovieDB = new FakeMovieDB();
             initMovieDB();
 
         }
@@ -68,14 +68,14 @@ public class Services
         ArrayList<Theatre> empty_list = null;
 
         //One movie where release date is same as today
-        iMovieDB.addMovie(new Movie("Avengers Endgame","poster_1", cal.getTime(), list_of_theatres, "Cast\n\nDirector\n\nBlaBl"));
+        iMovieDB.addMovie(new Movie("Avengers Endgame","poster_1", cal.getTime(), list_of_theatres, "Cast: Chris Evans, Chris Hemsworth, Jeremy Renner, Robert Downey Jr.\nDirectors: Joe Russo, Anthony Russo\n", "TcMBFSGVi1c&ab"));
 
         //One movie where release date is before today
         cal.set(2021, Calendar.FEBRUARY, 13);
-        iMovieDB.addMovie(new Movie("Replicas","poster_4", cal.getTime(), list_of_theatres, ""));
+        iMovieDB.addMovie(new Movie("Replicas","poster_4", cal.getTime(), list_of_theatres, "Cast: Keanu Reeves\nDirector: Jeffrey Nachmanoff", "JAHKQPBKSZ8&ab"));
 
         //One movie where release date is after today
         cal.set(2021, Calendar.MAY, 13);
-        iMovieDB.addMovie(new Movie("The Nightingale","poster_3", cal.getTime(), empty_list, (String) "Cast\n\nDirector\n\nBlaBl\n\nBl\n\nBl\n\nBl"));
+        iMovieDB.addMovie(new Movie("The Nightingale","poster_3", cal.getTime(), list_of_theatres, (String) "Cast: Aisling Franciosi\nDirector: Jennifer Kent\n", "YuP8g_GQIgI&ab"));
     }
 }

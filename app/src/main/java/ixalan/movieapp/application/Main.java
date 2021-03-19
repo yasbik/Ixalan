@@ -1,7 +1,5 @@
 package ixalan.movieapp.application;
 
-//import org.hsqldb.*;
-
 public class Main
 {
     private static String dbName="SC";
