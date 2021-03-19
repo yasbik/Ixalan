@@ -1,6 +1,7 @@
 package ixalan.data;
 
 import ixalan.objects.Movie;
+import ixalan.objects.Theatre;
 import ixalan.objects.User;
 
 import java.sql.Connection;
@@ -8,6 +9,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 public class UserDB implements IUserDB{
     private final String dbPath;
@@ -58,10 +61,11 @@ public class UserDB implements IUserDB{
         try(final Connection c= connection()){
             final PreparedStatement st = c.prepareStatement("INSERT INTO users VALUES(?,?,?,?)");
             Integer userID = newUser.getUserID();
+            Integer balance = newUser.getBalance();
             st.setString(1,userID.toString());
             st.setString(2, newUser.getName());
             st.setString(3,newUser.getEmail());
-            st.setInt(4,newUser.getBalance());
+            st.setString(4,balance.toString());
 
             st.executeUpdate();
         }catch(final SQLException e){
@@ -102,6 +106,24 @@ public class UserDB implements IUserDB{
 
             st.executeUpdate();
         } catch (final SQLException e) {
+            throw new PersistenceException(e);
+        }
+    }
+
+    public ArrayList<User> getAllUsers(){
+        final ArrayList<User> users = new ArrayList<>();
+        try(Connection c = connection()) {
+            final Statement st = c.createStatement();
+            final ResultSet rs= st.executeQuery("SELECT * FROM users");
+            while(rs.next()){
+                final User user = fromResultSet(rs);
+                users.add(user);
+            }
+            rs.close();
+            st.close();
+
+            return users;
+        } catch(final SQLException e){
             throw new PersistenceException(e);
         }
     }

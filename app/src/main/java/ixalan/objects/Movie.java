@@ -32,6 +32,15 @@ public class Movie implements Serializable
         this.synopsis = synopsis;
     }
 
+    public Movie(String name, String posterUrl, Date releaseDate, String synopsis, String trailerUrl)
+    {
+        this.Name =name;
+        this.posterUrl = posterUrl;
+        this.releaseDate = releaseDate;
+        this.synopsis = synopsis;
+        this.trailerUrl = trailerUrl;
+    }
+
 
     public ArrayList<Theatre> getTheatres() {
         return this.theatres;

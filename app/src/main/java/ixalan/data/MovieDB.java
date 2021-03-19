@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MovieDB implements IMovieDB{
     private final String dbPath;
@@ -25,7 +26,11 @@ public class MovieDB implements IMovieDB{
         final String movieID = rs.getString("movieID");
         final String movieName = rs.getString("name");
         final String moviePoster = rs.getString("poster");
-        movie = new Movie(movieName, moviePoster);
+        final Long movieDate = rs.getLong("date");
+        final String movieSynopsis = rs.getString("synopsis");
+        final String movieTrailer = rs.getString("trailer");
+        Date releasedate = new Date(movieDate);
+        movie = new Movie(movieName, moviePoster,releasedate,movieSynopsis, movieTrailer);
         movie.setMovieID(Integer.parseInt(movieID));
         return movie;
     }

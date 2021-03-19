@@ -57,6 +57,7 @@ public class Services
 
         ArrayList<Theatre> list_of_theatres = new ArrayList<Theatre>();
         list_of_theatres.add(new Theatre());
+        ArrayList<Theatre> empty_list = null;
 
         //One movie where release date is same as today
         iMovieDB.addMovie(new Movie("Avengers Endgame","poster_1", cal.getTime(), list_of_theatres, "Cast\n\nDirector\n\nBlaBl"));
@@ -67,6 +68,6 @@ public class Services
 
         //One movie where release date is after today
         cal.set(2021, Calendar.MAY, 13);
-        iMovieDB.addMovie(new Movie("The Nightingale","poster_3", cal.getTime(), null, "Cast\n\nDirector\n\nBlaBl\n\nBl\n\nBl\n\nBl"));
+        iMovieDB.addMovie(new Movie("The Nightingale","poster_3", cal.getTime(), empty_list, (String) "Cast\n\nDirector\n\nBlaBl\n\nBl\n\nBl\n\nBl"));
     }
 }
