@@ -2,6 +2,16 @@
     <string name="app_name">Ixalan</string>
     <string name = "BOOK_NOW">BOOK NOW</string>
     <string name = "MOVIE_POSTER">Movie Poster</string>
+    <string name = "VIEW_CART">View Cart</string>
+    <string name = "PLACE_ORDER">Place Order</string>
+    <string name = "APPLE_PAY">Continue with Apple</string>
+    <string name = "GOOGLE_PAY">Continue with Google</string>
+    <string name = "FACEBOOK_PAY">Continue with Facebook</string>
+    <string name = "EMAIL_PAY">Continue with Email</string>
+    <string name = "CARD_PAY">Continue with Credit Card</string>
+    <string name = "CARD_PAY_HEADER">Enter Credit Card Details</string>
+    <string name = "PAY_NOW">PAY NOW</string>
+
 
     <string-array name="movie_display_filters">
         <item>Currently running movies</item>

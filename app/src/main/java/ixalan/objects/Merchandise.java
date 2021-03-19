@@ -8,6 +8,11 @@ public class Merchandise
     private float price;
     private int stock;
 
+    public Merchandise(String name, float price) {
+        this.name = name;
+        this.price = price;
+    }
+
     public void setName(String name) {
         this.name = name;
     }

@@ -18,14 +18,13 @@ public class MovieSeatingActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        if (intent != null) {
-
-            Button proceed_to_payment = (Button) findViewById(R.id.proceed_payment_btn);
-            proceed_to_payment.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    //start payment activity
-                }
-            });
-        }
+        /*goes to new view where payment option can be chosen. payments faked */
+        Button proceed_to_payment = (Button) findViewById(R.id.proceed_payment_btn);
+        proceed_to_payment.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //start payment activity
+                startActivity(new Intent(MovieSeatingActivity.this, PaymentOptionsActivity.class));
+            }
+        });
     }
 }

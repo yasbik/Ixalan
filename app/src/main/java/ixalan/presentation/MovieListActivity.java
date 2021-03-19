@@ -37,6 +37,8 @@ public class MovieListActivity extends AppCompatActivity
         //Initialize action event for the movie search function
         initializeMoviesSearchActionEvents();
 
+        view_cart();
+
     }
 
     /*
@@ -133,4 +135,16 @@ public class MovieListActivity extends AppCompatActivity
         intent.putExtra("MOVIE", movie);
         startActivity(intent);
     }
+
+    /* view cart items. Currently just a view, cart items not stored for each user */
+    private void view_cart() {
+        Button mmButton = (Button) findViewById(R.id.cart_button);
+        mmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MovieListActivity.this, ViewCartActivity.class));
+            }
+        });
+    }
+
 }
