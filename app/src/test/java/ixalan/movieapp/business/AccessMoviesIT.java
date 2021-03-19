@@ -10,6 +10,8 @@ import static org.junit.Assert.*;
 
 public class AccessMoviesIT
 {
+
+    //TODO: Unable to fully write integration tests as there is an HSQLDB dependency issue (driver not found error)
     private AccessMovies accessMovies;
     private IMovieDB iMovieDB;
 
