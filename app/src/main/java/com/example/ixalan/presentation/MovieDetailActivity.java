@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.ixalan.objects.Movie;
@@ -54,7 +55,23 @@ public class MovieDetailActivity extends AppCompatActivity {
             TextView movie_details_textview = (TextView) findViewById(R.id.movie_details_textView);
             movie_details_textview.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
             movie_details_textview.setText(movie_synopsis);
+
+            Button btn = (Button)findViewById(R.id.book_now_button);
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    showMovieLocations();
+                }
+            });
+
         }
+    }
+
+    public void showMovieLocations()
+    {
+        Intent intent = new Intent(this, MovieLocationActivity.class);
+        startActivity(intent);
     }
 
     public void watchYoutubeVideo(String id)

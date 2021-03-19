@@ -10,10 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".presentation.MovieDetailActivity"></activity>
+        <activity android:name=".presentation.MovieLocationActivity"></activity>
+        <activity android:name=".presentation.MovieSeatingActivity"></activity>
         <activity android:name=".presentation.MovieListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
