@@ -46,3 +46,7 @@ Design patterns
 **Show links to your project where you use a well-known design pattern. Which pattern is it? Provide links to the design pattern that you used.**
 
 ***Note*: Though Dependency Injection is a programming pattern, we would like to see a programming pattern other than Dependency Injections.**
+
+**Structural** design pattern is an important one we used this time. As the real HSQLDB had to be implemented this time, we had a database interface in place. Instead of redefining everything, the HSQLDB classes implemented the interfaces we had in place which made things so much easier.
+
+Find the design pattern [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/commit/7d64de789a1789513be06b0bfd67c5e55e70fd9f).
