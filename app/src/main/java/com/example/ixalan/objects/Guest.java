@@ -8,5 +8,10 @@ public class Guest extends User
     {
         return this.guestID;
     }
+
+    public void setGuestID(String guestID)
+    {
+        this.guestID = guestID;
+    }
     
 }

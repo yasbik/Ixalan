@@ -8,6 +8,26 @@ public class Merchandise
     private float price;
     private int stock;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setMovieTag(Movie movieTag) {
+        this.movieTag = movieTag;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
     public String getName()
     {
         return this.name;

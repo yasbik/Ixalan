@@ -14,5 +14,15 @@ public class Admin extends User
     {
         return this.locationInCharge;
     }
+
+    public void setAdminID(String adminID)
+    {
+        this.adminID = adminID;
+    }
+
+    public void setLocationInCharge(String locationInCharge)
+    {
+        this.locationInCharge = locationInCharge;
+    }
     
 }
