@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import ixalan.movieapp.objects.Movie;
-import ixalan.movieapp.objects.RegiUser;
 
 import ixalan.movieapp.R;
 
@@ -65,7 +64,22 @@ public class MovieDetailActivity extends AppCompatActivity {
                 }
             });
 
+            Button merchandise_btn = (Button)findViewById(R.id.view_merchandise_button);
+            merchandise_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    displayMovieMerchandise();
+                }
+            });
+
         }
+    }
+
+    private void displayMovieMerchandise()
+    {
+        Intent intent = new Intent(this.getApplicationContext(), MovieMerchandise.class);
+        startActivity(intent);
     }
 
     public void showMovieLocations()

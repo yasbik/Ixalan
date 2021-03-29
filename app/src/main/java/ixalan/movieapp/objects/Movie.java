@@ -1,4 +1,4 @@
-package ixalan.movieapp.objects;
+ package ixalan.movieapp.objects;
 
 //A movie class for our Theatre booking app.
 import java.io.Serializable;

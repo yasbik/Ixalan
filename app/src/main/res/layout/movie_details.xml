@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".presentation.MovieListActivity">
 
+    <Button
+        android:id="@+id/view_merchandise_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/VIEW_MERCHANDISE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <ImageView
         android:id="@+id/movie_poster_imageview"
         android:layout_width="143dp"
@@ -58,10 +69,11 @@
         android:id="@+id/book_now_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginBottom="4dp"
         android:text="@string/BOOK_NOW"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -69,7 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Click image to view movie trailer"
+        android:text="@string/MOVIE_TRAILER_CLICK_PROMPT"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
