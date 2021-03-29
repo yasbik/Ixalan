@@ -78,7 +78,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
     private void displayMovieMerchandise()
     {
-        Intent intent = new Intent(this.getApplicationContext(), MovieMerchandise.class);
+        Intent intent = new Intent(this.getApplicationContext(), MovieMerchandiseActivity.class);
         startActivity(intent);
     }
 

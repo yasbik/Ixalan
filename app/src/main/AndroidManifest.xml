@@ -16,7 +16,7 @@
         <activity android:name=".presentation.MovieDetailActivity"></activity>
         <activity android:name=".presentation.MovieLocationActivity"></activity>
         <activity android:name=".presentation.MovieSeatingActivity"></activity>
-        <activity android:name=".presentation.MovieMerchandise"></activity>
+        <activity android:name=".presentation.MovieMerchandiseActivity"></activity>
         <activity android:name=".presentation.MovieListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
