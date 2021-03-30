@@ -13,6 +13,7 @@ public class AccessMerchandise
     private Movie movie;
     private ArrayList<Merchandise> merchandise;
     private int merchandise_index = 0;
+    private int quantity = 0;
 
     public AccessMerchandise(final IMerchandiseDB merchandiseDB)
     {
@@ -47,8 +48,29 @@ public class AccessMerchandise
         {
             toReturn = merchandise.get(merchandise_index);
             merchandise_index = (merchandise_index + 1) % merchandise.size();
+            quantity = 0;
         }
         return toReturn;
+    }
+
+    public Merchandise getCurrentItem()
+    {
+        Merchandise toReturn = null;
+        if (merchandise != null && !merchandise.isEmpty())
+        {
+            toReturn = merchandise.get(merchandise_index);
+        }
+        return toReturn;
+    }
+
+    public int getQuantity()
+    {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity)
+    {
+        this.quantity = quantity;
     }
 
 }
