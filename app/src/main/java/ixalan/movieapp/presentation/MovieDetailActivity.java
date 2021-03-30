@@ -18,6 +18,8 @@ import ixalan.movieapp.R;
 
 public class MovieDetailActivity extends AppCompatActivity {
 
+    private Movie movie = null; //the movie whose details are being displayed
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -27,7 +29,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         if (intent.getExtras() != null) {
-            Movie movie = (Movie) getIntent().getSerializableExtra("MOVIE");
+            movie = (Movie) getIntent().getSerializableExtra("MOVIE");
 
             String movie_display_name = movie.getMovieName();
             String movie_poster_file_name = movie.getMoviePoster();
@@ -79,6 +81,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     private void displayMovieMerchandise()
     {
         Intent intent = new Intent(this.getApplicationContext(), MovieMerchandiseActivity.class);
+        intent.putExtra("MOVIE", movie);
         startActivity(intent);
     }
 

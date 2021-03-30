@@ -7,6 +7,7 @@ public class Merchandise
     private Movie movieTag; //movie to which this merchandise item is associated
     private float price;
     private int stock;
+    private String imageUrl;
 
     public Merchandise(String name, float price) {
         this.name = name;
@@ -56,5 +57,15 @@ public class Merchandise
     public int getStock()
     {
         return this.stock;
+    }
+
+    public String getImageUrl()
+    {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl)
+    {
+        this.imageUrl = imageUrl;
     }
 }

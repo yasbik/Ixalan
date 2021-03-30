@@ -7,20 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".presentation.MovieMerchandiseActivity">
 
-    <Button
-        android:id="@+id/button2"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:text="&lt;"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/merchandise_item_title" />
-
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
@@ -51,8 +37,8 @@
         android:layout_height="360dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/poster_1"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/showNextButton"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/merchandise_item_title" />
 
     <TextView
@@ -68,7 +54,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/showNextButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="4dp"

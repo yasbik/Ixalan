@@ -4,9 +4,11 @@ import android.content.Context;
 
 //import org.hsqldb.*;
 
+import ixalan.movieapp.data.FakeMerchandiseDB;
 import ixalan.movieapp.data.FakeMovieDB;
 import ixalan.movieapp.data.FakePosterDB;
 import ixalan.movieapp.data.FakeUserDB;
+import ixalan.movieapp.data.IMerchandiseDB;
 import ixalan.movieapp.data.IMovieDB;
 import ixalan.movieapp.data.IPosterDB;
 import ixalan.movieapp.data.IUserDB;
@@ -25,6 +27,7 @@ public class Services
     private static IMovieDB iMovieDB = null;
     private static IPosterDB iPosterDB = null;
     private static IUserDB iUserDB = null;
+    private static IMerchandiseDB iMerchandiseDB = null;
 
     public static synchronized IMovieDB getiMovieDB()
     {
@@ -41,7 +44,7 @@ public class Services
         return iMovieDB;
     }
 
-    public static synchronized IPosterDB getiPosterDBDB()
+    public static synchronized IPosterDB getiPosterDB()
     {
         if(iPosterDB == null) {
             iPosterDB = new FakePosterDB();
@@ -57,6 +60,15 @@ public class Services
         }
 
         return iUserDB;
+    }
+
+    public static synchronized IMerchandiseDB getiMerchandiseDB()
+    {
+        if(iMerchandiseDB == null) {
+            iMerchandiseDB= new FakeMerchandiseDB();
+        }
+
+        return iMerchandiseDB;
     }
 
     private static void initMovieDB()
