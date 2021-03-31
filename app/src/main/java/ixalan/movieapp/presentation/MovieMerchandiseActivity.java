@@ -10,8 +10,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ixalan.movieapp.R;
+import ixalan.movieapp.business.AccessCart;
 import ixalan.movieapp.business.AccessMerchandise;
 import ixalan.movieapp.business.AccessMovies;
+import ixalan.movieapp.objects.CartItem;
 import ixalan.movieapp.objects.Merchandise;
 import ixalan.movieapp.objects.Movie;
 
@@ -69,7 +71,7 @@ public class MovieMerchandiseActivity extends AppCompatActivity
             });
 
             Button viewCart = (Button)findViewById(R.id.view_cart_button);
-            addToCart.setOnClickListener(new View.OnClickListener() {
+            viewCart.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v)
                 {
                     viewCart();
@@ -85,7 +87,8 @@ public class MovieMerchandiseActivity extends AppCompatActivity
 
     public void viewCart()
     {
-        //TODO: Add merchandise with its quantity to cart and switch activity
+        Intent myIntent = new Intent(MovieMerchandiseActivity.this, ViewCartActivity.class);
+        startActivity(myIntent);
     }
 
     public void changeQuantity(boolean increaseQty)
@@ -111,10 +114,14 @@ public class MovieMerchandiseActivity extends AppCompatActivity
 
     public void addToCart()
     {
-        Merchandise merchandise = accessMerchandise.getCurrentItem();
+        CartItem cartItem = accessMerchandise.getCurrentItem();
         int quantity = accessMerchandise.getQuantity();
+        if (cartItem != null)
+        {
+            cartItem.setQuantity(quantity);
 
-        //Merchandise item of quantity quantity to be added to cart
-        //TODO: Finish code for adding item to cart
+            AccessCart.addCartItem(cartItem);
+        }
+
     }
 }

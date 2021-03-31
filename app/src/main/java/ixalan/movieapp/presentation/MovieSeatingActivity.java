@@ -23,7 +23,7 @@ public class MovieSeatingActivity extends AppCompatActivity {
         proceed_to_payment.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //start payment activity
-                startActivity(new Intent(MovieSeatingActivity.this, PaymentOptionsActivity.class));
+                startActivity(new Intent(MovieSeatingActivity.this, ViewCartActivity.class));
             }
         });
     }

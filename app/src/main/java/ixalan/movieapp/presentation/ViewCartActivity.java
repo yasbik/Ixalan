@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import ixalan.movieapp.R;
 import ixalan.movieapp.business.AccessCart;
 import ixalan.movieapp.business.AccessMovies;
+import ixalan.movieapp.objects.CartItem;
 import ixalan.movieapp.objects.Merchandise;
 
 import ixalan.movieapp.objects.Movie;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 
 public class ViewCartActivity extends AppCompatActivity {
 
-    private ArrayList<Merchandise> cart_list;
+    private ArrayList<CartItem> cart_list;
     private AccessCart accessCart;
 
     @Override
@@ -40,7 +41,7 @@ public class ViewCartActivity extends AppCompatActivity {
     }
 
     /*display all items in the cart on the view */
-    private void populateCartList(ArrayList<Merchandise> cart_list)
+    private void populateCartList(ArrayList<CartItem> cart_list)
     {
         //Clear layout of all entries
         LinearLayout layout = (LinearLayout)findViewById(R.id.view_cart_linear_layout);
@@ -48,7 +49,7 @@ public class ViewCartActivity extends AppCompatActivity {
         float totalPrice = 0; /*calculate total price of all cart items */
         //Add entries one by one
         if (cart_list != null) {
-            for (Merchandise item : cart_list) {
+            for (CartItem item : cart_list) {
                 totalPrice += item.getPrice();
                 Button btn = new Button(this); /*display each cart item as a button. Currently button not clickable */
                 btn.setText(item.getName() + "     $" + item.getPrice()); /*will make this button clickable in future to view details of item */

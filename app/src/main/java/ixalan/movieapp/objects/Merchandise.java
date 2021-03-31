@@ -1,21 +1,19 @@
 package ixalan.movieapp.objects;
 
-public class Merchandise
+public class Merchandise extends CartItem
 {
-    private String name;
     private String description;
     private Movie movieTag; //movie to which this merchandise item is associated
-    private float price;
     private int stock;
     private String imageUrl;
 
-    public Merchandise(String name, float price) {
-        this.name = name;
-        this.price = price;
+    public Merchandise(String name, float price)
+    {
+        super(name, price, 1);
     }
 
     public void setName(String name) {
-        this.name = name;
+        super.setName(name);
     }
 
     public void setDescription(String description) {
@@ -27,7 +25,7 @@ public class Merchandise
     }
 
     public void setPrice(float price) {
-        this.price = price;
+        super.setPrice(price);
     }
 
     public void setStock(int stock) {
@@ -36,7 +34,7 @@ public class Merchandise
 
     public String getName()
     {
-        return this.name;
+        return super.getName();
     }
 
     public String getDescription()
@@ -51,7 +49,7 @@ public class Merchandise
 
     public float getPrice()
     {
-        return this.price;
+        return super.getPrice();
     }
 
     public int getStock()
