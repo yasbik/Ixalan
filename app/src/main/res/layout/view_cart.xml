@@ -9,11 +9,11 @@
 
     <Button
         android:id="@+id/place_order_button"
-        android:layout_width="171dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:background="#81D554"
-        android:text="@string/PLACE_ORDER"
+        android:text="@string/PROCEED_TO_PAYMENT"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

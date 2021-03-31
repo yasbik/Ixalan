@@ -5,7 +5,7 @@
     <string name = "MOVIE_POSTER">Movie Poster</string>
     <string name = "MOVIE_TRAILER_CLICK_PROMPT">Click image to view movie trailer</string>
     <string name = "VIEW_CART">View Cart</string>
-    <string name = "PLACE_ORDER">Place Order</string>
+    <string name = "PROCEED_TO_PAYMENT">Proceed to Payment</string>
     <string name = "APPLE_PAY">Continue with Apple</string>
     <string name = "GOOGLE_PAY">Continue with Google</string>
     <string name = "FACEBOOK_PAY">Continue with Facebook</string>

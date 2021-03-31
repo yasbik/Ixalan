@@ -72,10 +72,11 @@ public class AccessMerchandise
     {
         if (quantity >= 0)
         {
-            Merchandise item = merchandise.get(merchandise_index);
-            if (item != null && quantity <= item.getStock())
-            {
-                this.quantity = quantity;
+            if (merchandise != null) {
+                Merchandise item = merchandise.get(merchandise_index);
+                if (item != null && quantity <= item.getStock()) {
+                    this.quantity = quantity;
+                }
             }
         }
     }

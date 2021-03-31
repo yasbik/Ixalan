@@ -67,12 +67,25 @@ public class MovieMerchandiseActivity extends AppCompatActivity
                     addToCart();
                 }
             });
+
+            Button viewCart = (Button)findViewById(R.id.view_cart_button);
+            addToCart.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v)
+                {
+                    viewCart();
+                }
+            });
         }
     }
 
     public void showMerchandiseItem(Merchandise merchandise)
     {
         TextView merchandiseTitle = (TextView)findViewById(R.id.merchandise_item_title);
+    }
+
+    public void viewCart()
+    {
+        //TODO: Add merchandise with its quantity to cart and switch activity
     }
 
     public void changeQuantity(boolean increaseQty)

@@ -88,6 +88,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     public void showMovieLocations()
     {
         Intent intent = new Intent(this, MovieLocationActivity.class);
+        intent.putExtra("MOVIE", movie);
         startActivity(intent);
     }
 
