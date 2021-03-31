@@ -17,7 +17,8 @@
         <activity android:name=".presentation.MovieLocationActivity"></activity>
         <activity android:name=".presentation.MovieSeatingActivity"></activity>
         <activity android:name=".presentation.MovieMerchandiseActivity"></activity>
-        <activity android:name=".presentation.MovieListActivity">
+        <activity android:name=".presentation.MovieListActivity"></activity>
+        <activity android:name=".presentation.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
