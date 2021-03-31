@@ -42,9 +42,23 @@ public class MovieListActivity extends AppCompatActivity
         initializeMoviesFilterActionEvents();
         //Initialize action event for the movie search function
         initializeMoviesSearchActionEvents();
-
+        //Initialize action event for viewing booking history
+        initializeBookingHistoryActionEvent();
         view_cart();
 
+    }
+
+    private void initializeBookingHistoryActionEvent()
+    {
+        Button historyButton = (Button) findViewById(R.id.booking_history_button);
+        historyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO: Pass user information in intent to retrieve booking history
+                Intent intent = new Intent(MovieListActivity.this, BookingHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initDB()

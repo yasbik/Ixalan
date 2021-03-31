@@ -17,6 +17,7 @@
         <activity android:name=".presentation.MovieLocationActivity"></activity>
         <activity android:name=".presentation.MovieSeatingActivity"></activity>
         <activity android:name=".presentation.MovieMerchandiseActivity"></activity>
+        <activity android:name=".presentation.BookingHistoryActivity"></activity>
         <activity android:name=".presentation.MovieListActivity"></activity>
         <activity android:name=".presentation.LoginActivity">
             <intent-filter>
