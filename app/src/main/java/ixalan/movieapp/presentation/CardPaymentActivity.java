@@ -1,14 +1,20 @@
 package ixalan.movieapp.presentation;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import ixalan.movieapp.R;
+
 
 /* details of credit card used for payment */
 public class CardPaymentActivity extends AppCompatActivity {
@@ -45,9 +51,29 @@ public class CardPaymentActivity extends AppCompatActivity {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CardPaymentActivity.this, PaymentSuccessfulActivity.class);
-                intent.putExtra("PAYMENT_MODE", "card");
-                startActivity(intent);
+                EditText mEdit   = (EditText)findViewById(R.id.card_name_text);
+                //Log.d("mytag","here");
+                Log.d("mytag",mEdit.getText().toString());
+
+                if(mEdit.getText().toString().length() != 0)
+                {
+                    Intent intent = new Intent(CardPaymentActivity.this, PaymentSuccessfulActivity.class);
+                    intent.putExtra("PAYMENT_MODE", "card");
+                    startActivity(intent);
+                }
+                else
+                {
+                    AlertDialog alertDialog = new AlertDialog.Builder(CardPaymentActivity.this).create();
+                    alertDialog.setTitle("Alert");
+                    alertDialog.setMessage("Please fill out all required fields.");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.show();
+                }
             }
         });
     }
