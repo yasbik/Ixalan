@@ -116,7 +116,7 @@ public class MovieMerchandiseActivity extends AppCompatActivity
     {
         CartItem cartItem = accessMerchandise.getCurrentItem();
         int quantity = accessMerchandise.getQuantity();
-        if (cartItem != null)
+        if (cartItem != null && quantity > 0)
         {
             cartItem.setQuantity(quantity);
 
