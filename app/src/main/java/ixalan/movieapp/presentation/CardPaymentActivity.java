@@ -52,10 +52,14 @@ public class CardPaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 EditText mEdit   = (EditText)findViewById(R.id.card_name_text);
+                EditText mEdit1   = (EditText)findViewById(R.id.card_number_text);
+                EditText mEdit2   = (EditText)findViewById(R.id.postal_code_text);
+                EditText mEdit3   = (EditText)findViewById(R.id.expiry_date_text);
+                EditText mEdit4   = (EditText)findViewById(R.id.security_code_text);
                 //Log.d("mytag","here");
                 Log.d("mytag",mEdit.getText().toString());
 
-                if(mEdit.getText().toString().length() != 0)
+                if(mEdit.getText().toString().length() != 0 && mEdit1.getText().toString().length() != 0 && mEdit2.getText().toString().length() != 0 && mEdit3.getText().toString().length() != 0 && mEdit4.getText().toString().length() != 0 )
                 {
                     Intent intent = new Intent(CardPaymentActivity.this, PaymentSuccessfulActivity.class);
                     intent.putExtra("PAYMENT_MODE", "card");
