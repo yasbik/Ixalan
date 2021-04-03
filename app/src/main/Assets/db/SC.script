@@ -4,6 +4,15 @@ CREATE MEMORY TABLE PUBLIC.USERS(USERID INTEGER NOT NULL PRIMARY KEY,NAME VARCHA
 CREATE MEMORY TABLE PUBLIC.THEATRES(NAME VARCHAR(40) NOT NULL PRIMARY KEY, LOCATION VARCHAR(40), SCREEN1 INTEGER, SCREEN2 INTEGER)
 CREATE MEMORY TABLE PUBLIC.MERCHANDISE(NAME VARCHAR(40) NOT NULL PRIMARY KEY, PRICE FLOAT, MOVIEID INTEGER, STOCK INTEGER, IMAGEURL VARCHAR(40), DESCRIPTION VARCHAR(40))
 
+CREATE USER SA PASSWORD DIGEST 'd41d8cd98f00b204e9800998ecf8427e'
+ALTER USER SA SET LOCAL TRUE
+CREATE SCHEMA PUBLIC AUTHORIZATION DBA
+SET DATABASE DEFAULT INITIAL SCHEMA PUBLIC
+GRANT DBA TO SA
+SET WRITE_DELAY 20
+SET FILES SCALE 32
+SET SCHEMA PUBLIC
+
 INSERT INTO MOVIES VALUES(1,'Avengers EndGame','Avengers_endgame',1556236800,'After Thanos, an intergalactic warlord, disintegrates half of the universe, the Avengers must reunite and assemble again to reinvigorate their trounced allies and restore balance.', 'TcMBFSGVi1c', 8.4, 'Directors: Joe Russo, Anthony Russo\nCast: Chris Evans, Chris Hemsworth, Robert Downey Jr., Mark Ruffalo, Jeremy Renner, Brie Larson, Paul Rudd, Tom Holland, Karen Gillian')
 INSERT INTO MOVIES VALUES(2,'Black Panther','Black_panther',1517184000,'After his father's death, T'Challa returns home to Wakanda to inherit his throne. However, a powerful enemy related to his family threatens to attack his nation.','xjDjIWPwcPU', 7.3, 'Director: Ryan Coogler\nCast: Chadwick Boseman, Michael B. Jordan, Danai Gurira, Daniel Kaluuya, Winston Duke')
 INSERT INTO MOVIES VALUES(3,'Guardians of the Galaxy','Guardians_of_the_galaxy',1536192000,'Peter escapes from the planet Morag with a valuable orb that Ronan the Accuser wants. He eventually forms a group with unwilling heroes to stop Ronan.', 'd96cjJhvlMA', 8.0,'Director: James Gunn\nCast: Chriss Pratt, Zoe Saldana, Dave Bautista, James Gunn')
