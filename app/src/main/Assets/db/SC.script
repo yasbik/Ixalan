@@ -1,19 +1,24 @@
 CREATE SCHEMA PUBLIC AUTHORIZATION DBA
-CREATE MEMORY TABLE PUBLIC.MOVIES(MOVIEID INTEGER NOT NULL PRIMARY KEY,NAME VARCHAR(40),POSTER VARCHAR(20),DATE BIGINT,SYNOPSIS VARCHAR(500),TRAILER VARCHAR(16))
+CREATE MEMORY TABLE PUBLIC.MOVIES(MOVIEID INTEGER NOT NULL PRIMARY KEY,NAME VARCHAR(40),POSTER VARCHAR(20),DATE BIGINT,SYNOPSIS VARCHAR(500),TRAILER VARCHAR(16), RATING FLOAT, CASTCREW VARCHAR(1000))
 CREATE MEMORY TABLE PUBLIC.USERS(USERID INTEGER NOT NULL PRIMARY KEY,NAME VARCHAR(30), EMAIL VARCHAR(30), BALANCE INTEGER)
 CREATE MEMORY TABLE PUBLIC.THEATRES(NAME VARCHAR(40) NOT NULL PRIMARY KEY, LOCATION VARCHAR(40), SCREEN1 INTEGER, SCREEN2 INTEGER)
-CREATE USER SA PASSWORD DIGEST 'd41d8cd98f00b204e9800998ecf8427e'
-ALTER USER SA SET LOCAL TRUE
-CREATE SCHEMA PUBLIC AUTHORIZATION DBA
-SET DATABASE DEFAULT INITIAL SCHEMA PUBLIC
-GRANT DBA TO SA
-SET WRITE_DELAY 20
-SET FILES SCALE 32
-SET SCHEMA PUBLIC
-INSERT INTO MOVIES VALUES(1,'Avengers EndGame','poster_1',1556236800,'Avengers Endgame synopsis', 'TcMBFSGVi1c')
-INSERT INTO MOVIES VALUES(2,'BlackPanther','poster_3',1517184000,'Black Panther synopsis','xjDjIWPwcPU')
-INSERT INTO MOVIES VALUES(3,'The Nightingale','poster_3',1536192000,'The Nightingale synopsis','OfBv9C_Ie8c')
-INSERT INTO MOVIES VALUES(4,'Replicas','poster_3',1540425600,'Replicas synopsis','ze_ANsckvS0')
+CREATE MEMORY TABLE PUBLIC.MERCHANDISE(NAME VARCHAR(40) NOT NULL PRIMARY KEY, PRICE FLOAT, MOVIEID INTEGER, STOCK INTEGER, IMAGEURL VARCHAR(40), DESCRIPTION VARCHAR(40))
+
+INSERT INTO MOVIES VALUES(1,'Avengers EndGame','Avengers_endgame',1556236800,'After Thanos, an intergalactic warlord, disintegrates half of the universe, the Avengers must reunite and assemble again to reinvigorate their trounced allies and restore balance.', 'TcMBFSGVi1c', 8.4, 'Directors: Joe Russo, Anthony Russo\nCast: Chris Evans, Chris Hemsworth, Robert Downey Jr., Mark Ruffalo, Jeremy Renner, Brie Larson, Paul Rudd, Tom Holland, Karen Gillian')
+INSERT INTO MOVIES VALUES(2,'Black Panther','Black_panther',1517184000,'After his father's death, T'Challa returns home to Wakanda to inherit his throne. However, a powerful enemy related to his family threatens to attack his nation.','xjDjIWPwcPU', 7.3, 'Director: Ryan Coogler\nCast: Chadwick Boseman, Michael B. Jordan, Danai Gurira, Daniel Kaluuya, Winston Duke')
+INSERT INTO MOVIES VALUES(3,'Guardians of the Galaxy','Guardians_of_the_galaxy',1536192000,'Peter escapes from the planet Morag with a valuable orb that Ronan the Accuser wants. He eventually forms a group with unwilling heroes to stop Ronan.', 'd96cjJhvlMA', 8.0,'Director: James Gunn\nCast: Chriss Pratt, Zoe Saldana, Dave Bautista, James Gunn')
+INSERT INTO MOVIES VALUES(4,'Harry Potter & the Deathly Hallows: Part 1','Harry_potter_and_the_deathly_hallows',1540425600,'After Voldemort takes over the Ministry of Magic, Harry, Ron and Hermione are forced into hiding. They try to decipher the clues left to them by Dumbledore to find and destroy Voldemort's Horcruxes.','MxqsmsA8y5k', 7.7, 'Director: David Yates\nCast: Daniel Radcliffe, Emma Watson, Rupert Grint')
+INSERT INTO MOVIES VALUES(5, 'The Mandalorian', 'Star_wars_the_mandalorian', 1536192000, 'After the defeat of the Empire at the hands of Rebel forces, a lone bounty hunter operating in the Outer Rim, away from the dominion of the New Republic, goes on many surprising and risky adventures.', 'aOC8E8z_ifw',8.5 , 'Director: Jon Favreau\nCast: Pedro Pascal, Gina Carano, Carl Weathers')
+INSERT INTO MOVIES VALUES(6, 'The Lord of the Rings', 'The_lord_of_the_rings', 1540425600, 'A young hobbit, Frodo, who has found the One Ring that belongs to the Dark Lord Sauron, begins his journey with eight companions to Mount Doom, the only place where it can be destroyed.', 'V75dMMIW2B4', 8.8, 'Director: Peter Jackson\nCast: Ian McKellen, Elijah Wood, Orlando Bloom, Viggo Mortensen')
+
+INSERT INTO MERCHANDISE VALUES('Avengers Endgame T-Shirt', 14.99, 1, 10, 'AE_Shirt', 'Inspired by Avengers, great gifts for comic and movie fans, available for daily wear, casual, club party wear etc.\nPolyester\nShort Sleeve')
+INSERT INTO MERCHANDISE VALUES('The Black Panther 20 oz Ceramic Sculpted Mug', 12.99, 2, 13, 'BP_Mug', 'Produced in 2017 this is a 20 ounce figural ceramic mug that features the face and head image of Marvel Comics Black Panther. Made from high-quality stoneware, it is new and unused, ships in an illustrated box and has been stored in a smoke and pet free environment.')
+INSERT INTO MERCHANDISE VALUES('MARVEL KAWAII GROOT MUG', 6.99, 3, 5, 'GOTG_Groot_Mug', 'I am Groot - a very cute Groot, at that! One of our favourite Guardians of the Galaxy has been given a chibi makeover! Head tilted to one side, this sweet little hero will give you his charming company with each cup of tea you enjoy. Official merchandise.\nSize: 11.5cm x 9.5cm\nProduct Type: Mug\nProduct Code: 121759')
+INSERT INTO MERCHANDISE VALUES('HARRY POTTER QUIDDITCH BACKPACK', 27.99, 4, 7, 'HP_Backpack', 'Get ready for a game of quidditch with Ron and Hermione with this awesome backpack from J K Rowling's magical franchise. Featuring Harry Potter's number 7 and the house colours of Gryffindor, this bag is the perfect place to store all your sporting supplies. Official merch.\nSize: 35cm x 50cm\nProduct Type: Backpack\nProduct Code: 149964')
+INSERT INTO MERCHANDISE VALUES('STAR WARS: THE MANDALORIAN (THE CHILD) RUBBER KEYCHAIN', 2.49, 5, 10, 'SW_Yoda_Keychain', 'Take a trip to the outer reaches of the galaxy with this little cutie! Perfect for any fan of Disney's 'The Mandolorian' this little alien will make a great addition to any Star Wars buff's bag or set of keys. Now grab that blaster, it's bounty hunting time! Official merch.\nSize: 4.5cm x 6cm\nProduct Type: Keyring\nProduct Code: 149219')
+INSERT INTO MERCHANDISE VALUES('Lord of the Rings, Heat-Alternating Mug - XL',34.99,6,6,'TLOTR_Mug','With this mug you can feel a bit like a hobbit at The Prancing Pony. The large mug holds a whopping 55 cl of drink, and not only that - when you fill it with hot drink, the motif changes on the outside. The text of the sovereign ring in Elves is then transformed into a map of Tolkien's Middle-earth. This is the ultimate mug to give away to a Lord of the Rings fan, or to take to the next movie marathon.')
+
+
 INSERT INTO USERS VALUES(1,'David Doyle', 'ddoyle@gmail.com')
 INSERT INTO USERS VALUES(2,'Sam Raimi', 'therealSamRaimi@yahoo.ca')
 INSERT INTO USERS VALUES(3,'Sofia Vergara','sofiV@gmail.com')

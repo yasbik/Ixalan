@@ -9,7 +9,7 @@ public class Movie implements Serializable
     private int movieID; // primary key for movies (Possibly alphanumeric)
     private String Name;// The name of the movie is stored in string
     private float rating;// The rating of the movie(maybe out of 5 ) is stored as float to handle numbers like 3.8
-    private ArrayList<String> castCrew = new ArrayList<>();// A list of cast members involved in the making of the movie implemented by array list but can be made an array
+    private String castCrew;// A list of cast members involved in the making of the movie implemented by array list but can be made an array
     private String posterUrl;// Contains a url as a string for the poster for the movie.
     private Date releaseDate;// The date the movie was released.
     private  String synopsis;// A brief summary of the movie.
@@ -86,7 +86,7 @@ public class Movie implements Serializable
         return this.rating;
     }
 
-    public ArrayList<String> getCastCrew()
+    public String getCastCrew()
     {
         return this.castCrew;
     }
