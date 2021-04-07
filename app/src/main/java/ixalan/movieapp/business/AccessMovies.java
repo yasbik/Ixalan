@@ -88,8 +88,8 @@ public class AccessMovies
     public List<Movie> filterMovies(String search_criteria, boolean isUpcoming)
     {
         List<Movie> toReturn = new ArrayList<Movie>();
-
-        for (Movie movie : getMovies()) {
+        List<Movie> list_of_all_movies = getMovies();
+        for (Movie movie : list_of_all_movies) {
             if (movie.getMovieName() != null && search_criteria != null)
             {
                 if (movie.getMovieName().toLowerCase().contains(search_criteria.toLowerCase())) { //match search criteria

@@ -34,10 +34,10 @@ public class Services
         if(iMovieDB == null)
         {
             //TODO: HSQLDB is still giving issues (driver not found error). Must be fixed for It 3
-            //iMovieDB = new MovieDB(Main.getDBPathName());
+            iMovieDB = new MovieDB(Main.getDBPathName());
 
-            iMovieDB = new FakeMovieDB();
-            initMovieDB();
+            //iMovieDB = new FakeMovieDB();
+            //initMovieDB();
 
         }
 
