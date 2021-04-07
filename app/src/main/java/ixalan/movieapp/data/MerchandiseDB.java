@@ -19,7 +19,7 @@ public class MerchandiseDB implements IMerchandiseDB
     }
     private Connection connection() throws SQLException
     {
-        return DriverManager.getConnection("jbdc:hsqldb:file:" +dbPath+ ";shutdown =true", "SA", "");
+        return DriverManager.getConnection("jdbc:hsqldb:file:" +dbPath+ ";shutdown =true", "SA", "");
     }
 
     private Merchandise fromResultSet(final ResultSet rs) throws SQLException {

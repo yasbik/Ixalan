@@ -17,7 +17,7 @@ public class TheatreDB implements ITheatreDB {
         this.dbPath = dbPath;
     }
     private Connection connection() throws SQLException {
-        return DriverManager.getConnection("jbdc:hsqldb:file:"+ dbPath +"; shutdown =true", "SA","");
+        return DriverManager.getConnection("jdbc:hsqldb:file:"+ dbPath +"; shutdown =true", "SA","");
     }
 
     private Theatre fromResultSet(final ResultSet rs) throws SQLException{

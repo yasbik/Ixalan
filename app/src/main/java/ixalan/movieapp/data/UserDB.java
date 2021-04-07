@@ -19,7 +19,7 @@ public class UserDB implements IUserDB{
         this.dbPath = dbPath;
     }
     private Connection connection() throws SQLException {
-        return DriverManager.getConnection("jbdc:hsqldb:file:"+ dbPath +"; shutdown =true", "SA","");
+        return DriverManager.getConnection("jdbc:hsqldb:file:"+ dbPath +"; shutdown =true", "SA","");
     }
 
     private User fromResultSet(final ResultSet rs) throws SQLException{
