@@ -4,7 +4,10 @@
 import java.io.Serializable;
 import java.util.Date;
 import java.util.ArrayList;
-public class Movie implements Serializable
+
+import ixalan.movieapp.application.Services;
+
+ public class Movie implements Serializable
 {
     private int movieID; // primary key for movies (Possibly alphanumeric)
     private String Name;// The name of the movie is stored in string
@@ -108,4 +111,32 @@ public class Movie implements Serializable
 
     public void setMovieID(int movieID){ this.movieID = movieID;}
 
+    public void setRating(float rating)
+    {
+        this.rating = rating;
+    }
+
+    public void setCastCrew(String castCrew)
+    {
+        this.castCrew = castCrew;
+    }
+
+    public void setTheatreList(String bitmask)
+    {
+        if (bitmask != null)
+        {
+            for (int i = 0 ; i < bitmask.length() ; i++)
+            {
+                if (bitmask.charAt(i) == '1')
+                {
+                    Theatre theatre = Services.getiTheatreDB().getTheatre(i);
+                    if (theatre != null)
+                    {
+                        theatres.add(theatre);
+                    }
+                }
+            }
+        }
+
+    }
 }

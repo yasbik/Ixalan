@@ -11,8 +11,12 @@ import ixalan.movieapp.data.FakeUserDB;
 import ixalan.movieapp.data.IMerchandiseDB;
 import ixalan.movieapp.data.IMovieDB;
 import ixalan.movieapp.data.IPosterDB;
+import ixalan.movieapp.data.ITheatreDB;
 import ixalan.movieapp.data.IUserDB;
+import ixalan.movieapp.data.MerchandiseDB;
 import ixalan.movieapp.data.MovieDB;
+import ixalan.movieapp.data.TheatreDB;
+import ixalan.movieapp.data.UserDB;
 import ixalan.movieapp.objects.Movie;
 import ixalan.movieapp.objects.Theatre;
 
@@ -28,6 +32,7 @@ public class Services
     private static IPosterDB iPosterDB = null;
     private static IUserDB iUserDB = null;
     private static IMerchandiseDB iMerchandiseDB = null;
+    private static ITheatreDB iTheatreDB = null;
 
     public static synchronized IMovieDB getiMovieDB()
     {
@@ -35,10 +40,6 @@ public class Services
         {
             //TODO: HSQLDB is still giving issues (driver not found error). Must be fixed for It 3
             iMovieDB = new MovieDB(Main.getDBPathName());
-
-            //iMovieDB = new FakeMovieDB();
-            //initMovieDB();
-
         }
 
         return iMovieDB;
@@ -56,7 +57,7 @@ public class Services
     public static synchronized IUserDB getiUserDB()
     {
         if(iUserDB == null) {
-            iUserDB= new FakeUserDB();
+            iUserDB= new UserDB(Main.getDBPathName());
         }
 
         return iUserDB;
@@ -65,10 +66,19 @@ public class Services
     public static synchronized IMerchandiseDB getiMerchandiseDB()
     {
         if(iMerchandiseDB == null) {
-            iMerchandiseDB= new FakeMerchandiseDB();
+            iMerchandiseDB= new MerchandiseDB(Main.getDBPathName());
         }
 
         return iMerchandiseDB;
+    }
+
+    public static synchronized ITheatreDB getiTheatreDB()
+    {
+        if(iTheatreDB == null) {
+            iTheatreDB= new TheatreDB(Main.getDBPathName());
+        }
+
+        return iTheatreDB;
     }
 
     private static void initMovieDB()

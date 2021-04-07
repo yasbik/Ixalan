@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import ixalan.movieapp.business.AccessMovieDetail;
 import ixalan.movieapp.objects.Movie;
 
 import ixalan.movieapp.R;
@@ -19,6 +21,7 @@ import ixalan.movieapp.R;
 public class MovieDetailActivity extends AppCompatActivity {
 
     private Movie movie = null; //the movie whose details are being displayed
+    private AccessMovieDetail accessMovieDetail = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +31,10 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        if (intent.getExtras() != null) {
+        if (intent.getExtras() != null)
+        {
             movie = (Movie) getIntent().getSerializableExtra("MOVIE");
+            accessMovieDetail = new AccessMovieDetail(movie);
 
             String movie_display_name = movie.getMovieName();
             String movie_poster_file_name = movie.getMoviePoster();
@@ -40,11 +45,16 @@ public class MovieDetailActivity extends AppCompatActivity {
             int movie_poster_id = getResources().getIdentifier(movie_poster_file_name, "drawable", getPackageName());
             movie_poster_imageview.setImageResource(movie_poster_id);
             movie_poster_imageview.setClickable(true);
-            movie_poster_imageview.setOnClickListener(new View.OnClickListener() {
+            movie_poster_imageview.setOnClickListener(new View.OnClickListener()
+            {
                 @Override
                 public void onClick(View v)
                 {
-                    watchYoutubeVideo(movie.getTrailerUrl());
+                    Intent i =  accessMovieDetail.watchYoutubeVideo();
+                    if (i != null)
+                    {
+                        startActivity(i);
+                    }
                 }
             });
 
@@ -55,7 +65,7 @@ public class MovieDetailActivity extends AppCompatActivity {
             //Display movie details
             TextView movie_details_textview = (TextView) findViewById(R.id.movie_details_textView);
             movie_details_textview.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-            movie_details_textview.setText(movie_synopsis);
+            movie_details_textview.setText(accessMovieDetail.getFullDetails());
 
             Button btn = (Button)findViewById(R.id.book_now_button);
             btn.setOnClickListener(new View.OnClickListener() {
@@ -90,22 +100,5 @@ public class MovieDetailActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MovieLocationActivity.class);
         intent.putExtra("MOVIE", movie);
         startActivity(intent);
-    }
-
-    public void watchYoutubeVideo(String id)
-    {
-        String url = "http://www.youtube.com/watch?v="+id;
-        try {
-            Intent i = new Intent("android.intent.action.MAIN");
-            i.setComponent(ComponentName.unflattenFromString("com.android.chrome/com.android.chrome.Main"));
-            i.addCategory("android.intent.category.LAUNCHER");
-            i.setData(Uri.parse(url));
-            startActivity(i);
-        }
-        catch(ActivityNotFoundException e) {
-            // Chrome is not installed
-            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            startActivity(i);
-        }
     }
 }

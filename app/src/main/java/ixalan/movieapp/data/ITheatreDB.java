@@ -15,4 +15,6 @@ public interface ITheatreDB
     public void removeTheatre(String name);
 
     public void addTheatre(Theatre newTheatre);
+
+    public Theatre getTheatre(int theatreID);
 }

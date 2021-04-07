@@ -28,12 +28,19 @@ public class MovieDB implements IMovieDB{
         final String movieID = rs.getString("movieID");
         final String movieName = rs.getString("name");
         final String moviePoster = rs.getString("poster");
-        final Long movieDate = rs.getLong("date");
+        final long movieDate = rs.getLong("date");
         final String movieSynopsis = rs.getString("synopsis");
         final String movieTrailer = rs.getString("trailer");
+        final float movieRating = rs.getFloat("rating");
+        final String castCrew = rs.getString("castcrew");
+        final String theatreList = rs.getString("theatrelist");
         Date releasedate = new Date(movieDate);
         movie = new Movie(movieName, moviePoster,releasedate,movieSynopsis, movieTrailer);
         movie.setMovieID(Integer.parseInt(movieID));
+        movie.setRating(movieRating);
+        movie.setCastCrew(castCrew);
+
+        movie.setTheatreList(theatreList);
         return movie;
     }
     @Override

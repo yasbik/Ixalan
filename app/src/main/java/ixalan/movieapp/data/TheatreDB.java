@@ -26,7 +26,8 @@ public class TheatreDB implements ITheatreDB {
         final String theatreName = rs.getString("name");
         final String theatreLocation = rs.getString("location");
         final int theatreScreen2 = rs.getInt("screen2");
-        theatre = new Theatre(theatreName, theatreLocation, theatreScreen1, theatreScreen2);
+        final int id = rs.getInt("THEATREID");
+        theatre = new Theatre(id, theatreName, theatreLocation, theatreScreen1, theatreScreen2);
         return theatre;
     }
 
@@ -95,6 +96,26 @@ public class TheatreDB implements ITheatreDB {
 
             st.executeUpdate();
         }catch(final SQLException e){
+            throw new PersistenceException(e);
+        }
+    }
+
+    public Theatre getTheatre(int theatreID)
+    {
+        Theatre theatre = null;
+        try(Connection c = connection()) {
+            final PreparedStatement sc = c.prepareStatement("SELECT * FROM theatres where theatreid = ?");
+            sc.setInt(1,theatreID);
+            ResultSet rs = sc.executeQuery();
+            while(rs.next())
+            {
+                theatre = fromResultSet(rs);
+            }
+            rs.close();
+            sc.close();
+
+            return theatre;
+        } catch(final SQLException e){
             throw new PersistenceException(e);
         }
     }

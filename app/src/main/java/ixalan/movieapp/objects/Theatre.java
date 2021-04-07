@@ -3,6 +3,7 @@ package ixalan.movieapp.objects;
 import java.io.Serializable;
 
 public class Theatre implements Serializable {
+    private int id;
     private String name;
     private String location;
     private int screenOne;
@@ -12,11 +13,21 @@ public class Theatre implements Serializable {
     {
     }
 
-    public Theatre(String name, String location, int screenOne, int screenTwo){
+    public void setID(int id)
+    {
+        this.id = id;
+    }
+    public int getID()
+    {
+        return this.id;
+    }
+
+    public Theatre(int id, String name, String location, int screenOne, int screenTwo){
         this.name = name;
         this.location = location;
         this.screenOne = screenOne;
         this.screenTwo = screenTwo;
+        this.id = id;
     }
 
     public String getName()
