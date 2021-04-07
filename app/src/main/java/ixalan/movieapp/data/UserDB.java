@@ -32,6 +32,13 @@ public class UserDB implements IUserDB{
         //user.setUserID(Integer.parseInt(userID));
         return user;
     }
+
+    @Override
+    public void removeUser(int userID)
+    {
+
+    }
+    
     @Override
     public User getUser(int userID) {
         User returnedUser= null;
@@ -53,10 +60,6 @@ public class UserDB implements IUserDB{
     }
 
     @Override
-    public void removeUser(int userID) {
-
-    }
-
     public void addUser(User newUser){
         try(final Connection c= connection()){
             final PreparedStatement st = c.prepareStatement("INSERT INTO users VALUES(?,?,?,?)");

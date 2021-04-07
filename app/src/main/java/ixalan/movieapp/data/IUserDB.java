@@ -1,5 +1,7 @@
 package ixalan.movieapp.data;
 
+import java.util.ArrayList;
+
 import ixalan.movieapp.objects.User;
 
 public  interface IUserDB{
@@ -16,4 +18,7 @@ public  interface IUserDB{
 
     public void updateAccountBalance(int userID, int changeBalance);
 
+    public void addUser(User newUser);
+
+    public ArrayList<User> getAllUsers();
 }

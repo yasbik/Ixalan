@@ -36,4 +36,16 @@ public class FakeUserDB implements IUserDB
     {
 
     }
+
+    @Override
+    public void addUser(User newUser)
+    {
+
+    }
+
+    @Override
+    public ArrayList<User> getAllUsers()
+    {
+        return null;
+    }
 }
