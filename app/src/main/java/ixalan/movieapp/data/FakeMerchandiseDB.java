@@ -25,7 +25,7 @@ public class FakeMerchandiseDB implements IMerchandiseDB {
         final ArrayList <Merchandise> toReturn = new ArrayList<Merchandise>();
         for (Merchandise merchandise : this.Merchandise)
         {
-            if (merchandise.getMovieTag().equals(movie))
+            if (merchandise.getMovieTag() == movie.getMovieID())
             {
                 toReturn.add(merchandise);
             }

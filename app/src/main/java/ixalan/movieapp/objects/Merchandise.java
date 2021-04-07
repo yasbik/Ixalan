@@ -3,7 +3,7 @@ package ixalan.movieapp.objects;
 public class Merchandise extends CartItem
 {
     private String description;
-    private Movie movieTag; //movie to which this merchandise item is associated
+    private int movieTag; //movie to which this merchandise item is associated
     private int stock;
     private String imageUrl;
 
@@ -20,7 +20,7 @@ public class Merchandise extends CartItem
         this.description = description;
     }
 
-    public void setMovieTag(Movie movieTag) {
+    public void setMovieTag(int movieTag) {
         this.movieTag = movieTag;
     }
 
@@ -42,7 +42,7 @@ public class Merchandise extends CartItem
         return this.description;
     }
 
-    public Movie getMovieTag()
+    public int getMovieTag()
     {
         return this.movieTag;
     }

@@ -83,6 +83,11 @@ public class MovieMerchandiseActivity extends AppCompatActivity
     public void showMerchandiseItem(Merchandise merchandise)
     {
         TextView merchandiseTitle = (TextView)findViewById(R.id.merchandise_item_title);
+        merchandiseTitle.setText(merchandise.getName());
+
+        ImageView merch_item_imageview = (ImageView) findViewById(R.id.merchandise_item_imageview);
+        int merch_id = getResources().getIdentifier(merchandise.getImageUrl(), "drawable", getPackageName());
+        merch_item_imageview.setImageResource(merch_id);
     }
 
     public void viewCart()
