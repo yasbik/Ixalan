@@ -1,5 +1,6 @@
 package ixalan.movieapp.presentation;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ixalan.movieapp.R;
@@ -106,7 +108,10 @@ public class MovieMerchandiseActivity extends AppCompatActivity
         //update quantity in AccessMerchandise
         if (increaseQty)
         {
-            accessMerchandise.setQuantity(accessMerchandise.getQuantity()+1);
+            if (!accessMerchandise.setQuantity(accessMerchandise.getQuantity()+1))
+            {
+               displayAlertMsg("Out of stock!", "Sorry, we don't have any more of this item");
+            }
         }
         else
         {
@@ -131,7 +136,23 @@ public class MovieMerchandiseActivity extends AppCompatActivity
             cartItem.setQuantity(quantity);
 
             AccessCart.addCartItem(cartItem, quantity);
+
+            displayAlertMsg("Success!", "You now have " + quantity +" of these items in cart");
         }
 
+    }
+
+    public void displayAlertMsg(String title, String description)
+    {
+        AlertDialog alertDialog = new AlertDialog.Builder(MovieMerchandiseActivity.this).create();
+        alertDialog.setTitle(title);
+        alertDialog.setMessage(description);
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
     }
 }

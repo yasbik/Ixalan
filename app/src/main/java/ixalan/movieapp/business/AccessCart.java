@@ -45,14 +45,14 @@ public class AccessCart {
                 {
                     if (((Merchandise)cartItem).equals((Merchandise)entry.getKey()))
                     {
-                        cart_list.put(entry.getKey(), cart_list.get(entry.getKey()) + quantity);
+                        cart_list.put(entry.getKey(), quantity);
                         item_added = true;
                     }
                 } else if (cartItem instanceof Ticket && entry.getKey() instanceof Ticket)
                 {
                     if (((Ticket)cartItem).equals((Ticket)entry.getKey()))
                     {
-                        cart_list.put(entry.getKey(), cart_list.get(entry.getKey()) + quantity);
+                        cart_list.put(entry.getKey(), quantity);
                         item_added = true;
                     }
                 }

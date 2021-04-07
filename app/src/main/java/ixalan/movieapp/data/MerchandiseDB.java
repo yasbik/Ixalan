@@ -108,4 +108,5 @@ public class MerchandiseDB implements IMerchandiseDB
             throw new PersistenceException(e);
         }
     }
+
 }

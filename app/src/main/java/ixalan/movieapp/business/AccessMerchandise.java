@@ -52,6 +52,7 @@ public class AccessMerchandise
             merchandise_index = (merchandise_index + 1) % merchandise.size();
             quantity = 0;
 
+            details = "";
             details += ("Price: $" + new DecimalFormat("0.00").format(toReturn.getPrice())+ "\n\n");
             details += toReturn.getDescription();
         }
@@ -73,17 +74,20 @@ public class AccessMerchandise
         return quantity;
     }
 
-    public void setQuantity(int quantity)
+    public boolean setQuantity(int quantity)
     {
+        boolean toReturn = false;
         if (quantity >= 0)
         {
             if (merchandise != null && !merchandise.isEmpty()) {
-                Merchandise item = merchandise.get(merchandise_index);
+                Merchandise item = getCurrentItem();
                 if (item != null && quantity <= item.getStock()) {
                     this.quantity = quantity;
+                    toReturn = true;
                 }
             }
         }
+        return toReturn;
     }
 
     public String getDetails()

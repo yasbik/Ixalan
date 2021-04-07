@@ -17,6 +17,7 @@ import ixalan.movieapp.objects.Merchandise;
 
 import ixalan.movieapp.objects.Movie;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -67,7 +68,7 @@ public class ViewCartActivity extends AppCompatActivity {
         }
 
         TextView total_price_text_view = (TextView) findViewById(R.id.total_price_text_view);
-        total_price_text_view.setText("TOTAL     $" + totalPrice);
+        total_price_text_view.setText("TOTAL     $" + new DecimalFormat("0.00").format(totalPrice));
     }
 
     /* pay for items in the cart */
