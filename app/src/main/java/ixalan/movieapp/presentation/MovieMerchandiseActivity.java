@@ -33,7 +33,8 @@ public class MovieMerchandiseActivity extends AppCompatActivity
             Movie movie = (Movie) getIntent().getSerializableExtra("MOVIE");
             accessMerchandise = new AccessMerchandise(movie);
 
-            showMerchandiseItem(accessMerchandise.getNextItem());
+            Merchandise item = accessMerchandise.getNextItem();
+            showMerchandiseItem(item, accessMerchandise.getDetails());
 
             adjustQuantity();
 
@@ -58,7 +59,8 @@ public class MovieMerchandiseActivity extends AppCompatActivity
             showNextBtn.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v)
                 {
-                    showMerchandiseItem(accessMerchandise.getNextItem());
+                    Merchandise item = accessMerchandise.getNextItem();
+                    showMerchandiseItem(item, accessMerchandise.getDetails());
                 }
             });
 
@@ -80,7 +82,7 @@ public class MovieMerchandiseActivity extends AppCompatActivity
         }
     }
 
-    public void showMerchandiseItem(Merchandise merchandise)
+    public void showMerchandiseItem(Merchandise merchandise, String details)
     {
         TextView merchandiseTitle = (TextView)findViewById(R.id.merchandise_item_title);
         merchandiseTitle.setText(merchandise.getName());
@@ -88,6 +90,9 @@ public class MovieMerchandiseActivity extends AppCompatActivity
         ImageView merch_item_imageview = (ImageView) findViewById(R.id.merchandise_item_imageview);
         int merch_id = getResources().getIdentifier(merchandise.getImageUrl(), "drawable", getPackageName());
         merch_item_imageview.setImageResource(merch_id);
+
+        TextView merchandiseDetails = (TextView)findViewById(R.id.movie_details_textView);
+        merchandiseDetails.setText(details);
     }
 
     public void viewCart()
@@ -125,7 +130,7 @@ public class MovieMerchandiseActivity extends AppCompatActivity
         {
             cartItem.setQuantity(quantity);
 
-            AccessCart.addCartItem(cartItem);
+            AccessCart.addCartItem(cartItem, quantity);
         }
 
     }

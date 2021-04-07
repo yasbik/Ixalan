@@ -1,5 +1,6 @@
 package ixalan.movieapp.business;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import ixalan.movieapp.application.Services;
@@ -14,6 +15,7 @@ public class AccessMerchandise
     private ArrayList<Merchandise> merchandise;
     private int merchandise_index = 0;
     private int quantity = 0;
+    private String details = "";
 
     public AccessMerchandise(final IMerchandiseDB merchandiseDB)
     {
@@ -49,6 +51,9 @@ public class AccessMerchandise
             toReturn = merchandise.get(merchandise_index);
             merchandise_index = (merchandise_index + 1) % merchandise.size();
             quantity = 0;
+
+            details += ("Price: $" + new DecimalFormat("0.00").format(toReturn.getPrice())+ "\n\n");
+            details += toReturn.getDescription();
         }
         return toReturn;
     }
@@ -79,6 +84,11 @@ public class AccessMerchandise
                 }
             }
         }
+    }
+
+    public String getDetails()
+    {
+        return this.details;
     }
 
 }

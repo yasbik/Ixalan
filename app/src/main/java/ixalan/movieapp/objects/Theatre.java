@@ -43,5 +43,10 @@ public class Theatre implements Serializable {
     public int getScreenOne(){ return this.screenOne;}
 
     public  int getScreenTwo(){ return this.screenTwo;}
+
+    public boolean equals(Theatre theatre)
+    {
+        return theatre != null && this.id == theatre.getID();
+    }
     
 }

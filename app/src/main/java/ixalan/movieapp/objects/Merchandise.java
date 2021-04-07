@@ -2,6 +2,7 @@ package ixalan.movieapp.objects;
 
 public class Merchandise extends CartItem
 {
+    private int merchID;
     private String description;
     private int movieTag; //movie to which this merchandise item is associated
     private int stock;
@@ -65,5 +66,19 @@ public class Merchandise extends CartItem
     public void setImageUrl(String imageUrl)
     {
         this.imageUrl = imageUrl;
+    }
+
+    public void setMerchId(int merchID)
+    {
+        this.merchID = merchID;
+    }
+    public int getMerchID()
+    {
+        return this.merchID;
+    }
+
+    public boolean equals(Merchandise merchandise)
+    {
+        return merchandise != null && this.getMerchID() == merchandise.getMerchID();
     }
 }

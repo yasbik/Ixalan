@@ -137,6 +137,10 @@ import ixalan.movieapp.application.Services;
                 }
             }
         }
+    }
 
+    public boolean equals(Movie movie)
+    {
+        return movie != null && movie.getMovieID() == this.getMovieID();
     }
 }

@@ -18,10 +18,12 @@ import ixalan.movieapp.objects.Merchandise;
 import ixalan.movieapp.objects.Movie;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ViewCartActivity extends AppCompatActivity {
 
-    private ArrayList<CartItem> cart_list;
+    private HashMap<CartItem, Integer> cart_list;
     private AccessCart accessCart;
 
     @Override
@@ -41,7 +43,7 @@ public class ViewCartActivity extends AppCompatActivity {
     }
 
     /*display all items in the cart on the view */
-    private void populateCartList(ArrayList<CartItem> cart_list)
+    private void populateCartList(HashMap<CartItem, Integer> cart_list)
     {
         //Clear layout of all entries
         LinearLayout layout = (LinearLayout)findViewById(R.id.view_cart_linear_layout);
@@ -49,10 +51,10 @@ public class ViewCartActivity extends AppCompatActivity {
         float totalPrice = 0; /*calculate total price of all cart items */
         //Add entries one by one
         if (cart_list != null) {
-            for (CartItem item : cart_list) {
-                totalPrice += item.getPrice();
+            for(Map.Entry<CartItem, Integer> item : cart_list.entrySet()){
+                totalPrice += (item.getKey().getPrice() * item.getValue());
                 Button btn = new Button(this); /*display each cart item as a button. Currently button not clickable */
-                btn.setText(item.getName() + "     $" + item.getPrice()); /*will make this button clickable in future to view details of item */
+                btn.setText(item.getKey().getName() + "     (Qty: " + item.getValue() + ")"); /*will make this button clickable in future to view details of item */
                 //if clicked, display movie details
                 //   btn.setOnClickListener(new View.OnClickListener() {
                 //      public void onClick(View v) {

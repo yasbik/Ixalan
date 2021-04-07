@@ -11,7 +11,11 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/addToCartButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +32,8 @@
                 android:id="@+id/movie_details_textView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="start|top|left" />
+                android:gravity="start|top|left"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 
@@ -45,10 +50,15 @@
         android:id="@+id/merchandise_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginBottom="4dp"
         android:text="TextView"
-        android:textSize="30sp"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/merchandise_item_imageview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

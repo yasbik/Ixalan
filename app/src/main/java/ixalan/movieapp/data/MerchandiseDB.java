@@ -27,7 +27,7 @@ public class MerchandiseDB implements IMerchandiseDB
 
     private Merchandise fromResultSet(final ResultSet rs) throws SQLException {
         Merchandise merchandise = null;
-
+        final int merchId = rs.getInt("MERCHID");
         final String merchName = rs.getString("name");
         final float price = rs.getFloat("price");
         final int movieid = rs.getInt("movieid");
@@ -39,6 +39,7 @@ public class MerchandiseDB implements IMerchandiseDB
         merchandise.setStock(stock);
         merchandise.setImageUrl(imageurl);
         merchandise.setDescription(description);
+        merchandise.setMerchId(merchId);
 
         return merchandise;
     }
@@ -47,14 +48,15 @@ public class MerchandiseDB implements IMerchandiseDB
     public void addMerchandise(Merchandise merchandise)
     {
         try(final Connection c= connection()){
-            final PreparedStatement st = c.prepareStatement("INSERT INTO merchandise VALUES(?,?,?,?,?,?)");
+            final PreparedStatement st = c.prepareStatement("INSERT INTO merchandise VALUES(?,?,?,?,?,?,?)");
 
-            st.setString(1, merchandise.getName());
-            st.setFloat(2, merchandise.getPrice());
-            st.setInt(3,merchandise.getMovieTag());
-            st.setInt(4, merchandise.getStock());
-            st.setString(5, merchandise.getImageUrl());
-            st.setString(6, merchandise.getDescription());
+            st.setInt(1, merchandise.getMerchID());
+            st.setString(2, merchandise.getName());
+            st.setFloat(3, merchandise.getPrice());
+            st.setInt(4,merchandise.getMovieTag());
+            st.setInt(5, merchandise.getStock());
+            st.setString(6, merchandise.getImageUrl());
+            st.setString(7, merchandise.getDescription());
 
             st.executeUpdate();
         }catch(final SQLException e){
