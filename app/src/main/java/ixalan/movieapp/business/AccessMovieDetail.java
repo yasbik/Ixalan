@@ -36,25 +36,5 @@ public class AccessMovieDetail
         return toReturn;
     }
 
-    public Intent watchYoutubeVideo()
-    {
-        Intent toReturn = null;
-        if (movie != null)
-        {
-            String url = "http://www.youtube.com/watch?v="+movie.getTrailerUrl();
-            try {
-                Intent i = new Intent("android.intent.action.MAIN");
-                i.setComponent(ComponentName.unflattenFromString("com.android.chrome/com.android.chrome.Main"));
-                i.addCategory("android.intent.category.LAUNCHER");
-                i.setData(Uri.parse(url));
-                toReturn = i;
-            }
-            catch(ActivityNotFoundException e) {
-                // Chrome is not installed
-                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                toReturn = i;
-            }
-        }
-        return toReturn;
-    }
+
 }

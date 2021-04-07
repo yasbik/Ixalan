@@ -50,11 +50,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v)
                 {
-                    Intent i =  accessMovieDetail.watchYoutubeVideo();
-                    if (i != null)
-                    {
-                        startActivity(i);
-                    }
+                    watchYoutubeVideo(movie.getTrailerUrl());
                 }
             });
 
@@ -68,13 +64,15 @@ public class MovieDetailActivity extends AppCompatActivity {
             movie_details_textview.setText(accessMovieDetail.getFullDetails());
 
             Button btn = (Button)findViewById(R.id.book_now_button);
-            btn.setOnClickListener(new View.OnClickListener() {
+            btn.setOnClickListener(new View.OnClickListener()
+            {
                 @Override
                 public void onClick(View v)
                 {
                     showMovieLocations();
                 }
             });
+            btn.setEnabled(!movie.isUpcoming());
 
             Button merchandise_btn = (Button)findViewById(R.id.view_merchandise_button);
             merchandise_btn.setOnClickListener(new View.OnClickListener() {
@@ -101,4 +99,22 @@ public class MovieDetailActivity extends AppCompatActivity {
         intent.putExtra("MOVIE", movie);
         startActivity(intent);
     }
+
+    public void watchYoutubeVideo(String link)
+    {
+        String url = "http://www.youtube.com/watch?v="+link;
+        try {
+            Intent i = new Intent("android.intent.action.MAIN");
+            i.setComponent(ComponentName.unflattenFromString("com.android.chrome/com.android.chrome.Main"));
+            i.addCategory("android.intent.category.LAUNCHER");
+            i.setData(Uri.parse(url));
+            startActivity(i);
+        }
+        catch(ActivityNotFoundException e) {
+            // Chrome is not installed
+            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(i);
+        }
+    }
+
 }
