@@ -3,7 +3,8 @@ import org.junit.Test;
 import ixalan.movieapp.objects.Movie;
 import static org.junit.Assert.*;
 
-public class MovieTest {
+public class MovieTest
+{
     @Test
     public void testMovie1()
     {
