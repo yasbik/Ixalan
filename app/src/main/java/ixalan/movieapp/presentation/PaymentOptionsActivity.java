@@ -19,59 +19,8 @@ public class PaymentOptionsActivity extends AppCompatActivity {
         setContentView(R.layout.payment_options);
 
         /*different options of payment */
-        pay_with_apple();
-        pay_with_google();
-        pay_with_facebook();
-        pay_with_email();
         pay_with_card();
-
-    }
-
-    private void pay_with_apple() {
-        Button mButton = (Button) findViewById(R.id.apple_payment_button);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PaymentOptionsActivity.this, PaymentSuccessfulActivity.class);
-                intent.putExtra("PAYMENT_MODE", "apple");
-                startActivity(intent);
-            }
-        });
-    }
-
-    private void pay_with_google() {
-        Button mButton = (Button) findViewById(R.id.google_payment_button);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PaymentOptionsActivity.this, PaymentSuccessfulActivity.class);
-                intent.putExtra("PAYMENT_MODE", "google");
-                startActivity(intent);
-            }
-        });
-    }
-
-    private void pay_with_facebook() {
-        Button mButton = (Button) findViewById(R.id.facebook_payment_button);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PaymentOptionsActivity.this, PaymentSuccessfulActivity.class);
-                intent.putExtra("PAYMENT_MODE", "facebook");
-                startActivity(intent);
-            }
-        });
-    }
-    private void pay_with_email() {
-        Button mButton = (Button) findViewById(R.id.email_payment_button);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PaymentOptionsActivity.this, PaymentSuccessfulActivity.class);
-                intent.putExtra("PAYMENT_MODE", "email");
-                startActivity(intent);
-            }
-        });
+        other_options();
     }
 
     private void pay_with_card() {
@@ -84,5 +33,25 @@ public class PaymentOptionsActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void other_options() {
+        Button button1 = (Button) findViewById(R.id.apple_payment_button);
+        Button button2 = (Button) findViewById(R.id.google_payment_button);
+        Button button3 = (Button) findViewById(R.id.facebook_payment_button);
+        Button button4 = (Button) findViewById(R.id.email_payment_button);
+        button1.setOnClickListener(onClickListener);
+        button2.setOnClickListener(onClickListener);
+        button3.setOnClickListener(onClickListener);
+        button4.setOnClickListener(onClickListener);
+    }
+
+    private View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(PaymentOptionsActivity.this, PaymentSuccessfulActivity.class);
+            startActivity(intent);
+        }
+    };
+
 }
 

@@ -169,7 +169,6 @@ public class MovieListActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    /* view cart items. Currently just a view, cart items not stored for each user */
     private void view_cart() {
         Button mmButton = (Button) findViewById(R.id.cart_button);
         mmButton.setOnClickListener(new View.OnClickListener() {
