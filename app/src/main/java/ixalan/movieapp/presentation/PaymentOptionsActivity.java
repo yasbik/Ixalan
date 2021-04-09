@@ -39,10 +39,12 @@ public class PaymentOptionsActivity extends AppCompatActivity {
         Button button2 = (Button) findViewById(R.id.google_payment_button);
         Button button3 = (Button) findViewById(R.id.facebook_payment_button);
         Button button4 = (Button) findViewById(R.id.email_payment_button);
+        Button button5 = (Button) findViewById(R.id.pay_with_points_button);
         button1.setOnClickListener(onClickListener);
         button2.setOnClickListener(onClickListener);
         button3.setOnClickListener(onClickListener);
         button4.setOnClickListener(onClickListener);
+        button5.setOnClickListener(onClickListener);
     }
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
