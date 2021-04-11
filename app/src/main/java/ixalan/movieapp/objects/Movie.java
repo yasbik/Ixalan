@@ -26,6 +26,12 @@ import ixalan.movieapp.application.Services;
         this.posterUrl = posterUrl;
     }
 
+    public Movie(int movieID, String name)
+    {
+        this.movieID = movieID;
+        this.Name = name;
+    }
+
     public Movie(String name, String posterUrl, Date releaseDate, ArrayList<Theatre> theatres, String synopsis, String trailerUrl)
     {
         this.Name = name;
@@ -54,7 +60,7 @@ import ixalan.movieapp.application.Services;
     {
         //Upcoming if it has a future release date
         Date today = new Date(System.currentTimeMillis());
-        return releaseDate.after(today);
+        return releaseDate != null && releaseDate.after(today);
     }
 
     public boolean isCurrentlyRunning()
@@ -119,6 +125,11 @@ import ixalan.movieapp.application.Services;
     public void setCastCrew(String castCrew)
     {
         this.castCrew = castCrew;
+    }
+
+    public void setSynopsis(String synopsis)
+    {
+        this.synopsis = synopsis;
     }
 
     public void setTheatreList(String bitmask)
