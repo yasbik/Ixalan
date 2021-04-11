@@ -13,6 +13,7 @@
     <string name = "CARD_PAY">Continue with Credit Card</string>
     <string name = "CARD_PAY_HEADER">Enter Credit Card Details</string>
     <string name = "PAY_NOW">PAY NOW</string>
+    <string name = "HOME">HOME</string>
 
 
     <string-array name="movie_display_filters">

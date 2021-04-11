@@ -24,13 +24,7 @@ public class AccessCart {
         this.cart_list = cart_list;
     }
 
-    /*hard coded list for now because cart list not created for each user in database*/
-    public static HashMap<CartItem, Integer> getCartItems()
-    {
-        /*cart_list = new ArrayList<CartItem>(){{
-            add(new Merchandise("KeyChain",new Float(10.0)));
-            add(new Merchandise("Mug",new Float(39.99)));
-        }};*/
+    public static HashMap<CartItem, Integer> getCartItems() {
         return cart_list;
     }
 
