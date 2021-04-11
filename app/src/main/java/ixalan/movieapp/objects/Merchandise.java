@@ -13,6 +13,11 @@ public class Merchandise extends CartItem
         super(name, price, 1);
     }
 
+    public Merchandise(int merchID, String name, float price)
+    {
+        super(name, price, 1);
+        this.merchID = merchID;
+    }
     public void setName(String name) {
         super.setName(name);
     }

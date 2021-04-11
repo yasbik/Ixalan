@@ -6,12 +6,13 @@ import static org.junit.Assert.*;
 
 public class MerchandiseTest
 {
-    //TODO: Write tests
+    //TODO: Tests completed
 
     @Test
     public void test1()
     {
         Merchandise merchandise;
+        Merchandise merchandise2;
 
         System.out.println("\nStarting MerchandiseTest\n");
 
@@ -30,6 +31,10 @@ public class MerchandiseTest
         assertEquals(15, merchandise.getStock());
         assertTrue("Test Image URL".equals(merchandise.getImageUrl()));
         assertEquals(1,merchandise.getQuantity());
+
+        merchandise2 = new Merchandise(1, "Test Merchandise 2", (float)10.99);
+        assertNotNull(merchandise2);
+        assertTrue(merchandise.equals(merchandise2));
 
         System.out.println("\nFinished MerchandiseTest\n");
     }

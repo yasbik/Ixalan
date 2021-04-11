@@ -1,59 +1,67 @@
 package ixalan.movieapp.objects;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import ixalan.movieapp.objects.Movie;
 import static org.junit.Assert.*;
 
-public class MovieTest
-{
+public class MovieTest {
+    private Movie movie;
+    private Movie movie2;
+
+    @Before
+    public void setUp()
+    {
+        movie = new Movie("Test Movie 1",
+                "Test Poster",
+                new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime(),
+                new ArrayList<Theatre>(),
+                "Test Synopsis",
+                "Test trailer URL");
+        movie.setMovieID(1);
+        movie.setRating((float)6.9);
+        movie.setCastCrew("Test Cast Crew");
+        movie.setMerchandiseList(new ArrayList<Merchandise>());
+
+        movie2 = new Movie(1, "Test Movie 2");
+    }
+
     @Test
     public void testMovie1()
     {
-        Movie movie;
+        System.out.println("\nStarting testMovie1\n");
 
-        System.out.println("\nStarting testMovie1");
-
-        movie = new Movie("new_movie", "new_movie_url");
         assertNotNull(movie);
-        assertTrue("new_movie".equals(movie.getMovieName()));
-        assertTrue("new_movie_url".equals(movie.getMoviePoster()));
-        assertTrue("0".equals(String.valueOf(movie.getMovieID()))); // movie Ids are not assigned yet to any movies
+        assertTrue("Test Movie 1".equals(movie.getMovieName()));
+        assertTrue("Test Poster".equals(movie.getMoviePoster()));
+        assertEquals(0, new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime().compareTo(movie.getReleaseDate()));
+        assertTrue(new ArrayList<Theatre>().equals(movie.getTheatres()));
+        assertTrue("Test Synopsis".equals(movie.getSynopsis()));
+        assertTrue("Test trailer URL".equals(movie.getTrailerUrl()));
+        assertEquals(1, movie.getMovieID());
+        assert(6.9 == movie.getRating());
+        assertTrue("Test Cast Crew".equals(movie.getCastCrew()));
+        assertTrue(new ArrayList<Merchandise>().equals(movie.getMerchandises()));
 
-        System.out.println("Finished testMovie1");
+        assertTrue(movie.equals(movie2));
+
+        System.out.println("\nFinished testMovie1\n");
     }
 
     @Test
     public void testMovie2()
     {
-        Movie movie1, movie2;
+        System.out.println("\nStarting movieSetTheatreListTest\n");
 
-        System.out.println("\nStarting testMovie2");
 
-        movie1 = new Movie("new_movie1", "new_movie1_url");
-        assertNotNull(movie1);
-        movie2 = new Movie("new_movie2", "new_movie2_url");
-        assertNotNull(movie2);
 
-        try {
-            validate(movie1.getMovieID(), movie2.getMovieID());
-        } catch(Exception m) {
-            System.out.println("Exception occured: " + m);
-        }
-
-        System.out.println("Finished testMovie2");
-    }
-
-    static void validate(int id1, int id2) throws InvalidMovieIDException {
-        if (id1 == id2) {
-            throw new InvalidMovieIDException("Movie IDs not valid");
-        } else {
-            System.out.println("valid Movie IDs");
-        }
-    }
-
-}
-
-class InvalidMovieIDException extends Exception {
-    InvalidMovieIDException(String s) {
-        super(s);
+        System.out.println("\nFinished movieSetTheatreListTest\n");
     }
 }
+

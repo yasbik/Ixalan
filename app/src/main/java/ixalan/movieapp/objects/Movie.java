@@ -132,6 +132,11 @@ import ixalan.movieapp.application.Services;
         this.synopsis = synopsis;
     }
 
+    public void setMerchandiseList(ArrayList<Merchandise> merchandises)
+    {
+        this.merchandises = merchandises;
+    }
+
     public void setTheatreList(String bitmask)
     {
         if (bitmask != null)
