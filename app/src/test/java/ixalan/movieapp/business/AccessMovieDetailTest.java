@@ -10,7 +10,7 @@ import static org.junit.Assert.assertNotNull;
 public class AccessMovieDetailTest
 {
     //TODO: Tests completed
-    
+
     private AccessMovieDetail accessMovieDetail;
     private Movie movie;
 
@@ -21,24 +21,25 @@ public class AccessMovieDetailTest
 
         accessMovieDetail = new AccessMovieDetail(movie);
 
-        final String test_synopsis = "This is a test synopsis";
-        final String test_castcrew = "This is a test cast/crew";
-        final float test_rating = (float)6.7;
-
-        movie.setCastCrew(test_synopsis);
-        movie.setRating(test_rating);
-        movie.setSynopsis(test_castcrew);
+        movie.setCastCrew("This is a test synopsis");
+        movie.setRating((float)6.7);
+        movie.setSynopsis("This is a test cast/crew");
     }
 
     @Test
     public void test1()
     {
+        System.out.println("\nStarting accessMovieDetailTest\n");
+
         assertNotNull(accessMovieDetail);
 
         String fullDetails = accessMovieDetail.getFullDetails();
 
-        assert(fullDetails.contains(movie.getSynopsis()));
-        assert(fullDetails.contains(movie.getCastCrew()));
-        assert(fullDetails.contains(""+movie.getRating()));
+        assertNotNull(fullDetails);
+        assert(fullDetails.contains("This is a test synopsis"));
+        assert(fullDetails.contains("This is a test cast/crew"));
+        assert(fullDetails.contains(""+(float)6.7));
+
+        System.out.println("\nFinished accessMovieDetailTest\n");
     }
 }

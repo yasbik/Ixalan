@@ -1,11 +1,19 @@
 package ixalan.movieapp.business;
 import ixalan.movieapp.data.FakeMovieDB;
 import ixalan.movieapp.data.IMovieDB;
+import ixalan.movieapp.objects.Movie;
+
 import org.junit.Test;
 import org.junit.Before;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.mockito.Mockito.mock;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
 
 public class AccessMoviesTest {
 
@@ -16,10 +24,16 @@ public class AccessMoviesTest {
     public void setUp()
     {
         //use fake db for unit test
-        movieDB = new FakeMovieDB();
+        movieDB = mock(IMovieDB.class);
+
+        //bunch of dummy movies to test with
+        final List<Movie> movies = Arrays.asList(new Movie("Avengers Endgame", "poster_1"),
+                new Movie("Guardians of the galaxy", "poster_2"),
+                new Movie("Harry Potter: Deathly Hallows", "poster_3"),
+                new Movie("The Mandalorian", "poster_4"));
+        when(movieDB.getAllMovies()).thenReturn((ArrayList<Movie>) movies);
 
         accessMovie = new AccessMovies(movieDB);
-
         accessMovie.setSearch_criteria("tHe");
 
     }
@@ -54,8 +68,8 @@ public class AccessMoviesTest {
     {
         System.out.println("\nStarting test AccessMovies: Filter movies");
 
-        //empty fake database, will contain no movie objects
-        assertEquals(accessMovie.filterMovies().size(), 0);
+        //Only two movies with "The" in their title
+        assertEquals(accessMovie.filterMovies().size(), 2);
 
         System.out.println("\nEnding test AccessMovies: Filter movies");
     }
