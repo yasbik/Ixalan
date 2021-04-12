@@ -19,9 +19,14 @@ public class AccessMerchandise
 
     public AccessMerchandise(final IMerchandiseDB merchandiseDB)
     {
-        this();
+        movie = null;
         this.merchandiseDB = merchandiseDB;
         merchandise = merchandiseDB.getAllMerchandise();
+    }
+
+    public int getMerchandise_index()
+    {
+        return this.merchandise_index;
     }
 
     public AccessMerchandise(final Movie movie)
@@ -53,8 +58,11 @@ public class AccessMerchandise
             quantity = 0;
 
             details = "";
-            details += ("Price: $" + new DecimalFormat("0.00").format(toReturn.getPrice())+ "\n\n");
-            details += toReturn.getDescription();
+
+            if (toReturn != null) {
+                details += ("Price: $" + new DecimalFormat("0.00").format(toReturn.getPrice()) + "\n\n");
+                details += toReturn.getDescription();
+            }
         }
         return toReturn;
     }
@@ -65,6 +73,13 @@ public class AccessMerchandise
         if (merchandise != null && !merchandise.isEmpty())
         {
             toReturn = merchandise.get(merchandise_index);
+
+            details = "";
+
+            if (toReturn != null) {
+                details += ("Price: $" + new DecimalFormat("0.00").format(toReturn.getPrice()) + "\n\n");
+                details += toReturn.getDescription();
+            }
         }
         return toReturn;
     }
@@ -93,6 +108,11 @@ public class AccessMerchandise
     public String getDetails()
     {
         return this.details;
+    }
+
+    public void setMerchandise_index(int merchandise_index)
+    {
+        this.merchandise_index = merchandise_index;
     }
 
 }

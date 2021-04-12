@@ -9,6 +9,7 @@ import org.junit.runners.Suite;
 import ixalan.movieapp.business.AccessMerchandiseIT;
 import ixalan.movieapp.business.AccessMerchandiseTest;
 import ixalan.movieapp.business.AccessMovieDetail;
+import ixalan.movieapp.business.AccessMovieDetailTest;
 import ixalan.movieapp.business.AccessMoviesIT;
 import ixalan.movieapp.business.AccessMoviesTest;
 import ixalan.movieapp.data.FakeMovieDBTest;
@@ -24,7 +25,7 @@ import ixalan.movieapp.objects.MovieTest;
 @Suite.SuiteClasses({
         AccessMerchandiseIT.class,
         AccessMerchandiseTest.class,
-        AccessMovieDetail.class,
+        AccessMovieDetailTest.class,
         AccessMoviesIT.class,
         AccessMoviesTest.class,
         FakeMovieDBTest.class,
