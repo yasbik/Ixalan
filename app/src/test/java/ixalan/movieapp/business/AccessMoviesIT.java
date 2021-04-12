@@ -42,6 +42,7 @@ public class AccessMoviesIT
         System.out.println("\nFinished accessMoviesIT_testGetMovies\n");
     }
 
+    @Test
     public void testFilterMovies()
     {
         System.out.println("\nTesting accessMoviesIT_testFilterMovies\n");
