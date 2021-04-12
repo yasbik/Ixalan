@@ -18,6 +18,17 @@ public class Merchandise extends CartItem
         super(name, price, 1);
         this.merchID = merchID;
     }
+
+    public Merchandise(float price, int quantity, String name, int merchID, String description, int movieTag, int stock, String imageUrl)
+    {
+        super(name, price, quantity);
+        this.merchID = merchID;
+        this.description = description;
+        this.movieTag = movieTag;
+        this.stock = stock;
+        this.imageUrl = imageUrl;
+    }
+
     public void setName(String name) {
         super.setName(name);
     }

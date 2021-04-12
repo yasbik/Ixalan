@@ -6,7 +6,6 @@ import static org.junit.Assert.*;
 
 public class MerchandiseTest
 {
-    //TODO: Tests completed
 
     @Test
     public void test1()
