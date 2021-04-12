@@ -3,7 +3,6 @@ package ixalan.movieapp;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import ixalan.movieapp.business.AccessMerchandiseIT;
 import ixalan.movieapp.business.AccessMerchandiseTest;
 import ixalan.movieapp.business.AccessMovieDetailTest;
 import ixalan.movieapp.business.AccessMoviesIT;
@@ -16,7 +15,6 @@ import ixalan.movieapp.objects.MovieTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        AccessMerchandiseIT.class,
         AccessMerchandiseTest.class,
         AccessMovieDetailTest.class,
         AccessMoviesIT.class,
