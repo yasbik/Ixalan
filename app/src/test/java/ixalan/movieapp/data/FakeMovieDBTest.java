@@ -41,6 +41,5 @@ public class FakeMovieDBTest {
         assertTrue(result.equals("1"));
 
         System.out.println("Finished testFakeMovieDB2");
-
     }
 }
