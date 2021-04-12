@@ -26,6 +26,13 @@ import ixalan.movieapp.application.Services;
         this.posterUrl = posterUrl;
     }
 
+    public Movie(String name, String posterUrl, Date releaseDate, ArrayList<Theatre> theatres) {
+        this.Name = name;
+        this.posterUrl = posterUrl;
+        this.releaseDate = releaseDate;
+        this.theatres = theatres;
+    }
+
     public Movie(int movieID, String name)
     {
         this.movieID = movieID;
@@ -137,7 +144,12 @@ import ixalan.movieapp.application.Services;
         this.merchandises = merchandises;
     }
 
-    public void setTheatreList(String bitmask)
+    public void setTheatres(ArrayList<Theatre> theatres)
+    {
+        this.theatres = theatres;
+    }
+
+    /*public void setTheatreList(String bitmask)
     {
         if (bitmask != null)
         {
@@ -153,7 +165,7 @@ import ixalan.movieapp.application.Services;
                 }
             }
         }
-    }
+    }*/
 
     public boolean equals(Movie movie)
     {

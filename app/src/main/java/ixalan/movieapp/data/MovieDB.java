@@ -1,5 +1,6 @@
 package ixalan.movieapp.data;
 
+import ixalan.movieapp.application.Services;
 import ixalan.movieapp.objects.Movie;
 
 import java.sql.Connection;
@@ -40,7 +41,7 @@ public class MovieDB implements IMovieDB{
         movie.setRating(movieRating);
         movie.setCastCrew(castCrew);
 
-        movie.setTheatreList(theatreList);
+        movie.setTheatres(Services.getiTheatreDB().getTheatres(theatreList));
         return movie;
     }
     @Override

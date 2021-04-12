@@ -119,4 +119,20 @@ public class TheatreDB implements ITheatreDB {
             throw new PersistenceException(e);
         }
     }
+
+    public ArrayList<Theatre> getTheatres(String bitmask)
+    {
+        ArrayList<Theatre> toReturn = new ArrayList<Theatre>();
+        if (bitmask != null)
+        {
+            for (int i = 0 ; i < bitmask.length() ; i++)
+            {
+                if (bitmask.charAt(i) == '1')
+                {
+                    toReturn.add(getTheatre(i));
+                }
+            }
+        }
+        return toReturn;
+    }
 }

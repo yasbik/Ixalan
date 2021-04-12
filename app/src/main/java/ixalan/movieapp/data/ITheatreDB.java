@@ -17,4 +17,6 @@ public interface ITheatreDB
     public void addTheatre(Theatre newTheatre);
 
     public Theatre getTheatre(int theatreID);
+
+    public ArrayList<Theatre> getTheatres(String bitmask);
 }

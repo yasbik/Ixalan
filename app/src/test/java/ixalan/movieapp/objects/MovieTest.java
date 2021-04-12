@@ -8,8 +8,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import ixalan.movieapp.data.ITheatreDB;
+import ixalan.movieapp.objects.Merchandise;
 import ixalan.movieapp.objects.Movie;
+import ixalan.movieapp.objects.Theatre;
+
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class MovieTest {
     private Movie movie;
@@ -18,6 +24,7 @@ public class MovieTest {
     @Before
     public void setUp()
     {
+
         movie = new Movie("Test Movie 1",
                 "Test Poster",
                 new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime(),
@@ -45,7 +52,7 @@ public class MovieTest {
         assertTrue("Test Synopsis".equals(movie.getSynopsis()));
         assertTrue("Test trailer URL".equals(movie.getTrailerUrl()));
         assertEquals(1, movie.getMovieID());
-        assert(6.9 == movie.getRating());
+        assert((float)6.9 == movie.getRating());
         assertTrue("Test Cast Crew".equals(movie.getCastCrew()));
         assertTrue(new ArrayList<Merchandise>().equals(movie.getMerchandises()));
 
@@ -59,7 +66,16 @@ public class MovieTest {
     {
         System.out.println("\nStarting movieSetTheatreListTest\n");
 
+        ArrayList<Theatre> theatres = new ArrayList<Theatre>() {
+            {
+                add(new Theatre(1));
+                add(new Theatre(2));
+            }
+        };
 
+        movie.setTheatres(theatres);
+
+        assertTrue(movie.getTheatres().equals(theatres));
 
         System.out.println("\nFinished movieSetTheatreListTest\n");
     }
