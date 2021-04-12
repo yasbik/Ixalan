@@ -1,9 +1,18 @@
 package ixalan.movieapp.business;
 
 import ixalan.movieapp.application.Services;
+import ixalan.movieapp.data.IMerchandiseDB;
 import ixalan.movieapp.data.IMovieDB;
+import ixalan.movieapp.data.MerchandiseDB;
+import ixalan.movieapp.data.MovieDB;
+import ixalan.movieapp.utils.TestUtils;
+
 import org.junit.Test;
 import org.junit.Before;
+
+import java.io.File;
+import java.io.IOException;
+
 import static org.mockito.Mockito.mock;
 
 import static org.junit.Assert.*;
@@ -11,30 +20,35 @@ import static org.junit.Assert.*;
 public class AccessMoviesIT
 {
 
-    //TODO: Unable to fully write integration tests as there is an HSQLDB dependency issue (driver not found error)
     private AccessMovies accessMovies;
-    private IMovieDB iMovieDB;
+    private File tempDB;
 
     @Before
-    public void setUp()
+    public void setUp() throws IOException
     {
-        //Integration test uses real database
-        iMovieDB = Services.getiMovieDB();
-        accessMovies = new AccessMovies(iMovieDB);
-        accessMovies.setSearch_criteria("tHe");
-        accessMovies.setUpcoming(true);
+        this.tempDB = TestUtils.copyDB();
+        final IMovieDB persistence = new MovieDB(this.tempDB.getAbsolutePath().replace(".script", ""));
+        this.accessMovies = new AccessMovies(persistence);
     }
 
     @Test
+    public void testGetMovies()
+    {
+        System.out.println("\nTesting accessMoviesIT_testGetMovies\n");
+
+        //Total number of movies from SC.script
+        assertEquals(accessMovies.getMovies().size(), 4);
+
+        System.out.println("\nFinished accessMoviesIT_testGetMovies\n");
+    }
+
     public void testFilterMovies()
     {
-        //One upcoming movie with "The" in it
-        assertEquals(accessMovies.filterMovies().size(), 1);
+        System.out.println("\nTesting accessMoviesIT_testFilterMovies\n");
 
-        accessMovies.setSearch_criteria("");
-        accessMovies.setUpcoming(false);
+        //Total number of upcoming movies from SC.script
+        assertEquals(accessMovies.filterMovies("", true).size(), 0);
 
-        //Two currently running movies overall
-        assertEquals(accessMovies.filterMovies().size(), 2);
+        System.out.println("\nFinished accessMoviesIT_testFilterMovies\n");
     }
 }
