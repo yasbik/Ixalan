@@ -22,8 +22,8 @@ public class AccessMerchandiseTest
     @Before
     public void setUp()
     {
-        merchandiseDB = mock(IMerchandiseDB.class);
-        accessMerchandise = new AccessMerchandise(merchandiseDB);
+        //merchandiseDB = mock(IMerchandiseDB.class);
+       // accessMerchandise = new AccessMerchandise(merchandiseDB);
     }
 
     @Test

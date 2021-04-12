@@ -13,6 +13,11 @@ public class Theatre implements Serializable {
     {
     }
 
+    public Theatre(int id)
+    {
+        this.id = id;
+    }
+
     public void setID(int id)
     {
         this.id = id;

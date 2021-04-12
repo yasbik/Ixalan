@@ -24,7 +24,7 @@ public class MerchandiseTest
 
         assertNotNull(merchandise);
         assertEquals(merchandise.getMerchID(), 1);
-        assert(merchandise.getPrice() == 2.99);
+        assert(merchandise.getPrice() == (float)2.99);
         assertTrue("Test Merchandise".equals(merchandise.getName()));
         assertTrue("Test Description".equals(merchandise.getDescription()));
         assertEquals(1000, merchandise.getMovieTag());

@@ -11,7 +11,7 @@ public class AccessMovieDetailTest
 {
     //TODO: Tests completed
 
-    private AccessMovieDetail accessMovieDetail;
+    private AccessMovieDetail aMovieDetail;
     private Movie movie;
 
     @Before
@@ -19,11 +19,11 @@ public class AccessMovieDetailTest
     {
         movie = new Movie(1, "test_movie");
 
-        accessMovieDetail = new AccessMovieDetail(movie);
+        aMovieDetail = new AccessMovieDetail(movie);
 
-        movie.setCastCrew("This is a test synopsis");
+        movie.setCastCrew("This is a test Cast: /crew");
         movie.setRating((float)6.7);
-        movie.setSynopsis("This is a test cast/crew");
+        movie.setSynopsis("This is a test synopsis");
     }
 
     @Test
@@ -31,13 +31,13 @@ public class AccessMovieDetailTest
     {
         System.out.println("\nStarting accessMovieDetailTest\n");
 
-        assertNotNull(accessMovieDetail);
+        assertNotNull(aMovieDetail);
 
-        String fullDetails = accessMovieDetail.getFullDetails();
+        String fullDetails = aMovieDetail.getFullDetails();
 
         assertNotNull(fullDetails);
         assert(fullDetails.contains("This is a test synopsis"));
-        assert(fullDetails.contains("This is a test cast/crew"));
+        assert(fullDetails.contains("This is a test \nCast: /crew"));
         assert(fullDetails.contains(""+(float)6.7));
 
         System.out.println("\nFinished accessMovieDetailTest\n");
