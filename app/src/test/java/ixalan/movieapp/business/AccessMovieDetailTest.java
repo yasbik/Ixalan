@@ -32,6 +32,7 @@ public class AccessMovieDetailTest
         System.out.println("\nStarting accessMovieDetailTest\n");
 
         assertNotNull(aMovieDetail);
+        assertNotNull(movie);
 
         String fullDetails = aMovieDetail.getFullDetails();
 

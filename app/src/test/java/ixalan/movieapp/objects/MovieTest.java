@@ -61,6 +61,7 @@ public class MovieTest {
         assertTrue(new ArrayList<Merchandise>().equals(movie.getMerchandises()));
         assertEquals(movie.getTheatres().size(), 2);
 
+        assertNotNull(movie2);
         assertTrue(movie.equals(movie2));
 
         System.out.println("\nFinished testMovie1\n");

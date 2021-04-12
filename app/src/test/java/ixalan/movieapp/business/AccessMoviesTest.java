@@ -1,6 +1,8 @@
 package ixalan.movieapp.business;
 import ixalan.movieapp.data.FakeMovieDB;
+import ixalan.movieapp.data.IMerchandiseDB;
 import ixalan.movieapp.data.IMovieDB;
+import ixalan.movieapp.objects.Merchandise;
 import ixalan.movieapp.objects.Movie;
 import ixalan.movieapp.objects.Theatre;
 
@@ -22,16 +24,15 @@ public class AccessMoviesTest {
 
     private AccessMovies accessMovie;
     private IMovieDB movieDB;
+    private ArrayList<Movie> movies;
 
     @Before
     public void setUp()
     {
-        //use fake db for unit test
         movieDB = mock(IMovieDB.class);
 
-
-        final Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE, -1);
+        Date yesterday = new Date(new Date().getTime() - 86400000);
+        Date tomorrow = new Date(new Date().getTime() + 86400000);
         ArrayList<Theatre> theatres = new ArrayList<Theatre>(){
             {
                 add(new Theatre(1));
@@ -39,51 +40,77 @@ public class AccessMoviesTest {
         };
 
         //bunch of dummy movies to test with
-        final List<Movie> movies = Arrays.asList(new Movie("Avengers Endgame", "poster_1", cal.getTime(), theatres),
-                new Movie("Guardians of the galaxy", "poster_2",  cal.getTime(),  theatres),
-                new Movie("Harry Potter: Deathly Hallows", "poster_3",  cal.getTime(),  theatres),
-                new Movie("The Mandalorian", "poster_4",  cal.getTime(),  theatres));
+        movies = new ArrayList<Movie>() {
+            {
+                add(new Movie("Avengers Endgame", "poster_1", yesterday, theatres));
+                add(new Movie("Guardians of the galaxy", "poster_2", yesterday, theatres));
+                add(new Movie("Harry Potter: Deathly Hallows", "poster_3", yesterday, theatres));
+                add(new Movie("The Mandalorian", "poster_4", tomorrow, theatres));
+            }
+        };
+
         when(movieDB.getAllMovies()).thenReturn(new ArrayList<Movie>(movies));
 
         accessMovie = new AccessMovies(movieDB);
         accessMovie.setSearch_criteria("tHe");
-
     }
 
     @Test
-    public void testNullObject()
+    public void test1()
     {
-        System.out.println("\nStarting test AccessMovies: Null object(s)");
+        System.out.println("\nStarting AccessMoviesTest\n");
 
         assertNotNull(accessMovie);
+        assertNotNull(movieDB);
         assertNotNull(accessMovie.getSearch_criteria());
-        assertNotNull("List of movies shouldn't be null", accessMovie.getMovies());
-
-        System.out.println("\nFinished test AccessMovies: Null object(s)");
-    }
-
-    @Test
-    public void testAccessors()
-    {
-        //Not really necessary, but testing getters is part of TDD!
-        System.out.println("\nStarting test AccessMovies: Getters");
-
-        assertNotNull(accessMovie);
+        assert(accessMovie.getSearch_criteria().equals("tHe"));
         assertFalse(accessMovie.isUpcoming());
-        assertEquals("tHe", accessMovie.getSearch_criteria());
 
-        System.out.println("\nStarting test AccessMovies: Getters");
+        System.out.println("\nFinished AccessMoviesTest\n");
     }
 
     @Test
-    public void testFilterMovies()
+    public void testgetMovies()
     {
-        System.out.println("\nStarting test AccessMovies: Filter movies");
+        System.out.println("\nStarting AccessMovies_testgetMovies\n");
 
-        //Only two movies with "The" in their title
-        assertEquals(2, accessMovie.filterMovies().size());
+        assertEquals(accessMovie.getMovies(), movies);
 
-        System.out.println("\nEnding test AccessMovies: Filter movies");
+        System.out.println("\nFinished AccessMovies_testgetMovies\n");
     }
 
+    @Test
+    public void testGetFilterMoviesOverridden()
+    {
+        System.out.println("\nStarting AccessMovies_testGetFilterMoviesOverridden\n");
+
+        //only one movie with "tHe" in it that is also upcoming
+        assertEquals(accessMovie.filterMovies("tHe", true).size(), 1);
+
+        System.out.println("\nFinished AccessMovies_testGetFilterMoviesOverridden\n");
+    }
+
+    @Test
+    public void testGetFilterMovies()
+    {
+        System.out.println("\nStarting AccessMovies_testGetFilterMovies\n");
+
+        //only one movie with "tHe" in it that is also currently running
+        assertEquals(accessMovie.filterMovies().size(), 1);
+
+        System.out.println("\nFinished AccessMovies_testGetFilterMovies\n");
+    }
+
+    @Test
+    public void test2()
+    {
+        System.out.println("\nStarting AccessMoviesTest_2\n");
+
+        accessMovie.setSearch_criteria("Test Criteria");
+        assertEquals(accessMovie.getSearch_criteria(), "Test Criteria");
+        accessMovie.setUpcoming(true);
+        assertTrue(accessMovie.isUpcoming());
+
+        System.out.println("\nFinished AccessMoviesTest_2\n");
+    }
 }
