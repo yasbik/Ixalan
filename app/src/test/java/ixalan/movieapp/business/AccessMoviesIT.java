@@ -36,20 +36,11 @@ public class AccessMoviesIT
     {
         System.out.println("\nTesting accessMoviesIT_testGetMovies\n");
 
+        assertNotNull(accessMovies);
         //Total number of movies from SC.script
         assertEquals(accessMovies.getMovies().size(), 4);
 
         System.out.println("\nFinished accessMoviesIT_testGetMovies\n");
     }
 
-    @Test
-    public void testFilterMovies()
-    {
-        System.out.println("\nTesting accessMoviesIT_testFilterMovies\n");
-
-        //Total number of upcoming movies from SC.script
-        assertEquals(accessMovies.filterMovies("", true).size(), 0);
-
-        System.out.println("\nFinished accessMoviesIT_testFilterMovies\n");
-    }
 }

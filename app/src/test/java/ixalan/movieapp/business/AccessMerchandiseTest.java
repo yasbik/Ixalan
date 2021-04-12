@@ -76,9 +76,9 @@ public class AccessMerchandiseTest
     }
 
     @Test
-    public void testgetCurrentItem()
+    public void test2()
     {
-        System.out.println("\nStarting AccessMerchandise_testgetCurrentItem\n");
+        System.out.println("\nStarting AccessMerchandise_test2\n");
 
         assertNotNull(accessMerchandise);
         accessMerchandise.setMovie(new Movie(1, "Test Movie"));
@@ -92,7 +92,7 @@ public class AccessMerchandiseTest
         assertTrue(accessMerchandise.getDetails().contains(""+merchandise.get(1).getPrice()));
         assertTrue(accessMerchandise.getDetails().contains(merchandise.get(1).getDescription()));
 
-        System.out.println("\nFinished AccessMerchandise_testgetCurrentItem\n");
+        System.out.println("\nFinished AccessMerchandise_test2\n");
     }
 
 }
