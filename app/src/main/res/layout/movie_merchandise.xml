@@ -66,17 +66,17 @@
 
     <Button
         android:id="@+id/showNextButton"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
         android:text="&gt;"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/merchandise_item_title"
-        style="?android:attr/borderlessButtonStyle"/>
+        app:layout_constraintTop_toBottomOf="@+id/merchandise_item_title" />
 
     <Button
         android:id="@+id/addToCartButton"

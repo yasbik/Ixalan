@@ -11,9 +11,12 @@ import ixalan.movieapp.objects.Movie;
 public class AccessMerchandise
 {
     private IMerchandiseDB merchandiseDB;
+
     private Movie movie;
     private ArrayList<Merchandise> merchandise;
-    private int merchandise_index = 0;
+    private int index_ptr = 0;
+
+    //Fields pertaining to the current merchandise item
     private int quantity = 0;
     private String details = "";
 
@@ -21,26 +24,30 @@ public class AccessMerchandise
     {
         movie = null;
         this.merchandiseDB = merchandiseDB;
-        merchandise = merchandiseDB.getAllMerchandise();
     }
-
-    public int getMerchandise_index()
-    {
-        return this.merchandise_index;
-    }
-
     public AccessMerchandise(final Movie movie)
     {
-       this();
-       this.movie = movie;
-       merchandise = merchandiseDB.getMerchandiseForMovie(movie);
+        this();
+        this.movie = movie;
     }
 
     public AccessMerchandise()
     {
         merchandiseDB = Services.getiMerchandiseDB();
-        merchandise = merchandiseDB.getAllMerchandise();
         movie = null;
+    }
+
+    public int getIndexPointer()
+    {
+        return this.index_ptr;
+    }
+
+    public void incrementIndexPtr()
+    {
+        if (merchandise != null && !merchandise.isEmpty())
+        {
+            index_ptr = (index_ptr + 1) % merchandise.size();
+        }
     }
 
     public Movie getMovie()
@@ -48,45 +55,31 @@ public class AccessMerchandise
         return this.movie;
     }
 
-    public Merchandise getNextItem()
+    public void setMovie(Movie movie)
     {
-        Merchandise toReturn = null;
-        if (merchandise != null && !merchandise.isEmpty())
+        if (movie != null)
         {
-            toReturn = merchandise.get(merchandise_index);
-            merchandise_index = (merchandise_index + 1) % merchandise.size();
-            quantity = 0;
-
-            details = "";
-
-            if (toReturn != null) {
-                details += ("Price: $" + new DecimalFormat("0.00").format(toReturn.getPrice()) + "\n\n");
-                details += toReturn.getDescription();
-            }
+            this.movie = movie;
+            getMerchandise();
         }
-        return toReturn;
     }
 
-    public Merchandise getCurrentItem()
+    public void getMerchandise()
     {
-        Merchandise toReturn = null;
-        if (merchandise != null && !merchandise.isEmpty())
+        if (movie != null && merchandiseDB != null)
         {
-            toReturn = merchandise.get(merchandise_index);
+            ArrayList<Merchandise> updated_list = merchandiseDB.getMerchandiseForMovie(movie);
 
-            details = "";
-
-            if (toReturn != null) {
-                details += ("Price: $" + new DecimalFormat("0.00").format(toReturn.getPrice()) + "\n\n");
-                details += toReturn.getDescription();
+            if (updated_list != null)
+            {
+                merchandise = updated_list;
             }
         }
-        return toReturn;
     }
 
     public int getQuantity()
     {
-        return quantity;
+        return this.quantity;
     }
 
     public boolean setQuantity(int quantity)
@@ -110,9 +103,26 @@ public class AccessMerchandise
         return this.details;
     }
 
-    public void setMerchandise_index(int merchandise_index)
+    public Merchandise getCurrentItem()
     {
-        this.merchandise_index = merchandise_index;
-    }
+        Merchandise toReturn = null;
 
+        if (merchandise == null)
+        {
+            getMerchandise();
+        }
+
+        if (!merchandise.isEmpty() && index_ptr < merchandise.size())
+        {
+            toReturn = merchandise.get(index_ptr);
+
+            if (toReturn != null)
+            {
+                details = "";
+                details += ("Price: $" + new DecimalFormat("0.00").format(toReturn.getPrice()) + "\n\n");
+                details += toReturn.getDescription();
+            }
+        }
+        return toReturn;
+    }
 }

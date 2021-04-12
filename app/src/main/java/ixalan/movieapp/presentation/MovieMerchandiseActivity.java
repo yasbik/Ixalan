@@ -35,7 +35,8 @@ public class MovieMerchandiseActivity extends AppCompatActivity
             Movie movie = (Movie) getIntent().getSerializableExtra("MOVIE");
             accessMerchandise = new AccessMerchandise(movie);
 
-            Merchandise item = accessMerchandise.getNextItem();
+            Merchandise item = accessMerchandise.getCurrentItem();
+            accessMerchandise.incrementIndexPtr();
             showMerchandiseItem(item, accessMerchandise.getDetails());
 
             adjustQuantity();
@@ -61,7 +62,8 @@ public class MovieMerchandiseActivity extends AppCompatActivity
             showNextBtn.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v)
                 {
-                    Merchandise item = accessMerchandise.getNextItem();
+                    Merchandise item = accessMerchandise.getCurrentItem();
+                    accessMerchandise.incrementIndexPtr();
                     showMerchandiseItem(item, accessMerchandise.getDetails());
                 }
             });
@@ -86,15 +88,18 @@ public class MovieMerchandiseActivity extends AppCompatActivity
 
     public void showMerchandiseItem(Merchandise merchandise, String details)
     {
-        TextView merchandiseTitle = (TextView)findViewById(R.id.merchandise_item_title);
-        merchandiseTitle.setText(merchandise.getName());
+        if (merchandise != null)
+         {
+            TextView merchandiseTitle = (TextView) findViewById(R.id.merchandise_item_title);
+            merchandiseTitle.setText(merchandise.getName());
 
-        ImageView merch_item_imageview = (ImageView) findViewById(R.id.merchandise_item_imageview);
-        int merch_id = getResources().getIdentifier(merchandise.getImageUrl(), "drawable", getPackageName());
-        merch_item_imageview.setImageResource(merch_id);
+            ImageView merch_item_imageview = (ImageView) findViewById(R.id.merchandise_item_imageview);
+            int merch_id = getResources().getIdentifier(merchandise.getImageUrl(), "drawable", getPackageName());
+            merch_item_imageview.setImageResource(merch_id);
 
-        TextView merchandiseDetails = (TextView)findViewById(R.id.movie_details_textView);
-        merchandiseDetails.setText(details);
+            TextView merchandiseDetails = (TextView) findViewById(R.id.movie_details_textView);
+            merchandiseDetails.setText(details);
+        }
     }
 
     public void viewCart()
