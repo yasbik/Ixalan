@@ -9,7 +9,7 @@ public interface IMerchandiseDB
 {
     public void addMerchandise(Merchandise merchandise);
 
-    public ArrayList<Merchandise> getMerchandiseForMovie(Movie movie);
+    public ArrayList<Merchandise> getMerchandiseForMovie(int movieID);
 
     public ArrayList<Merchandise> getAllMerchandise();
 }

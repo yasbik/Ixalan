@@ -12,6 +12,7 @@ import static org.mockito.Mockito.when;
 
 import ixalan.movieapp.data.IMerchandiseDB;
 import ixalan.movieapp.objects.Merchandise;
+import ixalan.movieapp.objects.Movie;
 
 public class AccessMerchandiseTest
 {
@@ -32,7 +33,8 @@ public class AccessMerchandiseTest
             add(new Merchandise((float)9.99, 2, "Test Merch 2", 2, "Test description 2", 2, 100, "testUrl2"));
             add(new Merchandise((float)14.99, 1, "Test Merch 3", 3, "Test description 3", 1, 5, "testUrl3"));
         }};
-        when(merchandiseDB.getAllMerchandise()).thenReturn(merchandise);
+        when(merchandiseDB.getMerchandiseForMovie(1)).thenReturn(new ArrayList<Merchandise>(merchandise.subList(0, 2)));
+        when(merchandiseDB.getMerchandiseForMovie(2)).thenReturn(new ArrayList<Merchandise>(merchandise.subList(2, 2)));
 
         accessMerchandise = new AccessMerchandise(merchandiseDB);
     }
@@ -46,9 +48,10 @@ public class AccessMerchandiseTest
         assertNotNull(merchandiseDB);
         assertNotNull(merchandise);
         assertEquals(accessMerchandise.getMovie(), null);
+        assertNotNull(accessMerchandise.getDetails());
         assertTrue(accessMerchandise.getDetails().equals(""));
         assertEquals(accessMerchandise.getQuantity(), 0);
-        assertEquals(accessMerchandise.getMerchandise_index(), 0);
+        assertEquals(accessMerchandise.getIndexPointer(), 0);
 
         System.out.println("\nFinished AccessMerchandiseTest1\n");
     }
@@ -58,31 +61,18 @@ public class AccessMerchandiseTest
     {
         System.out.println("\nStarting AccessMerchandise_testQuantities\n");
 
+        assertNotNull(accessMerchandise);
+        accessMerchandise.setMovie(new Movie(1, "Test Movie"));
+        assertNotNull(accessMerchandise.getMovie());
         assertFalse(accessMerchandise.setQuantity(merchandise.get(0).getStock()+10));
         assertTrue(accessMerchandise.setQuantity(1));
         assertEquals(accessMerchandise.getQuantity(), 1);
 
-        System.out.println("\nFinished AccessMerchandise_testQuantities\n");
-    }
-
-    @Test
-    public void testgetNextItem()
-    {
-        System.out.println("\nStarting AccessMerchandise_testgetNextItem\n");
-
-        assertEquals(accessMerchandise.getNextItem(), merchandise.get(0));
-
-        assertTrue(accessMerchandise.getDetails().contains(merchandise.get(0).getDescription()));
-        assertTrue(accessMerchandise.getDetails().contains(""+merchandise.get(0).getPrice()));
-
-        assertEquals(accessMerchandise.getMerchandise_index(), 1);
+        //revert back to what it was for following tests
+        assertTrue(accessMerchandise.setQuantity(0));
         assertEquals(accessMerchandise.getQuantity(), 0);
 
-        //reset if any tests follow after this
-        accessMerchandise.setMerchandise_index(0);
-        assertEquals(accessMerchandise.getMerchandise_index(), 0);
-
-        System.out.println("\nFinished AccessMerchandise_testgetNextItem\n");
+        System.out.println("\nFinished AccessMerchandise_testQuantities\n");
     }
 
     @Test
@@ -90,21 +80,17 @@ public class AccessMerchandiseTest
     {
         System.out.println("\nStarting AccessMerchandise_testgetCurrentItem\n");
 
-        //local initialization
-        accessMerchandise.setMerchandise_index(2);
-        assertEquals(accessMerchandise.getMerchandise_index(), 2);
-
-        assertEquals(accessMerchandise.getCurrentItem(), merchandise.get(2));
-
-        assertTrue(accessMerchandise.getDetails().contains(merchandise.get(2).getDescription()));
-        assertTrue(accessMerchandise.getDetails().contains(""+merchandise.get(2).getPrice()));
-
-        assertEquals(accessMerchandise.getMerchandise_index(), 2); //called again to ensure function call didn't move pointer
-        assertEquals(accessMerchandise.getQuantity(), 0);
-
-        //reset if any tests follow after this
-        accessMerchandise.setMerchandise_index(0);
-        assertEquals(accessMerchandise.getMerchandise_index(), 0);
+        assertNotNull(accessMerchandise);
+        accessMerchandise.setMovie(new Movie(1, "Test Movie"));
+        assertNotNull(accessMerchandise.getMovie());
+        assertEquals(accessMerchandise.getCurrentItem(), merchandise.get(0));
+        assertTrue(accessMerchandise.getDetails().contains(""+merchandise.get(0).getPrice()));
+        assertTrue(accessMerchandise.getDetails().contains(merchandise.get(0).getDescription()));
+        accessMerchandise.incrementIndexPtr();
+        assertEquals(accessMerchandise.getIndexPointer(), 1);
+        assertEquals(accessMerchandise.getCurrentItem(), merchandise.get(1));
+        assertTrue(accessMerchandise.getDetails().contains(""+merchandise.get(1).getPrice()));
+        assertTrue(accessMerchandise.getDetails().contains(merchandise.get(1).getDescription()));
 
         System.out.println("\nFinished AccessMerchandise_testgetCurrentItem\n");
     }

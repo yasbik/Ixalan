@@ -65,13 +65,13 @@ public class MerchandiseDB implements IMerchandiseDB
     }
 
     @Override
-    public ArrayList<Merchandise> getMerchandiseForMovie(Movie movie)
+    public ArrayList<Merchandise> getMerchandiseForMovie(int movieID)
     {
         final ArrayList<Merchandise> merchandise_list = new ArrayList<>();
 
         try(Connection c = connection()) {
             final PreparedStatement st = c.prepareStatement("SELECT * FROM merchandise where movieid = ?");
-            st.setInt(1, movie.getMovieID());
+            st.setInt(1, movieID);
             final ResultSet rs = st.executeQuery();
             while(rs.next())
             {

@@ -68,7 +68,7 @@ public class AccessMerchandise
     {
         if (movie != null && merchandiseDB != null)
         {
-            ArrayList<Merchandise> updated_list = merchandiseDB.getMerchandiseForMovie(movie);
+            ArrayList<Merchandise> updated_list = merchandiseDB.getMerchandiseForMovie(movie.getMovieID());
 
             if (updated_list != null)
             {

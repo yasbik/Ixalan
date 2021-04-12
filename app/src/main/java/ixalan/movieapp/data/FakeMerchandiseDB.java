@@ -20,12 +20,12 @@ public class FakeMerchandiseDB implements IMerchandiseDB {
     }
 
     @Override
-    public ArrayList<Merchandise> getMerchandiseForMovie(Movie movie)
+    public ArrayList<Merchandise> getMerchandiseForMovie(int movieID)
     {
         final ArrayList <Merchandise> toReturn = new ArrayList<Merchandise>();
         for (Merchandise merchandise : this.Merchandise)
         {
-            if (merchandise.getMovieTag() == movie.getMovieID())
+            if (merchandise.getMovieTag() == movieID)
             {
                 toReturn.add(merchandise);
             }
