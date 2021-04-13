@@ -35,6 +35,7 @@ public class AccessMerchandiseTest
         }};
         when(merchandiseDB.getMerchandiseForMovie(1)).thenReturn(new ArrayList<Merchandise>(merchandise.subList(0, 2)));
         when(merchandiseDB.getMerchandiseForMovie(2)).thenReturn(new ArrayList<Merchandise>(merchandise.subList(2, 2)));
+        when(merchandiseDB.getMerchandiseForMovie(3)).thenReturn(new ArrayList<Merchandise>());
 
         accessMerchandise = new AccessMerchandise(merchandiseDB);
     }
@@ -67,6 +68,7 @@ public class AccessMerchandiseTest
         assertFalse(accessMerchandise.setQuantity(merchandise.get(0).getStock()+10));
         assertTrue(accessMerchandise.setQuantity(1));
         assertEquals(accessMerchandise.getQuantity(), 1);
+        assertTrue(accessMerchandise.merchandiseAvailable());
 
         //revert back to what it was for following tests
         assertTrue(accessMerchandise.setQuantity(0));
@@ -91,8 +93,21 @@ public class AccessMerchandiseTest
         assertEquals(accessMerchandise.getCurrentItem(), merchandise.get(1));
         assertTrue(accessMerchandise.getDetails().contains(""+merchandise.get(1).getPrice()));
         assertTrue(accessMerchandise.getDetails().contains(merchandise.get(1).getDescription()));
+        assertTrue(accessMerchandise.merchandiseAvailable());
 
         System.out.println("\nFinished AccessMerchandise_test2\n");
+    }
+
+    @Test
+    public void testMerchandiseAvailable()
+    {
+        System.out.println("\nStarting AccessMerchandise_testMerchandiseAvailable\n");
+
+        assertNotNull(accessMerchandise);
+        accessMerchandise.setMovie(new Movie(3, "Test Movie"));
+        assertFalse(accessMerchandise.merchandiseAvailable());
+
+        System.out.println("\nFinished AccessMerchandise_testMerchandiseAvailable\n");
     }
 
 }
