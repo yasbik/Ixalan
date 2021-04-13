@@ -27,6 +27,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import ixalan.movieapp.application.Services;
 import ixalan.movieapp.objects.Movie;
@@ -45,6 +46,14 @@ public class MoviesTest
     public void setUp()
     {
         movies = Services.getiMovieDB().getAllMovies();
+
+        //Only keep currently running as only those will show initially
+        for(int i = movies.size() - 1; i>=0; i--)
+        {
+            if(movies.get(i).isUpcoming()) {
+                movies.remove(i);
+            }
+        }
     }
 
     @Test

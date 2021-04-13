@@ -47,4 +47,5 @@ dependencies {
     androidTestImplementation 'androidx.test:rules:1.1.0'
     testImplementation group: 'com.google.guava', name: 'guava', version: '25.1-jre'
     testImplementation group: 'org.mockito', name: 'mockito-core', version: '2.+'
+    implementation 'joda-time:joda-time:+'
 }
