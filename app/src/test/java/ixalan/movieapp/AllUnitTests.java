@@ -24,5 +24,5 @@ import ixalan.movieapp.objects.MovieTest;
         MovieTest.class,
 })
 
-public class UnitTests {
+public class AllUnitTests {
 }

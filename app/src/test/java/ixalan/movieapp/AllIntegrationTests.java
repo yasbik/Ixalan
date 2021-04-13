@@ -11,5 +11,5 @@ import org.junit.runners.Suite;
         AccessMoviesIT.class,
         AccessMerchandiseIT.class
 })
-public class IntegrationTests {
+public class AllIntegrationTests {
 }
