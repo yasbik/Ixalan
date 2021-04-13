@@ -61,18 +61,20 @@ public class MoviesTest
     User Story #2: See what movies are on
 
     * (Verification #1) Number of movies displaying is equal to number of movies in database
-    * (Action) Click on any of the movies
+    * (Action #1) Click on any of the movies
     * (Verification #2) The movie details displayed must match the global movie
     */
     public void test1()
     {
         //Verification #1
         LinearLayout layout = (LinearLayout) activityRule.getActivity().findViewById(R.id.movies_list_linear_layout);
+        //make sure only currently running movies are being displayed
+        //TODO: Do the above
         assertNotNull(layout);
         assertNotNull(movies);
         assertEquals(layout.getChildCount(), movies.size());
 
-        //Next perform the click
+        //Action #1
         onView(withId(R.id.sample_movie_button_id)).perform(click());
 
         //Verification #2
