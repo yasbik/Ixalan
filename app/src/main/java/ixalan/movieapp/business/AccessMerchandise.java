@@ -25,6 +25,7 @@ public class AccessMerchandise
         movie = null;
         this.merchandiseDB = merchandiseDB;
     }
+
     public AccessMerchandise(final Movie movie)
     {
         this();
@@ -124,5 +125,10 @@ public class AccessMerchandise
             }
         }
         return toReturn;
+    }
+
+    public boolean merchandiseAvailable()
+    {
+        return merchandise != null && !merchandise.isEmpty();
     }
 }

@@ -33,6 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="start|top|left"
+                android:text="@string/MERCHANDISE_UNAVAILABLE"
                 android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
@@ -56,7 +57,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="4dp"
-        android:text="TextView"
+        android:text="@string/MERCHANDISE_UNAVAILABLE"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/merchandise_item_imageview"

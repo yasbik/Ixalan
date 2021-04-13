@@ -48,6 +48,7 @@ public class MovieMerchandiseActivity extends AppCompatActivity
                     changeQuantity(true);
                 }
             });
+            addQtyBtn.setEnabled(accessMerchandise.merchandiseAvailable());
 
             Button rmvQtyBtn = (Button)findViewById(R.id.rmvQty);
             rmvQtyBtn.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +57,7 @@ public class MovieMerchandiseActivity extends AppCompatActivity
                     changeQuantity(false);
                 }
             });
+            rmvQtyBtn.setEnabled(accessMerchandise.merchandiseAvailable());
 
             Button showNextBtn = (Button)findViewById(R.id.showNextButton);
             //if clicked, display movie details
@@ -67,6 +69,7 @@ public class MovieMerchandiseActivity extends AppCompatActivity
                     showMerchandiseItem(item, accessMerchandise.getDetails());
                 }
             });
+            showNextBtn.setEnabled(accessMerchandise.merchandiseAvailable());
 
             Button addToCart = (Button)findViewById(R.id.addToCartButton);
             addToCart.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +78,7 @@ public class MovieMerchandiseActivity extends AppCompatActivity
                     addToCart();
                 }
             });
+            addToCart.setEnabled(accessMerchandise.merchandiseAvailable());
 
             Button viewCart = (Button)findViewById(R.id.view_cart_button);
             viewCart.setOnClickListener(new View.OnClickListener() {
