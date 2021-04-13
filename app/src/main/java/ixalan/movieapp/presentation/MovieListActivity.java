@@ -143,8 +143,13 @@ public class MovieListActivity extends AppCompatActivity
         //Add entries one by one
         if (list_of_movies != null)
         {
-            for (Movie movie : list_of_movies) {
+            for (Movie movie : list_of_movies)
+            {
                 Button btn = new Button(this);
+                if (list_of_movies.get(0).equals(movie))
+                {
+                    btn.setId(R.id.sample_movie_button_id);
+                }
                 btn.setText(movie.getMovieName());
                 //if clicked, display movie details
                 btn.setOnClickListener(new View.OnClickListener() {
