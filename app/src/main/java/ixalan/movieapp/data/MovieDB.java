@@ -29,7 +29,7 @@ public class MovieDB implements IMovieDB{
         final String movieID = rs.getString("movieID");
         final String movieName = rs.getString("name");
         final String moviePoster = rs.getString("poster");
-        final long movieDate = rs.getLong("date");
+        final long movieDate = rs.getLong("releasedate");
         final String movieSynopsis = rs.getString("synopsis");
         final String movieTrailer = rs.getString("trailer");
         final float movieRating = rs.getFloat("rating");

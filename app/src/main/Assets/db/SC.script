@@ -1,5 +1,5 @@
 CREATE SCHEMA PUBLIC AUTHORIZATION DBA
-CREATE MEMORY TABLE PUBLIC.MOVIES(MOVIEID INTEGER NOT NULL PRIMARY KEY,NAME VARCHAR(40),POSTER VARCHAR(20),DATE BIGINT,SYNOPSIS VARCHAR(500),TRAILER VARCHAR(16), RATING DECIMAL, CASTCREW VARCHAR(1000), THEATRELIST VARCHAR(1000))
+CREATE MEMORY TABLE PUBLIC.MOVIES(MOVIEID INTEGER NOT NULL PRIMARY KEY,NAME VARCHAR(40),POSTER VARCHAR(20),RELEASEDATE BIGINT,SYNOPSIS VARCHAR(500),TRAILER VARCHAR(16), RATING DECIMAL, CASTCREW VARCHAR(1000), THEATRELIST VARCHAR(1000))
 CREATE MEMORY TABLE PUBLIC.USERS(USERID INTEGER NOT NULL PRIMARY KEY,NAME VARCHAR(30), EMAIL VARCHAR(30), BALANCE INTEGER)
 CREATE MEMORY TABLE PUBLIC.THEATRES(THEATREID INTEGER NOT NULL PRIMARY KEY,NAME VARCHAR(40), LOCATION VARCHAR(40), SCREEN1 INTEGER, SCREEN2 INTEGER)
 CREATE MEMORY TABLE PUBLIC.MERCHANDISE(MERCHID INTEGER NOT NULL PRIMARY KEY,NAME VARCHAR(40), PRICE DECIMAL, MOVIEID INTEGER, STOCK INTEGER, IMAGEURL VARCHAR(40), DESCRIPTION VARCHAR(40))
@@ -25,6 +25,7 @@ INSERT INTO MOVIES VALUES(1,'Avengers EndGame','avengers_endgame',1556236800,'Af
 INSERT INTO MOVIES VALUES(3,'Guardians of the Galaxy','guardians_of_the_galaxy',1536192000,'Peter escapes from the planet Morag with a valuable orb that Ronan the Accuser wants. He eventually forms a group with unwilling heroes to stop Ronan.', 'd96cjJhvlMA', 8.0,'Director: James GunnCast: Chriss Pratt, Zoe Saldana, Dave Bautista, James Gunn', '1101010101')
 INSERT INTO MOVIES VALUES(4,'Harry Potter: Deathly Hallows','harry_potter_and_the_deathly_hallows',1540425600,'After Voldemort takes over the Ministry of Magic, Harry, Ron and Hermione are forced into hiding. They try to decipher the clues left to them by Dumbledore to find and destroy Voldemorts Horcruxes.','MxqsmsA8y5k', 7.7, 'Director: David YatesCast: Daniel Radcliffe, Emma Watson, Rupert Grint', '0111000111')
 INSERT INTO MOVIES VALUES(5, 'The Mandalorian', 'star_wars_the_mandalorian', 1536192000, 'After the defeat of the Empire at the hands of Rebel forces, a lone bounty hunter operating in the Outer Rim, away from the dominion of the New Republic, goes on many surprising and risky adventures.', 'aOC8E8z_ifw',8.5 , 'Director: Jon FavreauCast: Pedro Pascal, Gina Carano, Carl Weathers', '1001110101')
+INSERT INTO MOVIES VALUES(6, 'No Time to Die', 'no_time_to_die', 2000000000, 'Recruited to rescue a kidnapped scientist, globe-trotting spy James Bond finds himself hot on the trail of a mysterious villain, who is armed with a dangerous new technology.', 'vw2FOYjCz38&ab', 9.7, 'Director: Cary Joji FukunagaCast: Daniel Craig, Rami Malek, Ana de Armas, Lea Seydoux', '0000000000');
 INSERT INTO USERS VALUES(1,'David Doyle', 'ddoyle@gmail.com')
 INSERT INTO USERS VALUES(2,'Sam Raimi', 'therealSamRaimi@yahoo.ca')
 INSERT INTO USERS VALUES(3,'Sofia Vergara','sofiV@gmail.com')
