@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
 
-        eName = findViewById(R.id.user_id_plain_text);
+        eName = findViewById(R.id.user_name_plain_text);
         ePassword = findViewById(R.id.password_field_password);
         loginBtn = (Button)findViewById(R.id.login_button);
         loginBtn.setOnClickListener(new View.OnClickListener() {

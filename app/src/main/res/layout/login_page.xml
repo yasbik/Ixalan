@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/user_id_plain_text"
+        android:id="@+id/user_name_plain_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
@@ -28,7 +28,7 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_id_plain_text" />
+        app:layout_constraintTop_toBottomOf="@+id/user_name_plain_text" />
 
     <Button
         android:id="@+id/login_button"
