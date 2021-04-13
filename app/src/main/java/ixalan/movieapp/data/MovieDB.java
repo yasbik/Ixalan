@@ -11,7 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 
 public class MovieDB implements IMovieDB{
     private final String dbPath;
@@ -35,7 +36,7 @@ public class MovieDB implements IMovieDB{
         final float movieRating = rs.getFloat("rating");
         final String castCrew = rs.getString("castcrew");
         final String theatreList = rs.getString("theatrelist");
-        Date releasedate = new Date(movieDate);
+        DateTime releasedate = new DateTime(movieDate * 1000, DateTimeZone.forOffsetHours(0));
         movie = new Movie(movieName, moviePoster,releasedate,movieSynopsis, movieTrailer);
         movie.setMovieID(Integer.parseInt(movieID));
         movie.setRating(movieRating);

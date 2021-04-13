@@ -1,8 +1,9 @@
  package ixalan.movieapp.objects;
 
 //A movie class for our Theatre booking app.
+import org.joda.time.DateTime;
+
 import java.io.Serializable;
-import java.util.Date;
 import java.util.ArrayList;
 
 import ixalan.movieapp.application.Services;
@@ -14,7 +15,7 @@ import ixalan.movieapp.application.Services;
     private float rating;// The rating of the movie(maybe out of 5 ) is stored as float to handle numbers like 3.8
     private String castCrew;// A list of cast members involved in the making of the movie implemented by array list but can be made an array
     private String posterUrl;// Contains a url as a string for the poster for the movie.
-    private Date releaseDate;// The date the movie was released.
+    private DateTime releaseDate;// The date the movie was released.
     private  String synopsis;// A brief summary of the movie.
     private String trailerUrl;// Contains a url to the trailer of the movie.
     private ArrayList<Merchandise> merchandises = new ArrayList<>();// A list of merchandises of the movie implemented by array list but can be made an array
@@ -26,7 +27,7 @@ import ixalan.movieapp.application.Services;
         this.posterUrl = posterUrl;
     }
 
-    public Movie(String name, String posterUrl, Date releaseDate, ArrayList<Theatre> theatres) {
+    public Movie(String name, String posterUrl, DateTime releaseDate, ArrayList<Theatre> theatres) {
         this.Name = name;
         this.posterUrl = posterUrl;
         this.releaseDate = releaseDate;
@@ -39,21 +40,21 @@ import ixalan.movieapp.application.Services;
         this.Name = name;
     }
 
-    public Movie(String name, String posterUrl, Date releaseDate, ArrayList<Theatre> theatres, String synopsis, String trailerUrl)
+    public Movie(String name, String posterUrl, DateTime releaseDate, String synopsis, String trailerUrl)
+    {
+        this.Name =name;
+        this.posterUrl = posterUrl;
+        this.releaseDate = releaseDate;
+        this.synopsis = synopsis;
+        this.trailerUrl = trailerUrl;
+    }
+
+    public Movie(String name, String posterUrl, DateTime releaseDate, ArrayList<Theatre> theatres, String synopsis, String trailerUrl)
     {
         this.Name = name;
         this.posterUrl = posterUrl;
         this.releaseDate = releaseDate;
         this.theatres = theatres;
-        this.synopsis = synopsis;
-        this.trailerUrl = trailerUrl;
-    }
-
-    public Movie(String name, String posterUrl, Date releaseDate, String synopsis, String trailerUrl)
-    {
-        this.Name =name;
-        this.posterUrl = posterUrl;
-        this.releaseDate = releaseDate;
         this.synopsis = synopsis;
         this.trailerUrl = trailerUrl;
     }
@@ -66,15 +67,16 @@ import ixalan.movieapp.application.Services;
     public boolean isUpcoming()
     {
         //Upcoming if it has a future release date
-        Date today = new Date(System.currentTimeMillis());
-        return releaseDate != null && releaseDate.after(today);
+        DateTime today = new DateTime(System.currentTimeMillis());
+        releaseDate.isAfter(today);
+        return releaseDate != null && releaseDate.isAfter(today);
     }
 
     public boolean isCurrentlyRunning()
     {
-        Date today = new Date(System.currentTimeMillis());
+        DateTime today = new DateTime(System.currentTimeMillis());
         return !isUpcoming() && theatres != null && theatres.size() > 0 &&
-                (releaseDate.before(today) || releaseDate.compareTo(today) == 0);
+                (releaseDate.isBefore(today) || releaseDate.compareTo(today) == 0);
 
     }
 
@@ -92,7 +94,7 @@ import ixalan.movieapp.application.Services;
         return this.trailerUrl;
     }
 
-    public Date getReleaseDate()
+    public DateTime getReleaseDate()
     {
         return this.releaseDate;
     }

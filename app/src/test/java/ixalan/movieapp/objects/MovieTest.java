@@ -1,11 +1,11 @@
 package ixalan.movieapp.objects;
+import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 import ixalan.movieapp.data.ITheatreDB;
@@ -27,7 +27,7 @@ public class MovieTest {
 
         movie = new Movie("Test Movie 1",
                 "Test Poster",
-                new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime(),
+                new DateTime().minusDays(10),
                 new ArrayList<Theatre>() {
                     {
                         add(new Theatre(1));
@@ -52,7 +52,7 @@ public class MovieTest {
         assertNotNull(movie);
         assertTrue("Test Movie 1".equals(movie.getMovieName()));
         assertTrue("Test Poster".equals(movie.getMoviePoster()));
-        assertEquals(0, new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime().compareTo(movie.getReleaseDate()));
+        assertEquals(0, new DateTime().minusDays(10).toLocalDate().compareTo(movie.getReleaseDate().toLocalDate()));
         assertTrue("Test Synopsis".equals(movie.getSynopsis()));
         assertTrue("Test trailer URL".equals(movie.getTrailerUrl()));
         assertEquals(1, movie.getMovieID());

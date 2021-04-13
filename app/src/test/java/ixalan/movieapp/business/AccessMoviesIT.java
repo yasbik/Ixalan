@@ -38,7 +38,7 @@ public class AccessMoviesIT
 
         assertNotNull(accessMovies);
         //Total number of movies from SC.script
-        assertEquals(accessMovies.getMovies().size(), 4);
+        assertEquals(accessMovies.getMovies().size(), 5);
 
         System.out.println("\nFinished accessMoviesIT_testGetMovies\n");
     }

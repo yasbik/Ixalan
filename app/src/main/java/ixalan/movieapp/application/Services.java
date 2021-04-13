@@ -4,6 +4,8 @@ import android.content.Context;
 
 //import org.hsqldb.*;
 
+import org.joda.time.DateTime;
+
 import ixalan.movieapp.data.FakeMerchandiseDB;
 import ixalan.movieapp.data.FakeMovieDB;
 import ixalan.movieapp.data.FakePosterDB;
@@ -23,7 +25,6 @@ import ixalan.movieapp.objects.Theatre;
 import java.io.File;
 import java.util.Calendar;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Services
@@ -90,14 +91,14 @@ public class Services
         ArrayList<Theatre> empty_list = null;
 
         //One movie where release date is same as today
-        iMovieDB.addMovie(new Movie("Avengers Endgame","poster_1", cal.getTime(), list_of_theatres, "Cast: Chris Evans, Chris Hemsworth, Jeremy Renner, Robert Downey Jr.\nDirectors: Joe Russo, Anthony Russo\n", "TcMBFSGVi1c&ab"));
+        iMovieDB.addMovie(new Movie("Avengers Endgame","poster_1", new DateTime(), list_of_theatres, "Cast: Chris Evans, Chris Hemsworth, Jeremy Renner, Robert Downey Jr.\nDirectors: Joe Russo, Anthony Russo\n", "TcMBFSGVi1c&ab"));
 
         //One movie where release date is before today
         cal.set(2021, Calendar.FEBRUARY, 13);
-        iMovieDB.addMovie(new Movie("Replicas","poster_4", cal.getTime(), list_of_theatres, "Cast: Keanu Reeves\nDirector: Jeffrey Nachmanoff", "JAHKQPBKSZ8&ab"));
+        iMovieDB.addMovie(new Movie("Replicas","poster_4", new DateTime().minusDays(1), list_of_theatres, "Cast: Keanu Reeves\nDirector: Jeffrey Nachmanoff", "JAHKQPBKSZ8&ab"));
 
         //One movie where release date is after today
         cal.set(2021, Calendar.MAY, 13);
-        iMovieDB.addMovie(new Movie("The Nightingale","poster_3", cal.getTime(), list_of_theatres, (String) "Cast: Aisling Franciosi\nDirector: Jennifer Kent\n", "YuP8g_GQIgI&ab"));
+        iMovieDB.addMovie(new Movie("The Nightingale","poster_3", new DateTime().plusDays(1), list_of_theatres, (String) "Cast: Aisling Franciosi\nDirector: Jennifer Kent\n", "YuP8g_GQIgI&ab"));
     }
 }

@@ -6,12 +6,12 @@ import ixalan.movieapp.objects.Merchandise;
 import ixalan.movieapp.objects.Movie;
 import ixalan.movieapp.objects.Theatre;
 
+import org.joda.time.DateTime;
 import org.junit.Test;
 import org.junit.Before;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import static org.mockito.Mockito.mock;
@@ -31,8 +31,8 @@ public class AccessMoviesTest {
     {
         movieDB = mock(IMovieDB.class);
 
-        Date yesterday = new Date(new Date().getTime() - 86400000);
-        Date tomorrow = new Date(new Date().getTime() + 86400000);
+        DateTime yesterday = new DateTime().minusDays(1);
+        DateTime tomorrow = new DateTime().plusDays(1);
         ArrayList<Theatre> theatres = new ArrayList<Theatre>(){
             {
                 add(new Theatre(1));
