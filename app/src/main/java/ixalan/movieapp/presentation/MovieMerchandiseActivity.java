@@ -36,7 +36,6 @@ public class MovieMerchandiseActivity extends AppCompatActivity
 
             Merchandise item = accessMerchandise.getCurrentItem();
             showMerchandiseItem(item, accessMerchandise.getDetails());
-            accessMerchandise.incrementIndexPtr();
 
             adjustQuantity();
 
@@ -63,11 +62,11 @@ public class MovieMerchandiseActivity extends AppCompatActivity
             showNextBtn.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v)
                 {
+                    accessMerchandise.incrementIndexPtr();
                     Merchandise item = accessMerchandise.getCurrentItem();
                     accessMerchandise.setQuantity(0);
                     adjustQuantity();
                     showMerchandiseItem(item, accessMerchandise.getDetails());
-                    accessMerchandise.incrementIndexPtr();
                 }
             });
             showNextBtn.setEnabled(accessMerchandise.merchandiseAvailable());
