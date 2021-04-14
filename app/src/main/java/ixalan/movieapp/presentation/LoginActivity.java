@@ -37,9 +37,15 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                //TODO: Validate user credentials, pass that info to the next activity using intent
-                //have to  do some HSQL vodo
-                showMovieListActivity();
+                String inputName = eName.getText().toString();
+                String inputPassword  = ePassword.getText().toString();
+                //check to see if the fields are empty.
+                if (inputName.isEmpty() || inputPassword.isEmpty()){
+                    Toast.makeText(getApplicationContext(),"User Name and Password can not be empty!",Toast.LENGTH_SHORT).show();
+                }else{
+                    //TODO: Pass info about login as a guest to the next activity
+                    showMovieListActivity();
+                }
             }
         });
 
@@ -48,15 +54,8 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                String inputName = eName.getText().toString();
-                String inputPassword  = ePassword.getText().toString();
-                //check to see if the fields are empty.
-                if (inputName.isEmpty() || inputPassword.isEmpty()){
-                    Toast.makeText(getApplicationContext(),"Enter all the details corrctly!",Toast.LENGTH_SHORT).show();
-                }else{
                     //TODO: Pass info about login as a guest to the next activity
                     showMovieListActivity();
-                }
             }
 
         });
