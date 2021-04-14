@@ -9,19 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".presentation.CardPaymentActivity"></activity>
-        <activity android:name=".presentation.PaymentSuccessfulActivity"></activity>
-        <activity android:name=".presentation.PaymentOptionsActivity"></activity>
-        <activity android:name=".presentation.ViewCartActivity"></activity>
-        <activity android:name=".presentation.MovieDetailActivity"></activity>
-        <activity android:name=".presentation.MovieLocationActivity"></activity>
-        <activity android:name=".presentation.MovieSeatingActivity"></activity>
-        <activity android:name=".presentation.MovieMerchandiseActivity"></activity>
-        <activity android:name=".presentation.BookingHistoryActivity"></activity>
-        <activity android:name=".presentation.MovieListActivity"></activity>
+        <activity
+            android:name=".presentation.sign_up_activity"
+            android:label="@string/title_activity_sign_up_activity"
+            android:theme="@style/NoActionBar"></activity>
+        <activity android:name=".presentation.CardPaymentActivity" />
+        <activity android:name=".presentation.PaymentSuccessfulActivity" />
+        <activity android:name=".presentation.PaymentOptionsActivity" />
+        <activity android:name=".presentation.ViewCartActivity" />
+        <activity android:name=".presentation.MovieDetailActivity" />
+        <activity android:name=".presentation.MovieLocationActivity" />
+        <activity android:name=".presentation.MovieSeatingActivity" />
+        <activity android:name=".presentation.MovieMerchandiseActivity" />
+        <activity android:name=".presentation.BookingHistoryActivity" />
+        <activity android:name=".presentation.MovieListActivity" />
         <activity android:name=".presentation.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
