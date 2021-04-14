@@ -83,13 +83,15 @@ public class MerchandiseTest
 
     * (Verification #1) To begin with, quantity must be at zero.
     * (Action #1) Click the add button once
-    * (Verification #2) The quantity display must be one
-    * (Action #2) Click the remove button 4 times
-    * (Verification #3) The quantity display must be zero.
-    * (Action #3) Click the add button 11 times
-    * (Verification #4) Upon the 11th time, a popup saying out of stock must display. The display qty must be at 10
-    * (Action #4) Click the next button
-    * (Verification #5) Quantity must be zero
+    * (Verification #2) The quantity display must be one (Test regular increment)
+    * (Action #2) Click the next button
+    * (Verification #3) Quantity must be zero (Test quantity reset if item is changed)
+    * (Action #3) Click the remove button 4 times
+    * (Verification #3) The quantity display must be zero. (Test quantity doesn't go negative)
+    * (Action #4) Click the add button 11 times
+    * (Verification #4) Upon the 11th time, a popup saying out of stock must display. (Test quantity doesn't go beyond what is available in stock)
+    * (Action #5) Click Back / OK
+    * (Verification #5) The quantity display must be 10.
     */
     public void test2()
     {
@@ -105,30 +107,35 @@ public class MerchandiseTest
         onView(withId(R.id.displayQty)).check(matches(withText("1")));
 
         //Action #2
-        onView(withId(R.id.rmvQty)).perform(click(), doubleClick());
-        onView(withId(R.id.rmvQty)).perform(click(), doubleClick());
+        onView(withId(R.id.showNextButton)).perform(click());
 
         //Verification #3
         onView(withId(R.id.displayQty)).check(matches(withText("0")));
 
         //Action #3
-        onView(withId(R.id.addQty)).perform(click(), doubleClick());
-        onView(withId(R.id.addQty)).perform(click(), doubleClick());
-        onView(withId(R.id.addQty)).perform(click(), doubleClick());
-        onView(withId(R.id.addQty)).perform(click(), doubleClick());
-        onView(withId(R.id.addQty)).perform(click(), doubleClick());
+        onView(withId(R.id.rmvQty)).perform(doubleClick());
+        onView(withId(R.id.rmvQty)).perform(doubleClick());
+
+        //Verification #4
+        onView(withId(R.id.displayQty)).check(matches(withText("0")));
+
+        //Action #4
+        onView(withId(R.id.addQty)).perform(doubleClick());
+        onView(withId(R.id.addQty)).perform(doubleClick());
+        onView(withId(R.id.addQty)).perform(doubleClick());
+        onView(withId(R.id.addQty)).perform(doubleClick());
+        onView(withId(R.id.addQty)).perform(doubleClick());
         onView(withId(R.id.addQty)).perform(click());
 
         //Verification #4
         onView(withText("Out of stock!"))
                 .inRoot(isDialog())
                 .check(matches(isDisplayed()));
-        pressBack();
 
         //Action #5
-        onView(withId(R.id.showNextButton)).perform(click());
+        onView(withText("OK")).perform(click());
 
         //Verification #5
-        onView(withId(R.id.displayQty)).check(matches(withText("0")));
+        onView(withId(R.id.displayQty)).check(matches(withText("10")));
     }
 }
