@@ -19,6 +19,7 @@ public class AccessMerchandise
     //Fields pertaining to the current merchandise item
     private int quantity = 0;
     private String details = "";
+    private int stock = 0;
 
     public AccessMerchandise(final IMerchandiseDB merchandiseDB)
     {
@@ -48,6 +49,7 @@ public class AccessMerchandise
         if (merchandise != null && !merchandise.isEmpty())
         {
             index_ptr = (index_ptr + 1) % merchandise.size();
+            updateDetails();
         }
     }
 
@@ -61,7 +63,6 @@ public class AccessMerchandise
         if (movie != null)
         {
             this.movie = movie;
-            getMerchandise();
         }
     }
 
@@ -90,7 +91,7 @@ public class AccessMerchandise
         {
             if (merchandise != null && !merchandise.isEmpty()) {
                 Merchandise item = getCurrentItem();
-                if (item != null && quantity <= item.getStock()) {
+                if (item != null && quantity <= stock) {
                     this.quantity = quantity;
                     toReturn = true;
                 }
@@ -119,9 +120,8 @@ public class AccessMerchandise
 
             if (toReturn != null)
             {
-                details = "";
-                details += ("Price: $" + new DecimalFormat("0.00").format(toReturn.getPrice()) + "\n\n");
-                details += toReturn.getDescription();
+                updateDetails();
+                stock = toReturn.getStock();
             }
         }
         return toReturn;
@@ -130,5 +130,16 @@ public class AccessMerchandise
     public boolean merchandiseAvailable()
     {
         return merchandise != null && !merchandise.isEmpty();
+    }
+
+    public void updateDetails()
+    {
+        if (!merchandise.isEmpty() && index_ptr < merchandise.size())
+        {
+            Merchandise item = merchandise.get(index_ptr);
+            details = "";
+            details += ("Price: $" + new DecimalFormat("0.00").format(item.getPrice()) + "\n\n");
+            details += item.getDescription();
+        }
     }
 }

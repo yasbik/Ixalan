@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import ixalan.movieapp.R;
 import ixalan.movieapp.business.AccessCart;
 import ixalan.movieapp.business.AccessMerchandise;
-import ixalan.movieapp.business.AccessMovies;
 import ixalan.movieapp.objects.CartItem;
 import ixalan.movieapp.objects.Merchandise;
 import ixalan.movieapp.objects.Movie;
@@ -36,8 +35,8 @@ public class MovieMerchandiseActivity extends AppCompatActivity
             accessMerchandise = new AccessMerchandise(movie);
 
             Merchandise item = accessMerchandise.getCurrentItem();
-            accessMerchandise.incrementIndexPtr();
             showMerchandiseItem(item, accessMerchandise.getDetails());
+            accessMerchandise.incrementIndexPtr();
 
             adjustQuantity();
 
@@ -65,8 +64,10 @@ public class MovieMerchandiseActivity extends AppCompatActivity
                 public void onClick(View v)
                 {
                     Merchandise item = accessMerchandise.getCurrentItem();
-                    accessMerchandise.incrementIndexPtr();
+                    accessMerchandise.setQuantity(0);
+                    adjustQuantity();
                     showMerchandiseItem(item, accessMerchandise.getDetails());
+                    accessMerchandise.incrementIndexPtr();
                 }
             });
             showNextBtn.setEnabled(accessMerchandise.merchandiseAvailable());
@@ -101,7 +102,7 @@ public class MovieMerchandiseActivity extends AppCompatActivity
             int merch_id = getResources().getIdentifier(merchandise.getImageUrl(), "drawable", getPackageName());
             merch_item_imageview.setImageResource(merch_id);
 
-            TextView merchandiseDetails = (TextView) findViewById(R.id.movie_details_textView);
+            TextView merchandiseDetails = (TextView) findViewById(R.id.merch_details_textView);
             merchandiseDetails.setText(details);
         }
     }

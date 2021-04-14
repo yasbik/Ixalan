@@ -59,7 +59,7 @@ public class MovieDetailActivity extends AppCompatActivity {
             movie_name_textview.setText(movie_display_name);
 
             //Display movie details
-            TextView movie_details_textview = (TextView) findViewById(R.id.movie_details_textView);
+            TextView movie_details_textview = (TextView) findViewById(R.id.merch_details_textView);
             movie_details_textview.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
             movie_details_textview.setText(accessMovieDetail.getFullDetails());
 
@@ -102,7 +102,8 @@ public class MovieDetailActivity extends AppCompatActivity {
 
     public void watchYoutubeVideo(String link)
     {
-        String url = "http://www.youtube.com/watch?v="+link;
+
+        String url = getResources().getString(R.string.YOUTUBE_PREFIX)+link;
         try {
             Intent i = new Intent("android.intent.action.MAIN");
             i.setComponent(ComponentName.unflattenFromString("com.android.chrome/com.android.chrome.Main"));

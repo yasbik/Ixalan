@@ -123,7 +123,6 @@ public class MovieListActivity extends AppCompatActivity
                 //when text changes in search field
                 accessMovies.setSearch_criteria(newText.trim());
                 populateMovies(accessMovies.filterMovies());
-
                 return false;
             }
         });
