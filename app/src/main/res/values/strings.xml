@@ -15,6 +15,7 @@
     <string name = "PAY_NOW">PAY NOW</string>
     <string name = "HOME">HOME</string>
     <string name = "MERCHANDISE_UNAVAILABLE">No Merchandise available</string>
+    <string name = "YOUTUBE_PREFIX"> http://www.youtube.com/watch?v=</string>string>
 
     <string-array name="movie_display_filters">
         <item>Currently running movies</item>
