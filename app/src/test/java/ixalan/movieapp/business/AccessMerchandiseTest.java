@@ -38,6 +38,7 @@ public class AccessMerchandiseTest
         when(merchandiseDB.getMerchandiseForMovie(3)).thenReturn(new ArrayList<Merchandise>());
 
         accessMerchandise = new AccessMerchandise(merchandiseDB);
+
     }
 
     @Test
@@ -65,6 +66,7 @@ public class AccessMerchandiseTest
         assertNotNull(accessMerchandise);
         accessMerchandise.setMovie(new Movie(1, "Test Movie"));
         assertNotNull(accessMerchandise.getMovie());
+        accessMerchandise.getMerchandise();
         assertFalse(accessMerchandise.setQuantity(merchandise.get(0).getStock()+10));
         assertTrue(accessMerchandise.setQuantity(1));
         assertEquals(accessMerchandise.getQuantity(), 1);
