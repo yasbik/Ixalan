@@ -16,16 +16,8 @@ import ixalan.movieapp.objects.MovieTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        AccessMerchandiseIT.class,
-        AccessMerchandiseTest.class,
-        AccessMovieDetailTest.class,
-        AccessMoviesIT.class,
-        AccessMoviesTest.class,
-        FakeMovieDBTest.class,
-        FakePosterDBTest.class,
-        FakeUserDBTest.class,
-        MerchandiseTest.class,
-        MovieTest.class,
+        AllUnitTests.class,
+        AllIntegrationTests.class
 })
 
 public class AllTests {
