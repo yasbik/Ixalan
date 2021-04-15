@@ -49,13 +49,21 @@ public class ViewCartActivity extends AppCompatActivity {
         //Clear layout of all entries
         LinearLayout layout = (LinearLayout)findViewById(R.id.view_cart_linear_layout);
         layout.removeAllViews();
-        float totalPrice = 0; /*calculate total price of all cart items */
+        float totalPrice = 0;
+        boolean firstEntryIdset = false;
+        /*calculate total price of all cart items */
         //Add entries one by one
         if (cart_list != null) {
             for(Map.Entry<CartItem, Integer> item : cart_list.entrySet()){
                 totalPrice += (item.getKey().getPrice() * item.getValue());
                 Button btn = new Button(this); /*display each cart item as a button. Currently button not clickable */
                 btn.setText(item.getKey().getName() + "     (Qty: " + item.getValue() + ")"); /*will make this button clickable in future to view details of item */
+                if (!firstEntryIdset)
+                {   //helpful for system tests
+                    btn.setId(R.id.sample_merch_button_id);
+                    firstEntryIdset = true;
+                }
+
                 //if clicked, display movie details
                 //   btn.setOnClickListener(new View.OnClickListener() {
                 //      public void onClick(View v) {
