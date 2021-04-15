@@ -1,6 +1,7 @@
 package ixalan.movieapp.data;
 
 import ixalan.movieapp.objects.Movie;
+import ixalan.movieapp.objects.RegiUser;
 import ixalan.movieapp.objects.Theatre;
 import ixalan.movieapp.objects.User;
 
@@ -31,7 +32,7 @@ public class UserDB implements IUserDB{
         final String userPassword = rs.getString("password");
         final String userCC = rs.getString("creditcard");
         final int userPoints = rs.getInt("points");
-        user = new User(userName, userEmail,userPassword,userBalance,userPoints,userID,userCC);
+        user = new RegiUser(userName, userEmail,userPassword,userBalance,userPoints,userID,userCC);
 
         return user;
     }

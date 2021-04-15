@@ -2,7 +2,7 @@ package ixalan.movieapp.objects;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+public abstract class User  {
     private String name;
     private String email;
     private String password;
@@ -40,6 +40,8 @@ public class User implements Serializable {
     public String getPassword(){return this.password;}
 
     public String getCreditCard(){return this.creditCard;}
+
+    public void setName(String name) {this.name = name; }
 
     public void setUserID(int userID){this.userID= userID;}
 
