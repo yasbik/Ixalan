@@ -1,6 +1,7 @@
 package ixalan.movieapp.data;
 
 import ixalan.movieapp.objects.Movie;
+import ixalan.movieapp.objects.RegiUser;
 import ixalan.movieapp.objects.Theatre;
 import ixalan.movieapp.objects.User;
 
@@ -24,12 +25,15 @@ public class UserDB implements IUserDB{
 
     private User fromResultSet(final ResultSet rs) throws SQLException{
         User user = null;
-        final String userID = rs.getString("userID");
+        final int userID = rs.getInt("userID");
         final String userName = rs.getString("name");
         final int userBalance = rs.getInt("balance");
         final String userEmail = rs.getString("email");
-       // user = new User(userName, userEmail);
-        //user.setUserID(Integer.parseInt(userID));
+        final String userPassword = rs.getString("password");
+        final String userCC = rs.getString("creditcard");
+        final int userPoints = rs.getInt("points");
+        user = new RegiUser(userName, userEmail,userPassword,userBalance,userPoints,userID,userCC);
+
         return user;
     }
 
@@ -47,6 +51,25 @@ public class UserDB implements IUserDB{
         try(final Connection c = connection()){
             final PreparedStatement st = c.prepareStatement("SELECT * FROM users WHERE userID=?");
             st.setString(1, uID.toString());
+            final ResultSet rs = st.executeQuery();
+            returnedUser = fromResultSet(rs);
+
+            rs.close();
+            st.close();
+
+            return  returnedUser;
+        }catch(final SQLException e){
+            throw new PersistenceException(e);
+        }
+    }
+
+    public User getUSer(String name, String password){
+        User returnedUser = null;
+
+        try(final Connection c = connection()){
+            final PreparedStatement st = c.prepareStatement("SELECT * FROM users WHERE name=? AND password=?");
+            st.setString(1, name);
+            st.setString(2,password);
             final ResultSet rs = st.executeQuery();
             returnedUser = fromResultSet(rs);
 

@@ -2,19 +2,24 @@ package ixalan.movieapp.objects;
 
 import java.util.ArrayList;
 public class RegiUser extends User {
-    private String id; //Possibly alphanumeric
-    private char[] password; //Store password as char array for mroe security
+    private int id; //Possibly alphanumeric
+    private String password; //Store password as char array for mroe security
     private ArrayList<Movie> moviesWatched = new ArrayList<>();
     private ArrayList<Movie> moviesLiked = new ArrayList<>();
     private String paymentInfo;
-    private String savedAddress;
+    private String email;
 
-    public String getId()
+    public RegiUser(String name, String email, String password, int balance, int pointsBalance, int userID, String creditCard) {
+        super(name, email, password, balance, pointsBalance, userID, creditCard);
+    }
+
+
+    public int getId()
     {
         return this.id;
     }
 
-    public char[] getPassword()
+    public String getPassword()
     {
         return this.password;
     }
@@ -29,9 +34,9 @@ public class RegiUser extends User {
         return this.moviesWatched;
     }
 
-    public String getSavedAddress()
+    public String getEmail()
     {
-        return this.getSavedAddress();
+        return this.email;
     }
 
     public String getPaymentInfo()

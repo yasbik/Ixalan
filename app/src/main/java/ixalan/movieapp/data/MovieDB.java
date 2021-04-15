@@ -65,6 +65,25 @@ public class MovieDB implements IMovieDB{
         }
     }
 
+    public Movie getMovie(String name, String password){
+        Movie returnedMovie= null;
+
+        try(final Connection c = connection()){
+            final PreparedStatement st = c.prepareStatement("SELECT * FROM movies WHERE name=? AND password=?");
+            st.setString(1, name);
+            st.setString(2, password);
+            final ResultSet rs = st.executeQuery();
+            returnedMovie = fromResultSet(rs);
+
+            rs.close();
+            st.close();
+
+            return  returnedMovie;
+        }catch(final SQLException e){
+            throw new PersistenceException(e);
+        }
+    }
+
     @Override
     public int removeMovie(int movieID) {
         Integer mID = movieID;
