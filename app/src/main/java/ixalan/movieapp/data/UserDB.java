@@ -82,6 +82,7 @@ public class UserDB implements IUserDB{
         }
     }
 
+
     @Override
     public void addUser(User newUser){
         try(final Connection c= connection()){
