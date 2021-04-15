@@ -11,6 +11,7 @@
     <string name = "FACEBOOK_PAY">Continue with Facebook</string>
     <string name = "EMAIL_PAY">Continue with Email</string>
     <string name = "CARD_PAY">Continue with Credit Card</string>
+    <string name = "POINTS_PAY">Continue with Loyalty Points</string>
     <string name = "CARD_PAY_HEADER">Enter Credit Card Details</string>
     <string name = "PAY_NOW">PAY NOW</string>
     <string name = "HOME">HOME</string>

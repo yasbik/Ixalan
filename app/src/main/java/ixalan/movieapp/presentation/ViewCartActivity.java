@@ -27,6 +27,8 @@ public class ViewCartActivity extends AppCompatActivity {
     private HashMap<CartItem, Integer> cart_list;
     private AccessCart accessCart;
 
+    float totalPrice = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -49,7 +51,7 @@ public class ViewCartActivity extends AppCompatActivity {
         //Clear layout of all entries
         LinearLayout layout = (LinearLayout)findViewById(R.id.view_cart_linear_layout);
         layout.removeAllViews();
-        float totalPrice = 0;
+        //float totalPrice = 0;
         boolean firstEntryIdset = false;
         /*calculate total price of all cart items */
         //Add entries one by one
@@ -85,7 +87,9 @@ public class ViewCartActivity extends AppCompatActivity {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ViewCartActivity.this, PaymentOptionsActivity.class));
+                Intent intent = new Intent(ViewCartActivity.this, PaymentOptionsActivity.class);
+                intent.putExtra("totalPrice", totalPrice);
+                startActivity(intent);
             }
         });
     }
