@@ -72,6 +72,15 @@ public class LoginActivity extends AppCompatActivity
                 showMovieListActivity();
             }
         });
+
+        signUpBtn = (Button) findViewById(R.id.btnSignup);
+        signUpBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveToSignUp();
+            }
+        });
+
     }
 
     public void showMovieListActivity()
@@ -129,4 +138,9 @@ public class LoginActivity extends AppCompatActivity
             }
         }
     }
+    public void moveToSignUp(){
+        Intent intent = new Intent(this.getApplicationContext(), SignUpActivity.class);
+        startActivity(intent);
+    }
+
 }
