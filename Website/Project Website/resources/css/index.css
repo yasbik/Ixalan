@@ -1,0 +1,31 @@
+.min-height{
+  min-height: 100px;
+}
+
+.bg-header{
+  background-color: #E57962;
+}
+
+.hero-bg{
+  min-height: 1000px;
+  background-image: url("../images/movie-918655_1920.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.text-change{
+  color: #ffffff;
+}
+
+.container{
+  display: flex;
+}
+.fixed{
+  min-width: 400px;
+}
+.flex-item{
+  flex-grow:.7;
+}
+.spacer{
+  min-height: 30px;
+}
