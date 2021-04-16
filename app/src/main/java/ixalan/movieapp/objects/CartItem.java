@@ -13,6 +13,12 @@ public class CartItem
         this.quantity = quantity;
     }
 
+    public CartItem(String name, float price)
+    {
+        this.name = name;
+        this.price = price;
+    }
+
     public float getPrice() {
         return price;
     }

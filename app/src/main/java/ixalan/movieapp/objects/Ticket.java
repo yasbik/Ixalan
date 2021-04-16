@@ -18,6 +18,12 @@ public class Ticket extends CartItem
         this.dateTime = dateTime;
     }
 
+    public Ticket(Movie movie, float price)
+    {
+        super(movie.getMovieName(), price);
+        this.ticketIdentifier = "";
+    }
+
     public boolean equals(Ticket ticket)
     {
         return ticket.movie.equals(this.movie) && theatre.equals(ticket.getTheatre()) && dateTime.equals(ticket.getDateTime());
