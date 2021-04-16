@@ -13,7 +13,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import ixalan.movieapp.business.AccessCart;
 import ixalan.movieapp.business.AccessMovieDetail;
+import ixalan.movieapp.objects.CartItem;
 import ixalan.movieapp.objects.Movie;
 
 import ixalan.movieapp.R;
@@ -69,7 +71,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v)
                 {
-                    showMovieLocations();
+                    addTicketAndGoToCart();
                 }
             });
             btn.setEnabled(!movie.isUpcoming());
@@ -93,11 +95,21 @@ public class MovieDetailActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void showMovieLocations()
+    public void addTicketAndGoToCart()
     {
-        Intent intent = new Intent(this, MovieLocationActivity.class);
-        intent.putExtra("MOVIE", movie);
-        startActivity(intent);
+        addTicket();
+        Intent myIntent = new Intent(MovieDetailActivity.this, ViewCartActivity.class);
+        startActivity(myIntent);
+    }
+
+    public void addTicket()
+    {
+        CartItem cartItem = accessMovieDetail.getMovieAsTicket();
+        if (cartItem != null)
+        {
+            cartItem.setQuantity(1);
+            AccessCart.addCartItem(cartItem, 1);
+        }
     }
 
     public void watchYoutubeVideo(String link)

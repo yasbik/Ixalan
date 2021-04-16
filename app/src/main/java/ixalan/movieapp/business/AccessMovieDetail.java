@@ -5,7 +5,9 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 
+import ixalan.movieapp.objects.CartItem;
 import ixalan.movieapp.objects.Movie;
+import ixalan.movieapp.objects.Ticket;
 
 public class AccessMovieDetail
 {
@@ -32,6 +34,17 @@ public class AccessMovieDetail
                 toReturn += "\n";
                 toReturn += str.substring(index);
             }
+        }
+        return toReturn;
+    }
+
+    public CartItem getMovieAsTicket()
+    {
+        Ticket toReturn = null;
+
+        if (movie != null)
+        {
+            toReturn = new Ticket(movie, (float)5.99);
         }
         return toReturn;
     }

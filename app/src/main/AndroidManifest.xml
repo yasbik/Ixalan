@@ -15,8 +15,6 @@
         <activity android:name=".presentation.PaymentOptionsActivity" />
         <activity android:name=".presentation.ViewCartActivity" />
         <activity android:name=".presentation.MovieDetailActivity" />
-        <activity android:name=".presentation.MovieLocationActivity" />
-        <activity android:name=".presentation.MovieSeatingActivity" />
         <activity android:name=".presentation.MovieMerchandiseActivity" />
         <activity android:name=".presentation.BookingHistoryActivity" />
         <activity android:name=".presentation.MovieListActivity" />
