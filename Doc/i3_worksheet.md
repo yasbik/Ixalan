@@ -45,11 +45,29 @@ Acceptance test/end-to-end
 **Write a discussion about an end-to-end test that you wrote. What did you test,
 how did you set up the test so it was not flaky? Provide a link to that test.**
 
+One of the end-to-end tests written was to test if the movie details were displayed and if the movie trailer could be played.
+
+The way this was tested was a particular movie was "clicked" after which, the test made sure that the details displayed on screen were the same as the movie details as it appears in the database.
+
+The movie trailer part was tricky as it involced launching YouTube to play the trailer link.
+
+This was tested by just checking if an intent with the appropriate URL was launched. This was checked with the URL of the associated movie from the database.
+
+By making sure that the details displayed on screen matched what was in the database, we made sure that the test was not flaky.
+
 Acceptance test, untestable
 ===============
 
 **What challenges did you face when creating acceptance tests? What was difficult
 or impossible to test?**
+
+Addition of new features would often cause some existing acceptance tests to break.
+
+This is due to the fact that system test involves starting at a particular activity and assumptions like these made when writing the system tests would cause it to fail later on when another member added their code.
+
+The payment feature was difficult to test due to the different types of payments the app supports.
+
+Currently, the system tests only tests payment with credit card and not the other kinds.
 
 Velocity/teamwork
 =================
