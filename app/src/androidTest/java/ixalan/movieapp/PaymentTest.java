@@ -27,18 +27,22 @@ import java.util.ArrayList;
 
 import ixalan.movieapp.application.Services;
 import ixalan.movieapp.objects.Merchandise;
+import ixalan.movieapp.presentation.LoginActivity;
 import ixalan.movieapp.presentation.MovieListActivity;
 import ixalan.movieapp.presentation.ViewCartActivity;
 
 public class PaymentTest {
     @Rule
-    public ActivityTestRule<MovieListActivity> activityRule = new ActivityTestRule<>(MovieListActivity.class);
+    public ActivityTestRule<LoginActivity> activityRule = new ActivityTestRule<>(LoginActivity.class);
 
     private ArrayList<Merchandise> merchandise;
 
     @Before
     public void setUp() {
         //Initialize so that merchandise is showing
+        onView(withId(R.id.user_name_plain_text)).perform(typeText("David Doyle"));
+        onView(withId(R.id.password_field_password)).perform(typeText("admin1234"));
+        onView(withId(R.id.login_button)).perform(click());
         onView(withId(R.id.sample_movie_button_id)).perform(click());
         onView(withId(R.id.view_merchandise_button)).perform(click());
     }
