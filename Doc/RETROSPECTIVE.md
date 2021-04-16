@@ -1,0 +1,11 @@
+# Group 3 Retrospective
+
+Our team completeted a retrospective activity and discussed the issues we had throughout the entire term. We discussed some of the problems we previously had. 
+
+* The first issue we had was with using Gitlab, since some of our members were not fully proficient in using git/github for version control. This resulted in some members having to commit and push changes on behalf of other members, making the commits on in our project very inconsistent and more difficult to track.
+
+* The other issue we had was due to some misestimation of time and workload in implementing some of the features/user stories. We ran into some issues in Iteration 2 near the end and had to make some last minute changes, which altogether made our app a little awkward.
+
+A part of our project that had not been successful is the number of features that were only partially present in the app but not fully functional. For example, we had a "View Booking History" button what would allow users to see the movies they had previously booked. However, this button was only in the interface but had not been implemented. As a result, the users would only see a blank screen. There was also a "Cart" that the users would add movies and merchandise to but this feature had a few issues as well. Altogether, these made our app somewhat thin and unpresentable as a prototype. 
+
+For the upcoming iteration, we have all decided to focus more on a few things so that these issues are no longer persistent. We will strive to have better communication amongst ourselves so that we can meet "mini deadlines" set by ourselves. One big thing we will be focusing on is to make sure we are adding a sufficient number of tests. In the previous iteration, we lost a big chunk of marks due to our low test coverage. We will try to ensure that we are testing more and testing better. Additionally, we will make sure that we do not present buttons or any other features in the app, which are not fully functional. If there is a feature which we cannont implement fully, we will consider pushing it to the future and not presenting a partially implemented feature in the current iteration. Hopefully, this will be apparent when we submit our project for the next iteration.
