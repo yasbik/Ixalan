@@ -1,6 +1,12 @@
 # Purpose
 ---
 
+Ixalan aims at providing movie tickets at cheap and affordable prices.
+It also comes with an easy-to-use app through which you can conveniently book tickets, buy merchandise and even earn loyalty points!
+
+Our Application can provide you with a one stop shop for all your movie viewing needs and movie related memorabila. 
+With flexible payment options you can books the ticket to the movies you want to watch when you want and pay for them how ever you please!
+
 # Running the app
 ---
 
@@ -49,5 +55,10 @@ Find our final retrospective [here](https://code.cs.umanitoba.ca/3350-winter-202
 ---
 
 Find our architecture document [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/blob/master/Doc/Architecture_I3.png).
+
+# Velocity
+---
+
+Find out project velocity chart [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/blob/master/Doc/Velocity_Chart.png).
 
 **All documents pertaining to our project can be found [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/tree/master/Doc).**
