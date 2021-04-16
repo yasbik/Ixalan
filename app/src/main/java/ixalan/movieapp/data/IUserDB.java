@@ -20,5 +20,7 @@ public  interface IUserDB{
 
     public void addUser(User newUser);
 
+    public User getUSer(String name, String pass);
+
     public ArrayList<User> getAllUsers();
 }
