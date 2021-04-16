@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import ixalan.movieapp.application.Services;
 import ixalan.movieapp.objects.Merchandise;
+import ixalan.movieapp.presentation.LoginActivity;
 import ixalan.movieapp.presentation.MovieListActivity;
 import ixalan.movieapp.presentation.ViewCartActivity;
 
@@ -24,6 +25,7 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.doubleClick;
 import static androidx.test.espresso.action.ViewActions.pressBack;
+import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static androidx.test.espresso.matcher.RootMatchers.isDialog;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -35,6 +37,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /*
+    Mrinal Managoli
     System tests relating to Feature #30: Merchandise
 
     Number of tests:
@@ -44,13 +47,17 @@ public class MerchandiseTest
 {
 
     @Rule
-    public ActivityTestRule<MovieListActivity> activityRule = new ActivityTestRule<>(MovieListActivity.class);
+    public ActivityTestRule<LoginActivity> activityRule = new ActivityTestRule<>(LoginActivity.class);
 
     private ArrayList<Merchandise> merchandise;
 
     @Before
     public void setUp()
     {
+        onView(withId(R.id.user_name_plain_text)).perform(typeText("David Doyle"));
+        onView(withId(R.id.password_field_password)).perform(typeText("admin1234"));
+        onView(withId(R.id.login_button)).perform(click());
+
         //initialize to get just avengers merch
         merchandise = Services.getiMerchandiseDB().getMerchandiseForMovie(1);
 
