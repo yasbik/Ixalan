@@ -44,6 +44,9 @@ public class FakeUserDB implements IUserDB
     }
 
     @Override
+    public User getUSer(String name,String pass){return null;}
+
+    @Override
     public ArrayList<User> getAllUsers()
     {
         return null;

@@ -37,7 +37,7 @@ public class MovieListActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.movie_list);
-        copyDatabaseToDevice();
+        //copyDatabaseToDevice();
        //initDB();
 
         accessMovies = new AccessMovies(false, "");
