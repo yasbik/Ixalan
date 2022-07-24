@@ -29,7 +29,7 @@ Registered users can accumulate points by making more purchases in-app.
 # Branching strategy
 ---
 
-Find our branching strategy [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/blob/master/Doc/Branching_Strategy.md)
+Find our branching strategy [here](https://github.com/yasbik/Ixalan/blob/master/Doc/Branching_Strategy.md)
 
 # Worksheet 3
 ---
@@ -44,21 +44,21 @@ The website for the presentation of our app can be found [here](https://github.c
 # Vision
 ---
 
-Find our vision statement [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/blob/master/Doc/VISION.MD).
+Find our vision statement [here](https://github.com/yasbik/Ixalan/blob/master/Doc/VISION.MD).
 
 # Retrospective
 ---
 
-Find our final retrospective [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/blob/master/Doc/RETROSPECTIVE.md).
+Find our final retrospective [here](https://github.com/yasbik/Ixalan/commit/d4d6b7d784b8422ed2db7f3c934ab2ea53dfad9a).
 
 # Architecture
 ---
 
-Find our architecture document [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/blob/master/Doc/Architecture_I3.png).
+Find our architecture document [here](https://github.com/yasbik/Ixalan/blob/master/Doc/Architecture_I3.png).
 
 # Velocity
 ---
 
-Find out project velocity chart [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/blob/master/Doc/Velocity_Chart.png).
+Find out project velocity chart [here](https://github.com/yasbik/Ixalan/blob/master/Doc/Velocity_Chart.png).
 
-**All documents pertaining to our project can be found [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/tree/master/Doc).**
+**All documents pertaining to our project can be found [here](https://github.com/yasbik/Ixalan/tree/master/Doc).**
