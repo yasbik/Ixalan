@@ -34,7 +34,7 @@ Find our branching strategy [here](https://code.cs.umanitoba.ca/3350-winter-2021
 # Worksheet 3
 ---
 
-Find our filled-out worksheet for Iteration 3 [here](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-3/-/blob/master/Doc/i3_worksheet.md).
+Find our filled-out worksheet for Iteration 3 [here](https://github.com/yasbik/Ixalan/blob/master/Doc/i3_worksheet.md).
 
 # Presentation
 ---
